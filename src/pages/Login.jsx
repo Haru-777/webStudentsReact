@@ -1,5 +1,6 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import '../styles/login.scss';
+import '../styles/global.scss';
 import logo from '../assets/logos/logoSinFondo.png';
 import txtlogo from '../assets/logos/smartFCLogo.png';
 
@@ -17,31 +18,31 @@ const Login = () => {
     }
 
     return (
-        <div className="Login">
+        <div className="Bottom">
             <div className="Login-container">
                 <img src={logo} alt="logo" className="logo" ></img>
-                <img src={txtlogo} alt="logo" className="logotxt"/>
+                <img src={txtlogo} alt="logo" className="logotxt" />
                 <form action="/" className="form" ref={form}>
                     <div className="inputContainer">
-                    <input type="email" name="email" placeholder="Correo Electronico" className="inp-emailtxt" required/>
-                    <label htmlFor="email" className="label" >Correo Electronico</label></div>
+                        <input type="email" name="email" placeholder="Correo Electronico" className="inp-emailtxt" required />
+                        <label htmlFor="email" className="label" >Correo Electronico</label></div>
                     <div className="inputContainer">
-                    <input type="password" name="password" placeholder="Contraseña" className="inp-passtxt" required/>
-                    <label htmlFor="password" className="labelcx">Contraseña</label></div>
+                        <input type="password" name="password" placeholder="Contraseña" className="inp-passtxt" required />
+                        <label htmlFor="password" className="labelcx">Contraseña</label></div>
                     <button
-                    onClick={handleSubmit}
-                    className="btnlogin">
-                    Iniciar sesión
+                        onClick={handleSubmit}
+                        className="btnlogin">
+                        Iniciar sesión
                     </button>
-                    
+
                 </form>
-            <button
-                className="secondary-button signup-button"
-            >
-                Registrarse
-            </button>
-        </div>
-    </div >
+                <button
+                    className="secondary-button signup-button"
+                >
+                    Registrarse
+                </button>
+            </div>
+        </div >
     );
 }
 
