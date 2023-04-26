@@ -25,11 +25,10 @@ const Header = () => {
                     </li>
                 </ul>
             </div>
-            <div className="navbar-right">
+            <div className="dropdown">
                 <button className='dropbtn'>Perfil
-                    <i class="fa fa-caret-down"></i>
                 </button>
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                     <a href="#">Modificar Perfil</a>
                     <a href="#">Cerrar Sesión</a>
                 </div>

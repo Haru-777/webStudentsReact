@@ -1,20 +1,19 @@
+@import '__vars';
+
 nav {
     display: flex;
     justify-content: space-between;
     padding: 0 24px;
-    border-bottom: 1px solid var(--very-light-pink);
+    border-bottom: 1px solid var(--baby-blue);
 }
 
 .logo {
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-
-
+    width: 30px;
+    height: 30px;
 }
 
-.navbar-left ul,
-.navbar-right ul {
+.navbar-left ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -31,8 +30,7 @@ nav {
     margin-left: 12px;
 }
 
-.navbar-left ul li a,
-.navbar-right ul li a {
+.navbar-left ul li a {
     text-decoration: none;
     color: var(--very-light-pink);
     border: 1px solid var(--white);
@@ -40,36 +38,76 @@ nav {
     border-radius: 8px;
 }
 
-.navbar-left ul li a:hover,
-.navbar-right ul li a:hover {
-    border: 1px solid var(--hospital-green);
-    color: var(--hospital-green);
+.navbar-left ul li a:hover {
+    border: 1px solid var(--baby-blue);
+    color: var(--baby-blue);
 }
 
-.navbar-email {
-    color: var(--very-light-pink);
-    font-size: var(--sm);
-    margin-right: 12px;
-}
-
-.navbar-shopping-cart {
-    position: relative;
-}
-
-.navbar-shopping-cart div {
-    width: 16px;
-    height: 16px;
-    background-color: var(--hospital-green);
-    border-radius: 50%;
-    font-size: var(--sm);
-    font-weight: bold;
-    position: absolute;
-    top: -6px;
-    right: -3px;
+.dropdown {
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
+
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--baby-blue);
+    min-width: 160px;
+    box-shadow: var(--baby-blue);
+    z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Add a dark background on topnav links and the dropdown button on hover */
+.topnav a:hover,
+.dropdown:hover .dropbtn {
+    border: 1px solid var(--baby-blue);
+    color: var(--baby-blue);
+}
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+    display: block;
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+    z-index: 1;
+
+}
+
 
 @media (max-width: 640px) {
     .navbar-left ul {
