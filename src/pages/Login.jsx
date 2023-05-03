@@ -1,8 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, Router, Route } from "react";
+import { NavLink } from "react-router-dom";
 import '../styles/login.scss';
 import '../styles/global.scss';
 import logo from '../assets/logos/logoSinFondo.png';
 import txtlogo from '../assets/logos/smartFCLogo.png';
+import donwload from '../assets/logos/donwload.jpg';
+
 
 const Login = () => {
     const form = useRef(null);
@@ -20,7 +23,7 @@ const Login = () => {
     return (
         <div className="Bottom">
             <div className="Login-container">
-                <img src={logo} alt="logo" className="logo" ></img>
+                <img src={logo} alt="logo" className="logo-login" ></img>
                 <img src={txtlogo} alt="logo" className="logotxt" />
                 <form action="/" className="form" ref={form}>
                     <div className="inputContainer">
@@ -36,11 +39,16 @@ const Login = () => {
                     </button>
 
                 </form>
-                <button
-                    className="secondary-button signup-button"
-                >
-                    Registrarse
-                </button>
+                <div class="txtcuenta">
+                    <a > ¿No tienes cuenta? <a name="linkRegister" class="txtreg" to={'/register'}>Registrate</a></a>
+                </div>
+                <div class="endlogin">
+                        <div class="txtservidor"><span data-toggle="modal" data-target="#mimodalejemplo">Servidor:</span>
+                            <span class="text-info pl-1" >Conectado</span>
+                            <span class="text-danger pl-1" >Desconectado</span>
+                        </div>
+                        <img src={donwload} class="imapp"  alt="Logo"  />
+                    </div>
             </div>
         </div >
     );

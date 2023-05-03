@@ -1,0 +1,8 @@
+@import '__vars';
+footer {
+    text-align: right;
+    padding: 3px;
+    background-color: var(--baby-blue);
+    color: var(--white);
+    align-self: flex-end;
+  }

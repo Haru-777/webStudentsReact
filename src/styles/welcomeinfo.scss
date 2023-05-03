@@ -1,0 +1,28 @@
+@import '__vars';
+
+.welcomeInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: max-content;
+    background-color: transparent
+    ;
+}
+
+.logo-hi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+.logotxt-hi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 170px;
+}

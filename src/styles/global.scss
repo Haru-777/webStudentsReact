@@ -1,16 +1,16 @@
 .Bottom {
+    box-sizing: border-box;
     width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     place-items: center;
     background-image: url("../assets/background/fondo6.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover ;
     margin: 0;
     font-family: 'Quicksand', sans-serif;
-
+    min-height: 100vh;
 }
 
 p {

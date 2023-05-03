@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../components/Header';
+import Welcome from '../containers/Welcome';
 import '../styles/global.scss';
 
 const Home = () => {
     return (
-        <Header/>
+        <Welcome/>
     );
 }
 

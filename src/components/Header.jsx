@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/header.scss';
 import logo from '../assets/logos/logoSinFondo.png';
 
 const Header = () => {
+    const [isActive, setIsActive] = useState(false) 
     return (
         <nav>
             <div className="navbar-left">
@@ -26,12 +27,13 @@ const Header = () => {
                 </ul>
             </div>
             <div className="dropdown">
-                <button className='dropbtn'>Perfil
+                <button onClick={() => setIsActive(!isActive) } className='dropbtn'>Perfil
                 </button>
+                { isActive && 
                 <div className="dropdown-content">
                     <a href="#">Modificar Perfil</a>
                     <a href="#">Cerrar Sesión</a>
-                </div>
+                </div>}
             </div>
         </nav >
     );

@@ -1,0 +1,19 @@
+@import '__vars';
+
+.matterInfo { 
+    padding: 0;
+    margin: 0;
+    height: fit-content;
+    background-color: var(--text-input-field);
+    border: 1px solid var(--baby-blue);
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--very-light-pink);
+}
+.matterInfo:hover {
+    height: fit-content;
+    background-color: var(--select-blue);
+    box-shadow: 4px 4px 1px 1px var(--shadow-blue);
+    color: var(--select--dark-blue);
+    
+}
