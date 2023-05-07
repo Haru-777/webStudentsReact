@@ -4,66 +4,44 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
-    height: max-content;
-    background-color: transparent
-    ;
+    width: 500px;
+    height: 100%;
+    background-color: transparent;
 }
 
 .logo-login {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin-top: 10px;
+    width: 400px;
+    height: 250px;
+    margin-top: 5%;
 }
 
-.logotxt {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px;
-    height: 120px;
-}
-
-.form {
+.form-login {
     display: flex;
     justify-content: center;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
+    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
 }
 
-#inputContainer {
-    position: relative;
-    height: 45px;
-    margin-bottom: 17px;
-    justify-content: space-evenly;
-}
 
 .label {
     position: relative;
     width: fit-content;
-    top: -50%;
+    top: 10%;
     color: var(--white);
     font-size: 14px;
     transition: 0.5s;
     margin-left: 2%;
+
 }
 
-.labelcx {
-    position: relative;
-    width: fit-content;
-    top: -50%;
-    transform: translateY(-100%);
-    color: var(--white);
-    font-size: 14px;
-    transition: 0.5s;
-    margin-left: 2%;
-}
 
 .inp-email {
     display: flex;
@@ -71,15 +49,15 @@
     margin-left: auto;
     margin-right: auto;
     height: 30px;
-    width: max-content;
+    width: 80%;
     padding-top: 2%;
 }
 
 .inp-emailtxt {
-    display: flex;
+    flex: 1;
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 100%;
+    width: 80%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
@@ -104,19 +82,34 @@
     opacity: 0;
 }
 
+
+.labelcx {
+    position: relative;
+    width: fit-content;
+    top: -50%;
+    transform: translateY(-100%);
+    color: var(--white);
+    font-size: 14px;
+    transition: 0.5s;
+    margin-left: 2%;
+}
+
 .inp-passw {
     display: flex;
-    text-align: center;
+    margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
+    height: 30px;
+    width: 80%;
+    padding-top: 2%;
+
 }
 
 .inp-passtxt {
-    display: flex;
+    flex: 1;
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 100%;
+    width: 80%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
@@ -134,7 +127,7 @@
     top: -85%;
     color: var(--baby-blue);
     background-color: var(--bg--white);
-    
+
 }
 
 .inp-passtxt::placeholder {
@@ -216,14 +209,20 @@
 .imapp {
     display: flex;
     cursor: pointer;
-    width: 30%;
-    height: 30%;
+    width: 15%;
+    height: 15%;
 
 }
 
 
 @media (max-width: 640px) {
-    .logo {
+    .logo-login {
         display: block;
+        margin-top: 10%;
+    }
+
+    .inp-email,
+    .inp-passw {
+        font-size: 16px;
     }
 }

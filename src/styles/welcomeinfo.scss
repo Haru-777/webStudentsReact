@@ -1,28 +1,32 @@
 @import '__vars';
 
-.welcomeInfo{
+.welcomeInfo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
-    height: max-content;
-    background-color: transparent
-    ;
+    width: 80%;
+    height: 100%;
+    background-color: transparent;
+    color: var(--txt--dark-blue);
 }
 
 .logo-hi {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-top: 10px;
+    width: 770px;
+    height: 300px;
+    margin-top: 5%;
 }
-.logotxt-hi {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 250px;
-    height: 170px;
+
+.txt-welcome {
+    font-weight: bold;
+}
+
+@media (max-width: 640px) {
+    .logo-hi {
+        display: block;
+        width: 350px;
+        height: 175px;
+    }
 }

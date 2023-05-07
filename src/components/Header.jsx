@@ -3,7 +3,8 @@ import '../styles/header.scss';
 import logo from '../assets/logos/logoSinFondo.png';
 
 const Header = () => {
-    const [isActive, setIsActive] = useState(false) 
+    const [isActive, setIsActive] = useState(false);
+
     return (
         <nav>
             <div className="navbar-left">
