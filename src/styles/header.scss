@@ -1,0 +1,125 @@
+@import '__vars';
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+    border-bottom: 1px solid var(--baby-blue);
+    position: relative;
+}
+
+.logo {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.navbar-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+.navbar-left {
+    display: flex;
+}
+
+.navbar-left ul {
+    margin-left: 12px;
+}
+
+.navbar-left ul li a {
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.navbar-left ul li a:hover {
+    border: 1px solid var(--baby-blue);
+    color: var(--baby-blue);
+}
+
+.dropdown {
+    display: flex;
+    overflow: hidden;
+
+}
+
+.dropdown .dropbtn {
+    background-color: transparent;
+    margin: 0;
+    align-items: center;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+    height: 60px;
+    left: 100%;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    background-color: var(--baby-blue);
+    min-width: 160px;
+    box-shadow: var(--baby-blue);
+    z-index: 1;
+    
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white); 
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+/* Add a dark background on topnav links and the dropdown button on hover 
+.topnav a:hover,
+.dropdown:hover .dropbtn {
+    border: 1px solid var(--baby-blue);
+    color: var(--baby-blue);
+}
+
+ Add a grey background to dropdown links on hover 
+.dropdown-content a:hover {
+    text-decoration: none;
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button 
+.dropdown:hover .dropdown-content {
+    display: block;
+    align-items: center;
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+}*/
+
+
+@media (max-width: 640px) {
+    .navbar-left ul {
+        display: none;
+    }
+
+    .navbar-email {
+        display: none;
+    }
+}

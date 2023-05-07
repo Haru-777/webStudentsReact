@@ -1,92 +1,63 @@
-.Login {
-	width: 100%;
-	height: 100vh;
-	display: flex;
-    flex-direction: column;
-	place-items: center;
-    background-image:  url("../assets/background/fondo6.png");
-    background-position: center;
-    background-repeat: no-repeat; 
-    background-size: cover;
-}
+@import '__vars';
 
 .Login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
-    height: auto;
-    background-color: #faf8e2;
-    
+    width: 500px;
+    height: 100%;
+    background-color: transparent;
 }
 
-.logo {
+.logo-login {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 150px;
-    height: 150px;
-    border-radius:50%;
-    margin-top: 10px;
+    width: 400px;
+    height: 250px;
+    margin-top: 5%;
 }
 
-.logotxt {
+.form-login {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px;
-    height: 120px;
-}
-  
-.form {
-	display: flex;
     justify-content: center;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
+    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
 }
 
-  #inputContainer {
-    position: relative;
-    height: 45px;
-    margin-bottom: 17px;
-    justify-content: space-evenly;
-  }
 
-   .label {
+.label {
     position: relative;
     width: fit-content;
-    top: -50%;
-    color: #DADCE0;
+    top: 10%;
+    color: var(--white);
     font-size: 14px;
     transition: 0.5s;
     margin-left: 2%;
-  } 
-  .labelcx {
-    position: relative;
-    width: fit-content;
-    top: -50%;
-    transform: translateY(-100%);
-    color: #DADCE0;
-    font-size: 14px;
-    transition: 0.5s;
-    margin-left: 2%;
-  } 
-.inp-email{
+
+}
+
+
+.inp-email {
     display: flex;
     margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
     height: 30px;
-    width: auto;
+    width: 80%;
     padding-top: 2%;
 }
-.inp-emailtxt{
-    display: flex;
-    border: 1px solid #f5eeee;
+
+.inp-emailtxt {
+    flex: 1;
+    border: 1px solid var(--text-input-field);
     height: 30px;
-    width: auto;
+    width: 80%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
@@ -94,63 +65,84 @@
     margin-right: auto;
 }
 
-.inp-emailtxt:focus  {
-    border: 3px solid #70C2E5;
-    box-shadow: 2px 2px 0.5px 0.5px #c6e4f1;   
+.inp-emailtxt:focus {
+    border: 3px solid var(--baby-blue);
+    box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
 }
 
-.inp-emailtxt:focus + .label {
+.inp-emailtxt:focus+.label {
     transform: translateY(-120%);
     top: -90%;
-    color: #70C2E5;
-    background-color: #ffffff;
+    color: var(--baby-blue);
+    background-color: var(--bg--white);
 }
-.inp-emailtxt:focus::placeholder{
+
+.inp-emailtxt:focus::placeholder {
     color: transparent;
     opacity: 0;
-} 
+}
 
-.inp-passw{
+
+.labelcx {
+    position: relative;
+    width: fit-content;
+    top: -50%;
+    transform: translateY(-100%);
+    color: var(--white);
+    font-size: 14px;
+    transition: 0.5s;
+    margin-left: 2%;
+}
+
+.inp-passw {
     display: flex;
-    text-align: center;
+    margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
-    width: 90%
-}
-.inp-passtxt{
-    display: flex;
-    border: 1px solid #f5eeee;
     height: 30px;
-    width: auto;
-    border-radius: 0.5rem ;
+    width: 80%;
+    padding-top: 2%;
+
+}
+
+.inp-passtxt {
+    flex: 1;
+    border: 1px solid var(--text-input-field);
+    height: 30px;
+    width: 80%;
+    border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
     margin-left: auto;
     margin-right: auto;
 }
-.inp-passtxt:focus  {
-    border: 3px solid #70C2E5;
-    box-shadow: 2px 2px 0.5px 0.5px #c6e4f1;   
+
+.inp-passtxt:focus {
+    border: 3px solid var(--baby-blue);
+    box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
 }
 
-.inp-passtxt:focus + .labelcx {
+.inp-passtxt:focus+.labelcx {
     transform: translateY(-120%);
     top: -85%;
-    color: #70C2E5;
-    background-color: #ffffff;;
+    color: var(--baby-blue);
+    background-color: var(--bg--white);
+
 }
-.inp-passtxt::placeholder{
-    color: transparent; 
+
+.inp-passtxt::placeholder {
+    color: transparent;
     opacity: 0;
 }
 
-.btnlogin{
+.btnlogin {
     width: 90%;
+    height: 25%;
     display: flex;
     padding: 15px 30px;
     border: none;
-    background-color: #70C2E5;
-    box-shadow: 2px 2px 0.5px 0.5px #c6e4f1;
+    background-color: var(--baby-blue);
+    box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
     color: white;
     justify-content: center;
     margin: auto;
@@ -159,42 +151,78 @@
     font-size: 16px;
     margin-bottom: 5px;
 }
+
 .btnlogin:hover {
-    background-color: #c6e4f1;
+    background-color: var(--shadow-blue);
     transform: translateY(-2px);
-  }
-  
-.txtcuenta{
+}
+
+.btnregister {
+    width: 73%;
+    height: 7%;
+    display: flex;
+    padding: 15px 30px;
+    border: none;
+    background-color: var(--baby-blue);
+    box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
+    color: var(--white);
+    justify-content: center;
+    margin: auto;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btnregister:hover {
+    background-color: var(--shadow-blue);
+    transform: translateY(-2px);
+}
+
+.txtcuenta {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    font-size: small;
 }
-.txtreg{
-    color: #70C2E5;
- 
+
+.txtreg {
+    color: var(--baby-blue);
+    font-size: small;
+
 }
-.endlogin{display: flex;
+
+.endlogin {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
 }
-.txtservidor{
+
+.txtservidor {
     cursor: pointer;
-    color: #70C2E5;
+    color: var(--baby-blue);
     margin-left: 10px;
     row-gap: 1;
 }
-.imapp{
+
+.imapp {
+    display: flex;
     cursor: pointer;
-    width: 45%; 
-    height:45%;
- 
+    width: 15%;
+    height: 15%;
+
 }
 
 
 @media (max-width: 640px) {
-	.logo {
-		display: block;
-	}
+    .logo-login {
+        display: block;
+        margin-top: 10%;
+    }
+
+    .inp-email,
+    .inp-passw {
+        font-size: 16px;
+    }
 }
