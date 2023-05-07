@@ -16,10 +16,10 @@ const Login = () => {
 
                 <form action="/" className="form">
                     <label for="password" className="label">Password</label>
-                    <input type="password" id="password" placeholder="*********" className="input input-password" />
+                    <input type="password" id="passwordx" placeholder="*********" className="input input-password" />
 
                         <label for="new-password" className="label">Password</label>
-                        <input type="password" id="new-password" placeholder="*********" className="input input-password" />
+                        <input type="passwordx" id="new-password" placeholder="*********" className="input input-password" />
 
                             <input type="submit" value="Confirm" className="primary-button login-button" />
                 </form>
