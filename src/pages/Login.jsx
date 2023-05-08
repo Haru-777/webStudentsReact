@@ -1,37 +1,62 @@
-import React, { useRef, Router, Route } from "react";
+import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import '../styles/login.scss';
 import '../styles/global.scss';
 import logo from '../assets/logos/Logo-in.png';
-import txtlogo from '../assets/logos/smartFCLogo.png';
 import donwload from '../assets/logos/donwload.jpg';
 
 
 const Login = () => {
     const form = useRef(null);
 
+    const [formLogin, setFormLogin] = useState({
+        usename: '',
+        password: ''
+    });
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormLogin((prevState) => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (formLogin.usename.trim() === '') {
+            console.log('El Usuario es Obligatorio');
+            return;
+        }
+        if (formLogin.password.trim() === '') {
+            console.log('La contraseña es Obligatorio');
+            return;
+        }
+        
         const formData = new FormData(form.current);
         const data = {
-            usename: formData.get('email'),
+            usename: formData.get('usename'),
             password: formData.get('password')
-        }
+        };
         console.log(data);
-    }
+    };
+
 
     return (
         <div className="Bottom">
             <div className="Login-container">
                 <img src={logo} alt="logo" className="logo-login" ></img>
-                <form action="/" className="form-login" ref={form}>
+                <form  ref={form} id="formLogin" name="formLogin" className="form-login" onSubmit={handleSubmit} >
                     <div className="inp-email">
-                        <input type="email" name="email" placeholder="Correo Electronico" className="inp-emailtxt" required />
+                        <input type="email" id="usename" name="usename" value={formLogin.usename} onChange={handleChange} placeholder="Correo Electronico" className="inp-emailtxt" />
                         <label htmlFor="email" className="label" >Correo Electronico</label></div>
                     <div className="inp-passw">
-                        <input type="password" name="password" placeholder="Contraseña" className="inp-passtxt" required />
+                        <input type="password" name="password" value={formLogin.password} onChange={handleChange} placeholder="Contraseña" className="inp-passtxt" required />
                         <label htmlFor="password" className="labelcx">Contraseña</label></div>
-                    <button
+                    <button type="submit"
                         onClick={handleSubmit}
                         className="btnlogin">
                         Iniciar sesión
@@ -39,12 +64,12 @@ const Login = () => {
 
                 </form>
                 <div class="txtcuenta">
-                    <a > ¿No tienes cuenta? <a name="linkRegister" class="txtreg" to={'/register'}>Registrate</a></a>
+                    ¿No tienes cuenta? <a name="linkRegister" className="txtreg" href="/register">Registrate</a>
                 </div>
                 <div class="endlogin">
                     <div class="txtservidor"><span data-toggle="modal" data-target="#mimodalejemplo">Servidor:</span>
-                        <span class="text-info pl-1" >Conectado</span>
-                        <span class="text-danger pl-1" >Desconectado</span>
+                        <span className="text-info pl-1" >Conectado</span>
+                        <span className="text-danger pl-1" >Desconectado</span>
                     </div>
                     <img src={donwload} class="imapp" alt="App Movil" />
                 </div>

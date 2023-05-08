@@ -11,19 +11,19 @@ const Header = () => {
                 <img src={logo} alt="logo" className="logo" />
                 <ul>
                     <li>
-                        <a href="/">Mis Cursos</a>
+                        <a href="/myCourses">Mis Cursos</a>
                     </li>
                     <li>
-                        <a href="/">Dudas</a>
+                        <a href="/doubts">Dudas</a>
                     </li>
                     <li>
-                        <a href="/">Descargar actividades</a>
+                        <a href="/downloads">Descargar actividades</a>
                     </li>
                     <li>
-                        <a href="/">Contenido Rea</a>
+                        <a href="/rea">Contenido Rea</a>
                     </li>
                     <li>
-                        <a href="/">Actividades</a>
+                        <a href="/activitys">Actividades</a>
                     </li>
                 </ul>
             </div>
@@ -32,8 +32,8 @@ const Header = () => {
                 </button>
                 { isActive && 
                 <div className="dropdown-content">
-                    <a href="#">Modificar Perfil</a>
-                    <a href="#">Cerrar Sesión</a>
+                    <a href="/myAcount">Modificar Perfil</a>
+                    <a href="/login">Cerrar Sesión</a>
                 </div>}
             </div>
         </nav >
