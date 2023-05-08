@@ -13,8 +13,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 400px;
-    height: 250px;
+    width: 350px;
+    height: 200px;
     margin-top: 5%;
 }
 
@@ -99,12 +99,11 @@
 }
 .labelcx {
     position: relative;
-    width: 30%;
+    width: 23%;
    font-size: 14px;
    transition: 0.5s;
    margin-left: 15%;
    opacity: 0;
-
 }
 
 .inp-passtxt:focus {
@@ -113,11 +112,11 @@
 }
 
 .inp-passtxt:focus+.labelcx {
-    transform: translateY(-120%);
+    transform: translateY(-255%);
     top: -85%;
     color: var(--baby-blue);
     background-color: var(--bg--white);
-
+    opacity: 1;
 }
 
 .inp-passtxt::placeholder {
@@ -182,8 +181,9 @@
 }
 
 .txtreg {
-    color: var(--baby-blue);
-    font-size: small;
+    color: var(--very-light-pink);
+    font-size: 14px;
+    font-weight: bold;
 
 }
 
@@ -197,9 +197,11 @@
 
 .txtservidor {
     cursor: pointer;
-    color: var(--baby-blue);
-    margin-left: 10px;
+    color: var(--select--dark-blue);
+    margin-left: 15%;
     row-gap: 1;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .imapp {
@@ -207,7 +209,18 @@
     cursor: pointer;
     width: 15%;
     height: 15%;
+    margin-left: 10%;
+}
+.imapptx{
+    opacity: 0;
+    font-size: 10px;
+    color: var(--txt--dark-blue);
+    transform: translateX(-60px);
+}
 
+.imapp:hover + .imapptx{
+    opacity: 1;
+    transform: translateY(20px);
 }
 
 

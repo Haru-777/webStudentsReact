@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import '../styles/login.scss';
 import '../styles/global.scss';
 import logo from '../assets/logos/Logo-in.png';
-import donwload from '../assets/logos/donwload.jpg';
+import donwload from '../assets/logos/call.png';
 
 
 const Login = () => {
@@ -25,6 +25,7 @@ const Login = () => {
 
     const handleBlur = () => {
         const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+        const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
         if(!emailRegex.test(formLogin.usename)){
             setFormLogin((prevState) => ({
@@ -35,6 +36,17 @@ const Login = () => {
             setFormLogin((prevState => ({
                 ...prevState,
                 emailError: ''
+            })));
+        }
+        if(!passRegex.test(formLogin.password)){
+            setFormLogin((prevState) => ({
+                ...prevState,
+                passError: 'Por favor ingrese una contraseña de 8 Caracteres, la menos un número y una letra.'
+            }));
+        }else{
+            setFormLogin((prevState => ({
+                ...prevState,
+                passError: ''
             })));
         }
     };
@@ -77,8 +89,17 @@ const Login = () => {
                         )}
                         </div>
                     <div className="inp-passw">
-                        <input type="password" name="password" value={formLogin.password} onChange={handleChange} placeholder="Contraseña" className="inp-passtxt" required />
-                        <label htmlFor="password" className="labelcx">Contraseña</label></div>
+                        <input type="password" id="password" name="password" value={formLogin.password} onChange={handleChange} 
+                        onBlur = {handleBlur}
+                        placeholder="Contrasena" className="inp-passtxt"/>
+                        <label htmlFor="password" className="labelcx">Contraseña</label>
+                        {formLogin.password.trim () === '' && (
+                            <div className="error-message"> La contraseña es obligatoria</div>
+                        )}
+                        {formLogin.passError && (
+                            <div className="error-message">{formLogin.passError}</div>
+                        )}
+                        </div>
                     <button type="submit"
                         onClick={handleSubmit}
                         disabled ={formLogin.emailError !== '' }
@@ -87,15 +108,16 @@ const Login = () => {
                     </button>
 
                 </form>
-                <div class="txtcuenta">
+                <div className="txtcuenta">
                     ¿No tienes cuenta? <a name="linkRegister" className="txtreg" href="/register">Registrate</a>
                 </div>
-                <div class="endlogin">
-                    <div class="txtservidor"><span data-toggle="modal" data-target="#mimodalejemplo">Servidor:</span>
+                <div className="endlogin">
+                    <div className="txtservidor"><span data-toggle="modal" data-target="#mimodalejemplo">Servidor:</span>
                         <span className="text-info pl-1" >Conectado</span>
                         <span className="text-danger pl-1" >Desconectado</span>
                     </div>
-                    <img src={donwload} class="imapp" alt="App Movil" />
+                    <img src={donwload}  className="imapp" alt="App Movil" />
+                    <label className="imapptx" >Descarga la app Móvil</label>
                 </div>
             </div>
         </div >
