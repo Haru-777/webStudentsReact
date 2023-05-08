@@ -34,17 +34,15 @@
 .label {
     position: relative;
     width: fit-content;
-    top: 10%;
-    color: var(--white);
     font-size: 14px;
     transition: 0.5s;
     margin-left: 2%;
+    opacity: 0;
 
 }
 
 
 .inp-email {
-    display: flex;
     margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
@@ -72,9 +70,10 @@
 
 .inp-emailtxt:focus+.label {
     transform: translateY(-120%);
-    top: -90%;
+    top: -80%;
     color: var(--baby-blue);
     background-color: var(--bg--white);
+    opacity: 1;
 }
 
 .inp-emailtxt:focus::placeholder {
@@ -95,7 +94,6 @@
 }
 
 .inp-passw {
-    display: flex;
     margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;

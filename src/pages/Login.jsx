@@ -23,7 +23,21 @@ const Login = () => {
         }));
     };
 
+    const handleBlur = () => {
+        const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
+        if(!emailRegex.test(formLogin.usename)){
+            setFormLogin((prevState) => ({
+                ...prevState,
+                emailError: 'porfavor ingrese una direccion de correo electronica valida'
+            }));
+        }else{
+            setFormLogin((prevState => ({
+                ...prevState,
+                emailError: ''
+            })));
+        }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -51,13 +65,23 @@ const Login = () => {
                 <img src={logo} alt="logo" className="logo-login" ></img>
                 <form  ref={form} id="formLogin" name="formLogin" className="form-login" onSubmit={handleSubmit} >
                     <div className="inp-email">
-                        <input type="email" id="usename" name="usename" value={formLogin.usename} onChange={handleChange} placeholder="Correo Electronico" className="inp-emailtxt" />
-                        <label htmlFor="email" className="label" >Correo Electronico</label></div>
+                        <input type="email" id="usename" name="usename" value={formLogin.usename} onChange={handleChange} 
+                        onBlur = {handleBlur}
+                        placeholder="Correo Electronico" className="inp-emailtxt" />
+                        <label htmlFor="email" className="label" >Correo Electronico</label>
+                        {formLogin.usename.trim () === '' && (
+                            <div className="error-message"> El usuario es obligatorio</div>
+                        )}
+                        {formLogin.emailError && (
+                            <div className="error-message">{formLogin.emailError}</div>
+                        )}
+                        </div>
                     <div className="inp-passw">
                         <input type="password" name="password" value={formLogin.password} onChange={handleChange} placeholder="Contraseña" className="inp-passtxt" required />
                         <label htmlFor="password" className="labelcx">Contraseña</label></div>
                     <button type="submit"
                         onClick={handleSubmit}
+                        disabled ={formLogin.emailError !== '' }
                         className="btnlogin">
                         Iniciar sesión
                     </button>
