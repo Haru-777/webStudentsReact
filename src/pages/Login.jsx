@@ -29,7 +29,7 @@ const Login = () => {
         if(!emailRegex.test(formLogin.usename)){
             setFormLogin((prevState) => ({
                 ...prevState,
-                emailError: 'porfavor ingrese una direccion de correo electronica valida'
+                emailError: 'Por favor ingrese una dirección de correo electrónico válida.'
             }));
         }else{
             setFormLogin((prevState => ({

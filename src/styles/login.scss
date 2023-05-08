@@ -53,12 +53,10 @@
 .labele {
     position: relative;
     width: 37%;
-    height: 10%;
     font-size: 14px;
     transition: 0.5s;
-    margin-left: 2%;
-    opacity: 0;
     margin-left: 15%;
+    opacity: 0;
 }
 
 .inp-emailtxt:focus {
@@ -80,29 +78,16 @@
 }
 
 
-.labelcx {
-    position: relative;
-    width: fit-content;
-    top: -50%;
-    transform: translateY(-100%);
-    color: var(--white);
-    font-size: 14px;
-    transition: 0.5s;
-    margin-left: 2%;
-}
-
 .inp-passw {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
-    height: 30px;
     width: 80%;
-    padding-top: 2%;
-
+    padding-top: 1%;
 }
-
 .inp-passtxt {
-    flex: 1;
     border: 1px solid var(--text-input-field);
     height: 30px;
     width: 80%;
@@ -111,6 +96,15 @@
     outline: none;
     margin-left: auto;
     margin-right: auto;
+}
+.labelcx {
+    position: relative;
+    width: 30%;
+   font-size: 14px;
+   transition: 0.5s;
+   margin-left: 15%;
+   opacity: 0;
+
 }
 
 .inp-passtxt:focus {
@@ -129,6 +123,12 @@
 .inp-passtxt::placeholder {
     color: transparent;
     opacity: 0;
+}
+
+.error-message{
+    font-size: 12.5px;
+    font-weight: bold;
+    color: var(--danger--red);
 }
 
 .btnlogin {
