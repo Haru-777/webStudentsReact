@@ -68,7 +68,7 @@ const Login = () => {
                         <input type="email" id="usename" name="usename" value={formLogin.usename} onChange={handleChange} 
                         onBlur = {handleBlur}
                         placeholder="Correo Electronico" className="inp-emailtxt" />
-                        <label htmlFor="email" className="label" >Correo Electronico</label>
+                        <label htmlFor="email" className="labele" >Correo Electronico</label>
                         {formLogin.usename.trim () === '' && (
                             <div className="error-message"> El usuario es obligatorio</div>
                         )}
