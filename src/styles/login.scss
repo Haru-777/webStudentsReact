@@ -84,8 +84,9 @@
     margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
+    height: fit-content;
     width: 80%;
-    padding-top: 1%;
+    padding-top: 2%;
 }
 .inp-passtxt {
     border: 1px solid var(--text-input-field);
@@ -99,11 +100,11 @@
 }
 .labelcx {
     position: relative;
-    width: 23%;
-   font-size: 14px;
-   transition: 0.5s;
-   margin-left: 15%;
-   opacity: 0;
+    width: 37%;
+    font-size: 14px;
+    transition: 0.5s;
+    margin-left: 15%;
+    opacity: 0;
 }
 
 .inp-passtxt:focus {
@@ -113,13 +114,13 @@
 
 .inp-passtxt:focus+.labelcx {
     transform: translateY(-255%);
-    top: -85%;
+    top: -80%;
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
 }
 
-.inp-passtxt::placeholder {
+.inp-passtxt:focus::placeholder {
     color: transparent;
     opacity: 0;
 }

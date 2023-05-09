@@ -152,7 +152,7 @@
 }
 
 
-.inp-email {
+.inp-emailreg {
     display: flex;
     flex-direction: column;
     margin-bottom: 2%;
@@ -162,7 +162,7 @@
     width: 80%;
     padding-top: 2%;
 }
-.inp-emailtxt {
+.inp-emailtxtreg {
     border: 1px solid var(--text-input-field);
     height: 30px;
     width: 80%;
@@ -172,21 +172,20 @@
     margin-left: auto;
     margin-right: auto;
 }
-.labele {
+.labelreg {
     position: relative;
-    width: 37%;
+    width: 32%;
     font-size: 14px;
     transition: 0.5s;
     margin-left: 15%;
     opacity: 0;
 }
-
-.inp-emailtxt:focus {
+.inp-emailtxtreg:focus {
     border: 3px solid var(--baby-blue);
     box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
 }
 
-.inp-emailtxt:focus+.labele {
+.inp-emailtxtreg:focus+.labelreg {
     transform: translateY(-255%);
     top: -80%;
     color: var(--baby-blue);
@@ -194,22 +193,23 @@
     opacity: 1;
 }
 
-.inp-emailtxt:focus::placeholder {
+.inp-emailtxtreg:focus::placeholder {
     color: transparent;
     opacity: 0;
 }
 
 
-.inp-passw {
+.inp-passreg {
     display: flex;
     flex-direction: column;
     margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
+    height: fit-content;
     width: 80%;
-    padding-top: 1%;
+    padding-top: 2%;
 }
-.inp-passtxt {
+.inp-passtxtreg {
     border: 1px solid var(--text-input-field);
     height: 30px;
     width: 80%;
@@ -219,32 +219,79 @@
     margin-left: auto;
     margin-right: auto;
 }
-.labelcx {
+.labelcxreg {
     position: relative;
-    width: 23%;
-   font-size: 14px;
-   transition: 0.5s;
-   margin-left: 15%;
-   opacity: 0;
+    width: 20%;
+    font-size: 14px;
+    transition: 0.5s;
+    margin-left: 15%;
+    opacity: 0;
 }
-
-.inp-passtxt:focus {
+.inp-passtxtreg:focus {
     border: 3px solid var(--baby-blue);
     box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
 }
 
-.inp-passtxt:focus+.labelcx {
+.inp-passtxtreg:focus+.labelcxreg {
     transform: translateY(-255%);
-    top: -85%;
+    top: -80%;
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
 }
 
-.inp-passtxt::placeholder {
+.inp-passtxtreg:focus::placeholder {
     color: transparent;
     opacity: 0;
 }
+
+
+.inp-cpassreg {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+    width: 80%;
+    padding-top: 2%;
+}
+.inp-cpasstxtreg {
+    border: 1px solid var(--text-input-field);
+    height: 30px;
+    width: 80%;
+    border-radius: 0.5rem;
+    padding: 0.5px;
+    outline: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.clabelcxreg {
+    position: relative;
+    width: 37%;
+    font-size: 14px;
+    transition: 0.5s;
+    margin-left: 15%;
+    opacity: 0;
+}
+.inp-cpasstxtreg:focus {
+    border: 3px solid var(--baby-blue);
+    box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
+}
+
+.inp-cpasstxtreg:focus+.clabelcxreg {
+    transform: translateY(-255%);
+    top: -80%;
+    color: var(--baby-blue);
+    background-color: var(--bg--white);
+    opacity: 1;
+}
+
+.inp-cpasstxtreg:focus::placeholder {
+    color: transparent;
+    opacity: 0;
+}
+
 
 .error-message{
     font-size: 12.5px;

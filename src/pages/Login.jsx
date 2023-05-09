@@ -91,7 +91,7 @@ const Login = () => {
                     <div className="inp-passw">
                         <input type="password" id="password" name="password" value={formLogin.password} onChange={handleChange} 
                         onBlur = {handleBlur}
-                        placeholder="Contrasena" className="inp-passtxt"/>
+                        placeholder="Contraseña" className="inp-passtxt"/>
                         <label htmlFor="password" className="labelcx">Contraseña</label>
                         {formLogin.password.trim () === '' && (
                             <div className="error-message"> La contraseña es obligatoria</div>

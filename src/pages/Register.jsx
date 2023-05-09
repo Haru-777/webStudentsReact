@@ -37,17 +37,17 @@ const Login = () => {
                             <option value="mercedes">Colegio 1</option>
                         </select>
                     </div>
-                    <div>
-                        <input type="email" name="email" placeholder="Correo Electronico" className="inp-emailtxt" required />
-                        <label htmlFor="email" className="label" >Correo Electronico</label>
+                    <div className="inp-emailreg">
+                        <input type="email" name="email" placeholder="Correo Electronico" className="inp-emailtxtreg" required />
+                        <label htmlFor="email" className="labelreg" >Correo Electronico</label>
                     </div>
-                    <div className="inputContainer">
-                        <input type="password" name="password" placeholder="Contraseña" className="inp-passtxt" required />
-                        <label htmlFor="password" className="labelcx">Contraseña</label>
+                    <div className="inp-passreg">
+                        <input type="password" name="password" placeholder="Contraseña" className="inp-passtxtreg" required />
+                        <label htmlFor="password" className="labelcxreg">Contraseña</label>
                     </div>
-                    <div className="inputContainer">
-                        <input type="password" name="password" placeholder="Contraseña" className="inp-passtxt" required />
-                        <label htmlFor="password" className="labelcx">Contraseña</label>
+                    <div className="inp-cpassreg">
+                        <input type="password" name="password" placeholder="Confirmar Contraseña" className="inp-cpasstxtreg" required />
+                        <label htmlFor="password" className="clabelcxreg">Confirmar contraseña</label>
                     </div>
                     <button
                         onClick={handleSubmit}
