@@ -1,21 +1,117 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import '../styles/register.scss';
 import '../styles/global.scss';
 import reglogo from '../assets/logos/regssma.png';
 import txtreg from '../assets/logos/regtxt.png'
 
-const Login = () => {
+const Register = () => {
     const form = useRef(null);
+
+    const [formReg, setFormReg] = useState({
+        nameReg: '',
+        lnameReg: '',
+        emailReg: '',
+        passwordReg: '',
+        cpasswordReg: ''
+    });
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormReg((prevState) => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+
+    const handleBlur = () => {
+        const namereg = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+        const lnamereg = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+(\s[a-zA-ZáéíóúÁÉÍÓÚñÑ]+)*$/;
+        const emailreg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+        const passreg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+
+        if (!namereg.test(formReg.nameReg)){
+            setFormReg((prevState) => ({
+                ...prevState,
+                nameRError: 'Por favor ingerse un nombre válido.'
+            }));
+        }else {
+            setFormReg((prevState => ({
+                ...prevState,
+                nameRError: ''
+            })));
+        }
+        if (!lnamereg.test(formReg.lnameReg)){
+            setFormReg((prevState) => ({
+                ...prevState,
+                lnameRError: 'Por favor ingerse un apellido válido.'
+            }));
+        }else {
+            setFormReg((prevState => ({
+                ...prevState,
+                lnameRError: ''
+            })));
+        }
+        if (!emailreg.test(formReg.emailReg)) {
+            setFormReg((prevState) => ({
+                ...prevState,
+                emailRError: 'Por favor ingrese una dirección de correo electrónico válida.'
+            }));
+        } else {
+            setFormReg((prevState => ({
+                ...prevState,
+                emailRError: ''
+            })));
+        }
+        if (!passreg.test(formReg.passwordReg)) {
+            setFormReg((prevState) => ({
+                ...prevState,
+                passRError: 'Por favor ingrese una contraseña de 8 Caracteres, la menos un número y una letra.'
+            }));
+        } else {
+            setFormReg((prevState => ({
+                ...prevState,
+                passRError: ''
+            })));
+        }
+    };
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (formReg.nameReg.trim() === '') {
+            console.log('El Nombre es Obligatorio');
+            return;
+        }
+        if (formReg.lnameReg.trim() === '') {
+            console.log('El Apellido es Obligatorio');
+            return;
+        }
+        if (formReg.emailReg.trim() === '') {
+            console.log('El email es Obligatorio');
+            return;
+        }
+        if(formReg.passwordReg.trim() === ''){
+            console.log('La contraseña es obligatoria');
+            return
+        }
+        if (formReg.passwordReg !== formReg.cpasswordReg) {
+            console.log("las contraseñas no coinciden");
+            return;
+          }
+
         const formData = new FormData(form.current);
         const data = {
-            usename: formData.get('email'),
-            password: formData.get('password')
+            namereg: formData.get('namer'),
+            lnamereg: formData.get('lnamer'),
+            emailreg: formData.get('emailr'),
+            passwordreg: formData.get('passwordr'),
+            cpasswordreg: formData.get('cpasswordr')
         }
         console.log(data);
-    }
+    };
 
     return (
         <div className="Bottom">
@@ -61,4 +157,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default Register;
