@@ -102,7 +102,7 @@ const Login = () => {
                         </div>
                     <button type="submit"
                         onClick={handleSubmit}
-                        disabled ={formLogin.emailError !== '' }
+                        disabled ={formLogin.emailError !== '' && formLogin.passError !== ''}
                         className="btnlogin">
                         Iniciar sesión
                     </button>

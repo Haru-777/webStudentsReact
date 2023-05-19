@@ -117,14 +117,33 @@ const Register = () => {
         <div className="Bottom">
             <div className="Register-container">
                 <img src={reglogo} alt="logo" className="reg-logo" ></img>
-                <form action="/" className="form-ref" ref={form}>
+                <form action="/" className="form-ref" id="form-ref" ref={form} onSubmit={handleSubmit}>
                     <div className="inp-name">
-                        <input type="text" name="fname" placeholder="Nombres" className="inp-nametxt" required />
+                        <input type="text"  placeholder="Nombres" className="inp-nametxt" name="nameReg"
+                        value={formReg.nameReg} 
+                        onChange={handleChange}
+                        onBlur = {handleBlur}/>
                         <label htmlFor="name" className="name-lab" >Nombres</label>
+                        {formReg.nameReg.trim () === '' && (
+                            <div className="error-message"> El nombre es obligatorio</div>
+                        )}
+                        {formReg.nameRError && (
+                            <div className="error-message">{formReg.nameRError}</div>
+                        )}
                     </div>
                     <div className="inp-lname">
-                        <input type="text" name="lname" placeholder="Apellidos" className="inp-lnametxt" required />
-                        <label htmlFor="apellidos" className="lname-lab" >Apellidos</label></div>
+                        <input type="text" placeholder="Apellidos" className="inp-lnametxt" name="lnameReg"
+                        value={formReg.lnameReg}
+                        onChange={handleChange}
+                        onBlur={handleBlur} />
+                        <label htmlFor="apellidos" className="lname-lab" >Apellidos</label>
+                        {formReg.lnameReg.trim()  === '' && (
+                            <div className="error-message">El apellido es obligatorio</div>
+                        )}
+                        {formReg.lnameRError && (
+                            <div className="error-message">{formReg.lnameRError}</div>
+                        )}
+                        </div>
                     <div className="inp-sch">
                         <label htmlFor="school" className="sch-lab" >Seleccione su colegio:</label>
                         <select className="sch-ch" id="choseSchool">
@@ -134,20 +153,45 @@ const Register = () => {
                         </select>
                     </div>
                     <div className="inp-emailreg">
-                        <input type="email" name="email" placeholder="Correo Electronico" className="inp-emailtxtreg" required />
+                        <input type="email" placeholder="Correo Electronico" className="inp-emailtxtreg" name="emailReg"
+                        value={formReg.emailReg}
+                        onChange={handleChange}
+                        onBlur={handleBlur} />
                         <label htmlFor="email" className="labelreg" >Correo Electronico</label>
+                        {formReg.emailReg.trim()  === '' && (
+                            <div className="error-message">El email es obligatorio</div>
+                        )}
+                        {formReg.emailRError && (
+                            <div className="error-message">{formReg.emailRError}</div>
+                        )}
                     </div>
                     <div className="inp-passreg">
-                        <input type="password" name="password" placeholder="Contraseña" className="inp-passtxtreg" required />
+                        <input type="password" placeholder="Contraseña" className="inp-passtxtreg" name="passwordReg"
+                        value={formReg.passwordReg}
+                        onChange={handleChange}
+                        onBlur={handleBlur}/>
                         <label htmlFor="password" className="labelcxreg">Contraseña</label>
+                        {formReg.passwordReg.trim()  === '' && (
+                            <div className="error-message">La contraseña es obligatoria</div>
+                        )}
+                        {formReg.passRError && (
+                            <div className="error-message">{formReg.passRError}</div>
+                        )}
                     </div>
                     <div className="inp-cpassreg">
-                        <input type="password" name="password" placeholder="Confirmar Contraseña" className="inp-cpasstxtreg" required />
-                        <label htmlFor="password" className="clabelcxreg">Confirmar contraseña</label>
+                        <input type="password" placeholder="Confirmar Contraseña" className="inp-cpasstxtreg" name="cpasswordReg"
+                        value={formReg.cpasswordReg}
+                        onChange={handleChange}
+                        onBlur={handleBlur} />
+                        <label htmlFor="password" className="clabelcxreg">Confirmar contraseña</label>   
+                        {formReg.cpasswordReg && (
+                            <div className="error-message">{formReg.cpasswordReg}</div>
+                        )}
                     </div>
-                    <button
-                        onClick={handleSubmit}
-                        className="btnlogin">
+                    <button type="submit"
+                    className="btnlogin"
+                     onClick={handleSubmit}
+                     disabled ={formReg.emailError !== '' }>
                         Registrarse
                     </button>
 

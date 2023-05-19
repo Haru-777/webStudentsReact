@@ -17,7 +17,7 @@ const Header = () => {
                         <a href="/doubts">Dudas</a>
                     </li>
                     <li>
-                        <a href="/downloads">Descargar actividades</a>
+                        <a href="/downloads">Actividades Descargadas</a>
                     </li>
                     <li>
                         <a href="/rea">Contenido Rea</a>

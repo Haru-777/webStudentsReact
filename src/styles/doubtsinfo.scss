@@ -1,0 +1,33 @@
+@import '__vars';
+
+.doubtsInfo { 
+    padding-left: 1%;
+    margin: 0;
+    height: 20%;
+    background-color: var(--text-input-field);
+    border: 1px solid var(--baby-blue);
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--very-light-pink);
+    display: flex;
+    flex-direction: row;
+}
+.doubtsInfo:hover {
+    height: fit-content;
+    background-color: var(--select-blue);
+    box-shadow: 4px 4px 1px 1px var(--shadow-blue);
+    color: var(--select--dark-blue);
+    
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: fit-content;
+}
+.question{
+    margin-top: 5%;
+    width: 13%;
+    height: 13%;
+    margin-right: 1%;
+}
