@@ -75,7 +75,7 @@ const Login = () => {
                 contrasena: data.password
             }
         }).then(function (response){
-            console.log(response.data)
+            localStorage.setItem("login", response.data)
         }).catch(function(error){
             console.log(error)
         })
