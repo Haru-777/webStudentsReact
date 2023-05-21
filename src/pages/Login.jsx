@@ -71,11 +71,12 @@ const Login = () => {
             method: 'post',
             url: 'http://localhost:3001/api/loginEstudiante',
             data: {
-                correo_electronico: data.usename,
+                correo_electronico: data.usename, //Quitar esto para un get
                 contrasena: data.password
             }
         }).then(function (response){
-            localStorage.setItem("login", response.data)
+            localStorage.setItem("login", JSON.stringify(response.data))
+            window.location.reload()
         }).catch(function(error){
             console.log(error)
         })

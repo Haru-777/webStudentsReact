@@ -4,7 +4,10 @@ import logo from '../assets/logos/logoSinFondo.png';
 
 const Header = () => {
     const [isActive, setIsActive] = useState(false);
-
+    const handleLogout = () => {
+        localStorage.clear()
+        window.location.reload()
+    }
     return (
         <nav>
             <div className="navbar-left">
@@ -33,7 +36,7 @@ const Header = () => {
                 { isActive && 
                 <div className="dropdown-content">
                     <a href="/myAcount">Modificar Perfil</a>
-                    <a href="/login">Cerrar Sesión</a>
+                    <p onClick={handleLogout}> Cerrar Sesión</p>
                 </div>}
             </div>
         </nav >

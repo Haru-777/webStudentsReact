@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layaout from '../containers/Layout';
 //import Login from '../containers/Login';
 import Login from '../pages/Login';
@@ -19,11 +19,27 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 const App = () => {
+
+    const [isvalid, setisvalid] = useState(false)
+
+    useEffect( () => {
+        const info = JSON.parse(localStorage.getItem('login'))
+        if (info){ 
+            setisvalid(true) //Poner más seguridad aquí :D Si el estudiante tiene un id o algo, etc
+        } else {
+            setisvalid(false)
+        }
+    }, []) //Queremos que se ejecute sólo una vez, la 1era se renderiza
+
     return (
         <BrowserRouter>
         <Layaout>
+            {!isvalid && <Routes>
+                <Route path='/*' element ={ <Login/>} />
+                <Route path='/register' element ={ <Register/>} />
+            </Routes> }
+            {isvalid &&
         <Routes>
-            <Route exact path='/login' element ={ <Login/>} />
             <Route exact path='/activitys' element ={<Activitys/>} />
             <Route exact path='/doubts' element ={ <Doubts/>} />
             <Route exact path='/downloads' element ={ <Downloads/>} />
@@ -31,10 +47,9 @@ const App = () => {
             <Route exact path='/myAcount' element ={ <MyAcount/>} />
             <Route exact path='/myCourses' element ={ <MyCourses/>} />
             <Route exact path='/rea' element ={ <Rea/>} />
-            <Route exact path='/register' element ={ <Register/>} />
             <Route exact path="/" element = { <Home/>}/>
             <Route path="*" element = {<NotFound/> } />
-        </Routes>
+        </Routes> }
         </Layaout>
         </BrowserRouter>
     );
