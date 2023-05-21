@@ -4,7 +4,7 @@ import '../styles/login.scss';
 import '../styles/global.scss';
 import logo from '../assets/logos/Logo-in.png';
 import donwload from '../assets/logos/call.png';
-
+import axios from "axios";
 
 const Login = () => {
     const form = useRef(null);
@@ -38,7 +38,7 @@ const Login = () => {
                 emailError: ''
             })));
         }
-        if(!passRegex.test(formLogin.password)){
+        /*if(!passRegex.test(formLogin.password)){
             setFormLogin((prevState) => ({
                 ...prevState,
                 passError: 'Por favor ingrese una contraseña de 8 Caracteres, la menos un número y una letra.'
@@ -48,7 +48,7 @@ const Login = () => {
                 ...prevState,
                 passError: ''
             })));
-        }
+        }*/
     };
 
     const handleSubmit = (event) => {
@@ -67,7 +67,18 @@ const Login = () => {
             usename: formData.get('usename'),
             password: formData.get('password')
         };
-        console.log(data);
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/loginEstudiante',
+            data: {
+                correo_electronico: data.usename,
+                contrasena: data.password
+            }
+        }).then(function (response){
+            console.log(response.data)
+        }).catch(function(error){
+            console.log(error)
+        })
     };
 
 
