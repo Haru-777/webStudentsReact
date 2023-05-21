@@ -14,7 +14,7 @@ export const Doubtsinfo = () => {
                 <div className='info'> 
                     <h2>Referencia pregunta:</h2>
                     <p>Actividad: </p>
-                    <a>Estado: </a>
+                    <p>Estado: </p>
                     {matter}
                 </div>
                 <img src={question} alt="Pregunta" className='question' ></img>

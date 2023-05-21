@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/matterlist.scss';
-import '../styles/global.scss'
+import '../styles/global.scss';
 import Modal from '../modals/Modal';
 import Doubtsinfo from '../components/Doubtsinfo';
 
