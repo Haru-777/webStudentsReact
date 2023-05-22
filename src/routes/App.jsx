@@ -37,6 +37,15 @@ const App = () => {
             {!isvalid && <Routes>
                 <Route path='/*' element ={ <Login/>} />
                 <Route path='/register' element ={ <Register/>} />
+                <Route exact path='/activitys' element ={<Activitys/>} />
+            <Route exact path='/doubts' element ={ <Doubts/>} />
+            <Route exact path='/downloads' element ={ <Downloads/>} />
+            <Route exact path='/guest' element ={ <Guest/>} />
+            <Route exact path='/myAcount' element ={ <MyAcount/>} />
+            <Route exact path='/myCourses' element ={ <MyCourses/>} />
+            <Route exact path='/rea' element ={ <Rea/>} />
+            <Route exact path="/home" element = { <Home/>}/>
+            <Route path="*" element = {<NotFound/> } />
             </Routes> }
             {isvalid &&
         <Routes>
@@ -47,7 +56,7 @@ const App = () => {
             <Route exact path='/myAcount' element ={ <MyAcount/>} />
             <Route exact path='/myCourses' element ={ <MyCourses/>} />
             <Route exact path='/rea' element ={ <Rea/>} />
-            <Route exact path="/" element = { <Home/>}/>
+            <Route exact path="/home" element = { <Home/>}/>
             <Route path="*" element = {<NotFound/> } />
         </Routes> }
         </Layaout>

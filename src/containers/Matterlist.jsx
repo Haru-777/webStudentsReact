@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Matterinfo from '../components/MatterInfo';
 import '../styles/matterlist.scss';
-import '../styles/global.scss'
+import '../styles/global.scss';
 import Modal from '../modals/Modal';
 
 const Matterlist = () => {
