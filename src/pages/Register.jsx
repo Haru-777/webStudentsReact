@@ -144,6 +144,14 @@ const Register = () => {
                             <div className="error-message">{formReg.lnameRError}</div>
                         )}
                         </div>
+                        <div className="inp-sch">
+                        <label htmlFor="school" className="sch-lab" >Seleccione su Curso:</label>
+                        <select className="sch-ch" id="choseSchool">
+                            <option value="volvo">Colegio 1</option>
+                            <option value="saab">Colegio 2</option>
+                            <option value="mercedes">Colegio 1</option>
+                        </select>
+                    </div>    
                     <div className="inp-sch">
                         <label htmlFor="school" className="sch-lab" >Seleccione su colegio:</label>
                         <select className="sch-ch" id="choseSchool">
