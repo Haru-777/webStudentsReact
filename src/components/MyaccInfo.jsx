@@ -1,17 +1,32 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../styles/myacc.scss';
 import act from '../assets/logos/acdata.png';
+import axios from "axios";
 
 const MyaccInfo = () => {
     const form = useRef(null);
 
     const [checked, setChecked] = useState(false);
+    const [schoolAcc, setschoolAcc] = useState([]); 
 
     const [formAcc, setFormAcc] = useState({
         emailAcc: '',
         passwordAcc: '',
-        cpasswordAcc: ''
+        cpasswordAcc: '',
+        num: ''
     });
+
+    useEffect(() => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:3001/api/loadAllSchools',
+            
+        }).then(function (response) {
+            setschoolAcc(response.data)
+        }).catch(function (error) {
+            console.log(error)
+        })
+    },[] )
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -20,6 +35,7 @@ const MyaccInfo = () => {
             ...prevState,
             [name]: value
         }));
+        
     };
 
 
@@ -58,11 +74,24 @@ const MyaccInfo = () => {
         const data = {
             emailAcc: formDatar.get('emailAcc'),
             passwordAcc: formDatar.get('passwordAcc'),
+            num: formDatar.get('num')
             /*choseSchool: formDatar.get('choseSchool'),
             */
-
         }
         console.log(data);
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/uploadEstudiante',
+            data: {
+                correo_electronico: data.emailAcc, //Quitar esto para un get
+                contrasena: data.passwordAcc
+            }
+        }).then(function (response) {
+            localStorage.setItem("login", JSON.stringify(response.data))
+            window.location.reload()
+        }).catch(function (error) {
+            console.log(error)
+        })
     };
 
     return (
@@ -72,12 +101,17 @@ const MyaccInfo = () => {
             </div>
             <div className='fomac'>
                 <form action="/" className="form-acc" id="formAcc" ref={form} onSubmit={handleSubmit}>
+                    <div>
+                        <input type="number" />
+                    </div>
                     <div className="inp-sch">
                         <label htmlFor="school" className="sch-lab" >Seleccione su colegio:</label>
                         <select className="sch-ch" id="choseSchool" name="choseSchool">
-                            <option value="volvo">Colegio 1</option>
-                            <option value="saab">Colegio 2</option>
-                            <option value="mercedes">Colegio 1</option>
+                        {schoolAcc.map((school) => (
+                                <option key={school.id} value={school.id}>
+                                    {school.nombre_colegio}
+                                </option>
+                            ))}
                         </select>
                     </div>
                     <div className="inp-emailac">

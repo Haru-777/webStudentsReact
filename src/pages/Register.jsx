@@ -145,7 +145,7 @@ const Register = () => {
         }
         console.log(data);
 
-        axios({
+        /* axios({
             method: 'post',
             url: 'http://localhost:3001/api/createEstudiante',
             data: {
@@ -159,7 +159,7 @@ const Register = () => {
             window.location.reload()
         }).catch(function (error) {
             console.log(error)
-        })
+        }) */
 
     };
 
