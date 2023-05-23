@@ -72,11 +72,19 @@ const MyaccInfo = () => {
             </div>
             <div className='fomac'>
                 <form action="/" className="form-acc" id="formAcc" ref={form} onSubmit={handleSubmit}>
+                    <div className="inp-sch">
+                        <label htmlFor="school" className="sch-lab" >Seleccione su colegio:</label>
+                        <select className="sch-ch" id="choseSchool" name="choseSchool">
+                            <option value="volvo">Colegio 1</option>
+                            <option value="saab">Colegio 2</option>
+                            <option value="mercedes">Colegio 1</option>
+                        </select>
+                    </div>
                     <div className="inp-emailac">
                         <input type="email" placeholder="Correo Electronico" className="inp-emailtxtac" name="emailAcc"
-                        value={formAcc.emailAcc}
-                        onChange={handleChange}
-                        onBlur={handleBlur} />
+                            value={formAcc.emailAcc}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
                         <label htmlFor="email" className="labelac" >Correo Electronico</label>
                         {formAcc.emailAcc.trim() === '' && (
                             <div className="error-message"> El correo es obligatorio</div>
@@ -87,9 +95,9 @@ const MyaccInfo = () => {
                     </div>
                     <div className="inp-passac">
                         <input type="password" placeholder="Contraseña" className="inp-passtxtac" name="passwordAcc"
-                        value={formAcc.passwordAcc}
-                        onChange={handleChange}
-                        onBlur={handleBlur} />
+                            value={formAcc.passwordAcc}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
                         <label htmlFor="password" className="labelcxac">Contraseña</label>
                         {formAcc.passwordAcc.trim() === '' && (
                             <div className="error-message"> La contraseña es obligatoria</div>
@@ -100,8 +108,8 @@ const MyaccInfo = () => {
                     </div>
                     <div className="inp-cpassac">
                         <input type="password" placeholder="Confirmar Contraseña" className="inp-cpasstxtac" name="cpasswordAcc"
-                          onChange={handleChange}
-                          onBlur={handleBlur}/>
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
                         <label htmlFor="password" className="clabelcxac">Confirmar contraseña</label>
                         {formAcc.cpasswordAcc.trim() !== formAcc.passwordAcc && (
                             <div className="error-message">Las contraseñas no coinciden</div>
