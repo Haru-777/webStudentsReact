@@ -7,6 +7,8 @@ import txtreg from '../assets/logos/regtxt.png'
 const Register = () => {
     const form = useRef(null);
 
+    const [checked, setChecked] = useState(false);
+
     const [formReg, setFormReg] = useState({
         nameReg: '',
         lnameReg: '',
@@ -32,23 +34,23 @@ const Register = () => {
         const passreg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
 
-        if (!namereg.test(formReg.nameReg)){
+        if (!namereg.test(formReg.nameReg)) {
             setFormReg((prevState) => ({
                 ...prevState,
                 nameRError: 'Por favor ingerse un nombre válido.'
             }));
-        }else {
+        } else {
             setFormReg((prevState => ({
                 ...prevState,
                 nameRError: ''
             })));
         }
-        if (!lnamereg.test(formReg.lnameReg)){
+        if (!lnamereg.test(formReg.lnameReg)) {
             setFormReg((prevState) => ({
                 ...prevState,
                 lnameRError: 'Por favor ingerse un apellido válido.'
             }));
-        }else {
+        } else {
             setFormReg((prevState => ({
                 ...prevState,
                 lnameRError: ''
@@ -81,34 +83,15 @@ const Register = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (formReg.nameReg.trim() === '') {
-            console.log('El Nombre es Obligatorio');
-            return;
-        }
-        if (formReg.lnameReg.trim() === '') {
-            console.log('El Apellido es Obligatorio');
-            return;
-        }
-        if (formReg.emailReg.trim() === '') {
-            console.log('El email es Obligatorio');
-            return;
-        }
-        if(formReg.passwordReg.trim() === ''){
-            console.log('La contraseña es obligatoria');
-            return
-        }
-        if (formReg.passwordReg !== formReg.cpasswordReg) {
-            console.log("las contraseñas no coinciden");
-            return;
-          }
-
-        const formData = new FormData(form.current);
+        const formDatar = new FormData(form.current);
         const data = {
-            namereg: formData.get('namer'),
-            lnamereg: formData.get('lnamer'),
-            emailreg: formData.get('emailr'),
-            passwordreg: formData.get('passwordr'),
-            cpasswordreg: formData.get('cpasswordr')
+            nameReg: formDatar.get('nameReg'),
+            lnameReg: formDatar.get('lnameReg'),
+            emailReg: formDatar.get('emailReg'),
+            passwordReg: formDatar.get('passwordReg'),
+            /*choseSchool: formDatar.get('choseSchool'),
+            chosegrade: formDatar.get('chosegrade')*/
+
         }
         console.log(data);
     };
@@ -117,14 +100,14 @@ const Register = () => {
         <div className="Bottom">
             <div className="Register-container">
                 <img src={reglogo} alt="logo" className="reg-logo" ></img>
-                <form action="/" className="form-ref" id="form-ref" ref={form} onSubmit={handleSubmit}>
+                <form action="/" className="form-ref" id="formReg" ref={form} onSubmit={handleSubmit}>
                     <div className="inp-name">
-                        <input type="text"  placeholder="Nombres" className="inp-nametxt" name="nameReg"
-                        value={formReg.nameReg} 
-                        onChange={handleChange}
-                        onBlur = {handleBlur}/>
+                        <input type="text" placeholder="Nombres" className="inp-nametxt" id="nameReg" name="nameReg"
+                            value={formReg.nameReg}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
                         <label htmlFor="name" className="name-lab" >Nombres</label>
-                        {formReg.nameReg.trim () === '' && (
+                        {formReg.nameReg.trim() === '' && (
                             <div className="error-message"> El nombre es obligatorio</div>
                         )}
                         {formReg.nameRError && (
@@ -133,28 +116,28 @@ const Register = () => {
                     </div>
                     <div className="inp-lname">
                         <input type="text" placeholder="Apellidos" className="inp-lnametxt" name="lnameReg"
-                        value={formReg.lnameReg}
-                        onChange={handleChange}
-                        onBlur={handleBlur} />
+                            value={formReg.lnameReg}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
                         <label htmlFor="apellidos" className="lname-lab" >Apellidos</label>
-                        {formReg.lnameReg.trim()  === '' && (
+                        {formReg.lnameReg.trim() === '' && (
                             <div className="error-message">El apellido es obligatorio</div>
                         )}
                         {formReg.lnameRError && (
                             <div className="error-message">{formReg.lnameRError}</div>
                         )}
-                        </div>
-                        <div className="inp-sch">
+                    </div>
+                    <div className="inp-sch">
                         <label htmlFor="school" className="sch-lab" >Seleccione su Curso:</label>
-                        <select className="sch-ch" id="choseSchool">
+                        <select className="sch-ch" id="chosegrade" name="chosegrade">
                             <option value="volvo">Colegio 1</option>
                             <option value="saab">Colegio 2</option>
                             <option value="mercedes">Colegio 1</option>
                         </select>
-                    </div>    
+                    </div>
                     <div className="inp-sch">
                         <label htmlFor="school" className="sch-lab" >Seleccione su colegio:</label>
-                        <select className="sch-ch" id="choseSchool">
+                        <select className="sch-ch" id="choseSchool" name="choseSchool">
                             <option value="volvo">Colegio 1</option>
                             <option value="saab">Colegio 2</option>
                             <option value="mercedes">Colegio 1</option>
@@ -162,11 +145,11 @@ const Register = () => {
                     </div>
                     <div className="inp-emailreg">
                         <input type="email" placeholder="Correo Electronico" className="inp-emailtxtreg" name="emailReg"
-                        value={formReg.emailReg}
-                        onChange={handleChange}
-                        onBlur={handleBlur} />
+                            value={formReg.emailReg}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
                         <label htmlFor="email" className="labelreg" >Correo Electronico</label>
-                        {formReg.emailReg.trim()  === '' && (
+                        {formReg.emailReg.trim() === '' && (
                             <div className="error-message">El email es obligatorio</div>
                         )}
                         {formReg.emailRError && (
@@ -175,11 +158,11 @@ const Register = () => {
                     </div>
                     <div className="inp-passreg">
                         <input type="password" placeholder="Contraseña" className="inp-passtxtreg" name="passwordReg"
-                        value={formReg.passwordReg}
-                        onChange={handleChange}
-                        onBlur={handleBlur}/>
+                            value={formReg.passwordReg}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
                         <label htmlFor="password" className="labelcxreg">Contraseña</label>
-                        {formReg.passwordReg.trim()  === '' && (
+                        {formReg.passwordReg.trim() === '' && (
                             <div className="error-message">La contraseña es obligatoria</div>
                         )}
                         {formReg.passRError && (
@@ -188,18 +171,23 @@ const Register = () => {
                     </div>
                     <div className="inp-cpassreg">
                         <input type="password" placeholder="Confirmar Contraseña" className="inp-cpasstxtreg" name="cpasswordReg"
-                        value={formReg.cpasswordReg}
-                        onChange={handleChange}
-                        onBlur={handleBlur} />
-                        <label htmlFor="password" className="clabelcxreg">Confirmar contraseña</label>   
-                        {formReg.cpasswordReg && (
-                            <div className="error-message">{formReg.cpasswordReg}</div>
+                            value={formReg.cpasswordReg}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
+                        <label htmlFor="password" className="clabelcxreg">Confirmar contraseña</label>
+                        {formReg.cpasswordReg.trim() !== formReg.passwordReg && (
+                            <div className="error-message">Las contraseñas no coinciden</div>
                         )}
                     </div>
+                    <div>
+                        <input type="checkbox" checked={checked}
+                            onChange={e => setChecked(e.target.checked)} className="checkregister" />
+                        <label htmlFor="terminos" className="txtchregister">Acepto terminos y condiciones</label>
+                    </div>
                     <button type="submit"
-                    className="btnlogin"
-                     onClick={handleSubmit}
-                     disabled ={formReg.emailError !== '' }>
+                        className="btnlogin"
+                        onClick={handleSubmit}
+                    >
                         Registrarse
                     </button>
 

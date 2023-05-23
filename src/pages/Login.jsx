@@ -27,41 +27,32 @@ const Login = () => {
         const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
         const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-        if(!emailRegex.test(formLogin.usename)){
+        if (!emailRegex.test(formLogin.usename)) {
             setFormLogin((prevState) => ({
                 ...prevState,
                 emailError: 'Por favor ingrese una dirección de correo electrónico válida.'
             }));
-        }else{
+        } else {
             setFormLogin((prevState => ({
                 ...prevState,
                 emailError: ''
             })));
         }
-        /*if(!passRegex.test(formLogin.password)){
+        if (!passRegex.test(formLogin.password)) {
             setFormLogin((prevState) => ({
                 ...prevState,
                 passError: 'Por favor ingrese una contraseña de 8 Caracteres, la menos un número y una letra.'
             }));
-        }else{
+        } else {
             setFormLogin((prevState => ({
                 ...prevState,
                 passError: ''
             })));
-        }*/
+        }
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (formLogin.usename.trim() === '') {
-            console.log('El Usuario es Obligatorio');
-            return;
-        }
-        if (formLogin.password.trim() === '') {
-            console.log('La contraseña es Obligatorio');
-            return;
-        }
-        
         const formData = new FormData(form.current);
         const data = {
             usename: formData.get('usename'),
@@ -74,10 +65,10 @@ const Login = () => {
                 correo_electronico: data.usename, //Quitar esto para un get
                 contrasena: data.password
             }
-        }).then(function (response){
+        }).then(function (response) {
             localStorage.setItem("login", JSON.stringify(response.data))
             window.location.reload()
-        }).catch(function(error){
+        }).catch(function (error) {
             console.log(error)
         })
     };
@@ -87,34 +78,34 @@ const Login = () => {
         <div className="Bottom">
             <div className="Login-container">
                 <img src={logo} alt="logo" className="logo-login" ></img>
-                <form  ref={form} id="formLogin" name="formLogin" className="form-login" onSubmit={handleSubmit} >
+                <form ref={form} id="formLogin" name="formLogin" className="form-login" onSubmit={handleSubmit} >
                     <div className="inp-email">
-                        <input type="email" id="usename" name="usename" value={formLogin.usename} onChange={handleChange} 
-                        onBlur = {handleBlur}
-                        placeholder="Correo Electronico" className="inp-emailtxt" />
+                        <input type="email" id="usename" name="usename" value={formLogin.usename} onChange={handleChange}
+                            onBlur={handleBlur}
+                            placeholder="Correo Electronico" className="inp-emailtxt" />
                         <label htmlFor="email" className="labele" >Correo Electronico</label>
-                        {formLogin.usename.trim () === '' && (
+                        {formLogin.usename.trim() === '' && (
                             <div className="error-message"> El usuario es obligatorio</div>
                         )}
                         {formLogin.emailError && (
                             <div className="error-message">{formLogin.emailError}</div>
                         )}
-                        </div>
+                    </div>
                     <div className="inp-passw">
-                        <input type="password" id="password" name="password" value={formLogin.password} onChange={handleChange} 
-                        onBlur = {handleBlur}
-                        placeholder="Contraseña" className="inp-passtxt"/>
+                        <input type="password" id="password" name="password" value={formLogin.password} onChange={handleChange}
+                            onBlur={handleBlur}
+                            placeholder="Contraseña" className="inp-passtxt" />
                         <label htmlFor="password" className="labelcx">Contraseña</label>
-                        {formLogin.password.trim () === '' && (
+                        {formLogin.password.trim() === '' && (
                             <div className="error-message"> La contraseña es obligatoria</div>
                         )}
                         {formLogin.passError && (
                             <div className="error-message">{formLogin.passError}</div>
                         )}
-                        </div>
+                    </div>
                     <button type="submit"
                         onClick={handleSubmit}
-                        disabled ={formLogin.emailError !== '' && formLogin.passError !== ''}
+                        disabled={formLogin.emailError !== '' && formLogin.passError !== ''}
                         className="btnlogin">
                         Iniciar sesión
                     </button>
@@ -128,7 +119,7 @@ const Login = () => {
                         <span className="text-info pl-1" >Conectado</span>
                         <span className="text-danger pl-1" >Desconectado</span>
                     </div>
-                    <img src={donwload}  className="imapp" alt="App Movil" />
+                    <img src={donwload} className="imapp" alt="App Movil" />
                     <label className="imapptx" >Descarga la app Móvil</label>
                 </div>
             </div>
