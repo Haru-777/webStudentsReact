@@ -292,6 +292,19 @@
     opacity: 0;
 }
 
+.checkregister{
+    width: 1em;
+    height: 1em;
+    border-radius: 0.15em;
+    margin-right: 0.5em;
+    border: 0.15em solid var(--select--dark-blue); 
+    cursor: pointer;
+}
+.txtchregister{
+    color: var(--select--dark-blue);
+    font-size: 12px;
+    font-weight: bold;
+}
 
 .error-message{
     font-size: 12.5px;

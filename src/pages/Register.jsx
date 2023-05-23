@@ -39,6 +39,8 @@ const Register = () => {
         })
     },[] )
 
+    const [checked, setChecked] = useState(false);
+
     const [formReg, setFormReg] = useState({
         nameReg: '',
         lnameReg: '',
@@ -84,7 +86,7 @@ const Register = () => {
         if (!namereg.test(formReg.nameReg)) {
             setFormReg((prevState) => ({
                 ...prevState,
-                nameRError: 'Por favor ingerse un nombre válido.'
+                nameRError: 'Por favor ingrese un nombre válido.'
             }));
         } else {
             setFormReg((prevState => ({
@@ -95,7 +97,7 @@ const Register = () => {
         if (!lnamereg.test(formReg.lnameReg)) {
             setFormReg((prevState) => ({
                 ...prevState,
-                lnameRError: 'Por favor ingerse un apellido válido.'
+                lnameRError: 'Por favor ingrese un apellido válido.'
             }));
         } else {
             setFormReg((prevState => ({
@@ -130,34 +132,16 @@ const Register = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (formReg.nameReg.trim() === '') {
-            console.log('El Nombre es Obligatorio');
-            return;
-        }
-        if (formReg.lnameReg.trim() === '') {
-            console.log('El Apellido es Obligatorio');
-            return;
-        }
-        if (formReg.emailReg.trim() === '') {
-            console.log('El email es Obligatorio');
-            return;
-        }
-        if (formReg.passwordReg.trim() === '') {
-            console.log('La contraseña es obligatoria');
-            return
-        }
-        if (formReg.passwordReg !== formReg.cpasswordReg) {
-            console.log("las contraseñas no coinciden");
-            return;
-        }
 
-        const formData = new FormData(form.current);
+        const formDatar = new FormData(form.current);
         const data = {
-            namereg: formData.get('namer'),
-            lnamereg: formData.get('lnamer'),
-            emailreg: formData.get('emailr'),
-            passwordreg: formData.get('passwordr'),
-            cpasswordreg: formData.get('cpasswordr')
+            nameReg: formDatar.get('nameReg'),
+            lnameReg: formDatar.get('lnameReg'),
+            emailReg: formDatar.get('emailReg'),
+            passwordReg: formDatar.get('passwordReg'),
+            /*choseSchool: formDatar.get('choseSchool'),
+            chosegrade: formDatar.get('chosegrade')*/
+
         }
         console.log(data);
 
@@ -183,9 +167,10 @@ const Register = () => {
         <div className="Bottom">
             <div className="Register-container">
                 <img src={reglogo} alt="logo" className="reg-logo" ></img>
-                <form action="/" className="form-ref" id="form-ref" ref={form} onSubmit={handleSubmit}>
+                <form action="/" className="form-ref" id="formReg" ref={form} onSubmit={handleSubmit}>
                     <div className="inp-name">
-                        <input type="text" placeholder="Nombres" className="inp-nametxt" name="nameReg"
+
+                        <input type="text" placeholder="Nombres" className="inp-nametxt" id="nameReg" name="nameReg"
                             value={formReg.nameReg}
                             onChange={handleChange}
                             onBlur={handleBlur} />
@@ -212,22 +197,24 @@ const Register = () => {
                     </div>
                     <div className="inp-sch">
                         <label htmlFor="grade" className="sch-lab" >Seleccione su curso:</label>
-                        <select className="sch-ch" id="choseGrade">
+                        <select className="sch-ch" id="chosegrade" name="chosegrade">
                         {gradesReg.map((grade) => (
                                 <option key={grade.id} value={grade.id}>
                                 {grade.nombre_grado}
                                 </option>
                             ))}
+
                         </select>
-                    </div>    
+                    </div>
                     <div className="inp-sch">
                         <label htmlFor="school" className="sch-lab" >Seleccione su colegio:</label>
-                        <select className="sch-ch" id="choseSchool">
+                        <select className="sch-ch" id="choseSchool" name="choseSchool">
                             {schoolReg.map((school) => (
                                 <option key={school.id} value={school.id}>
                                     {school.nombre_colegio}
                                 </option>
                             ))}
+
                         </select>
                     </div>
                     <div className="inp-emailreg">
@@ -262,14 +249,21 @@ const Register = () => {
                             onChange={handleChange}
                             onBlur={handleBlur} />
                         <label htmlFor="password" className="clabelcxreg">Confirmar contraseña</label>
-                        {formReg.cpasswordReg && (
-                            <div className="error-message">{formReg.cpasswordReg}</div>
+
+                        {formReg.cpasswordReg.trim() !== formReg.passwordReg && (
+                            <div className="error-message">Las contraseñas no coinciden</div>
                         )}
+                    </div>
+                    <div>
+                        <input type="checkbox" checked={checked}
+                            onChange={e => setChecked(e.target.checked)} className="checkregister" />
+                        <label htmlFor="terminos" className="txtchregister">Acepto terminos y condiciones</label>
                     </div>
                     <button type="submit"
                         className="btnlogin"
                         onClick={handleSubmit}
                         disabled={formReg.emailError !== ''}>
+
                         Registrarse
                     </button>
 
