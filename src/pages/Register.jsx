@@ -19,25 +19,25 @@ const Register = () => {
         axios({
             method: 'get',
             url: 'http://localhost:3001/api/loadAllSchools',
-            
+
         }).then(function (response) {
             setschoolReg(response.data)
         }).catch(function (error) {
             console.log(error)
         })
-    },[] )
+    }, [])
 
     useEffect(() => {
         axios({
             method: 'get',
             url: 'http://localhost:3001/api/loadAllGrades',
-            
+
         }).then(function (response) {
             setgradesReg(response.data)
         }).catch(function (error) {
             console.log(error)
         })
-    },[] )
+    }, [])
 
     const [checked, setChecked] = useState(false);
 
@@ -46,7 +46,10 @@ const Register = () => {
         lnameReg: '',
         emailReg: '',
         passwordReg: '',
-        cpasswordReg: ''
+        cpasswordReg: '',
+        chosegrade: '',
+        choseSchool: ''
+
     });
 
     const handleChange = (event) => {
@@ -139,27 +142,30 @@ const Register = () => {
             lnameReg: formDatar.get('lnameReg'),
             emailReg: formDatar.get('emailReg'),
             passwordReg: formDatar.get('passwordReg'),
-            /*choseSchool: formDatar.get('choseSchool'),
-            chosegrade: formDatar.get('chosegrade')*/
+            choseSchool: formDatar.get('choseSchool'),
+            chosegrade: formDatar.get('chosegrade')
 
         }
         console.log(data);
 
-        /* axios({
+        axios({
             method: 'post',
             url: 'http://localhost:3001/api/createEstudiante',
             data: {
-                nombre_estudiante: data.namer,
-                apellido_estudiante: data.lname,
-                contrasena: data.passwordr,
-                correo_electronico: data.emailr //Quitar esto para un get
+                nombre_estudiante: data.nameReg,
+                apellido_estudiante: data.lnameReg,
+                correo_electronico: data.emailReg, //Quitar esto para un get
+                contrasena: data.passwordReg,
+                grado_estudiante:data.chosegrade,
+                nombre_colegio:data.choseSchool
+
             }
         }).then(function (response) {
-            localStorage.setItem("register", JSON.stringify(response.data))
+            localStorage.setItem("register", JSON.stringify(response.data))//guarda en el local storege
             window.location.reload()
         }).catch(function (error) {
             console.log(error)
-        }) */
+        }) 
 
     };
 
@@ -197,10 +203,12 @@ const Register = () => {
                     </div>
                     <div className="inp-sch">
                         <label htmlFor="grade" className="sch-lab" >Seleccione su curso:</label>
-                        <select className="sch-ch" id="chosegrade" name="chosegrade">
-                        {gradesReg.map((grade) => (
+                        <select className="sch-ch" id="chosegrade" name="chosegrade"
+
+                        >
+                            {gradesReg.map((grade) => (
                                 <option key={grade.id} value={grade.id}>
-                                {grade.nombre_grado}
+                                    {grade.nombre_grado}
                                 </option>
                             ))}
 

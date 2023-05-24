@@ -1,0 +1,31 @@
+@import '__vars';
+
+.subject-info { 
+    padding: 1% 1% 0.2% 1%;
+    margin: 0;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--text-input-field);
+    border: 1px solid var(--baby-blue);
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--very-light-pink);
+}
+.matterInfo:hover {
+    height: fit-content;
+    background-color: var(--select-blue);
+    box-shadow: 4px 4px 1px 1px var(--shadow-blue);
+    color: var(--select--dark-blue);
+    
+}
+.txt-subjectinf{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.sub-logo{
+    width: 7%;
+    border-radius: 50%;
+}

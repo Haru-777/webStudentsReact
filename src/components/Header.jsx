@@ -14,7 +14,7 @@ const Header = () => {
                 <img src={logo} alt="logo" className="logo" />
                 <ul>
                     <li>
-                        <a href="/myCourses">Mis Materias</a>
+                        <a href="/mySubjects">Mis Materias</a>
                     </li>
                     <li>
                         <a href="/doubts">Dudas</a>

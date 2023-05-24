@@ -9,6 +9,7 @@ import Downloads from '../pages/Downloads';
 import Guest from '../pages/Guest';
 import MyAcount from '../pages/MyAcount';
 import MyCourses from '../pages/MyCourses';
+import MySubjects from '../pages/Subjects';
 import Rea from '../pages/Rea';
 import Register from '../pages/Register';
 import NotFound from '../pages/NotFound';
@@ -46,6 +47,7 @@ const App = () => {
             <Route exact path='/guest' element ={ <Guest/>} />
             <Route exact path='/myAcount' element ={ <MyAcount/>} />
             <Route exact path='/myCourses' element ={ <MyCourses/>} />
+            <Route exact path='/mySubjects' element={<MySubjects/>} />
             <Route exact path='/rea' element ={ <Rea/>} />
             <Route exact path='/register' element ={ <Register/>} />
             <Route exact path="/" element = { <Home/>}/>

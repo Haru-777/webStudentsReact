@@ -7,7 +7,6 @@ const Modal = ({ open, onClose }) => {
     if (!open) return null;
     return (
         <div className='overlay'>
-            <div>{`Estado: ${open}`}</div>
             <div className="modal-container">
                 <div className="mat-x">
                     <h2 className="letter-modal">Materia</h2>

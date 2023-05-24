@@ -1,0 +1,30 @@
+@import '__vars';
+
+.searh{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    margin-left: 5%;
+}
+.inp-searchtxt {
+    border: 1px solid var(--text-input-field);
+    height: 30px;
+    width: 100%;
+    border-radius: 0.2rem;
+    padding: 0.5px;
+    outline: none;
+    margin-top: 1%;
+    margin-left: auto;
+}
+.inp-searchtxt:focus {
+    border: 3px solid var(--baby-blue);
+    box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
+}
+.search-logo{
+    margin-top: 2%;
+    width: 13%;
+    height: 16%;
+    background-color: var(--shadow-blue);
+    border-radius: 0.2rem;
+    cursor: pointer;
+}

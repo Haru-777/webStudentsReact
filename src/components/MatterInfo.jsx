@@ -13,8 +13,8 @@ const Matterinfo = () => {
     return (
         <>
             <div className='matterInfo' onClick={() => setOpenModal(true)}>
-                <h2>Estadistica</h2>
-                <p>Grado: </p>
+                <h2>Actividad</h2>
+                <p>Objetivo: </p>
                 {matter}
             </div>
             <Modal open={openModal} onClose={() => setOpenModal(false)} />
