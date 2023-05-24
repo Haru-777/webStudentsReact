@@ -5,9 +5,9 @@ const AreasFilter = () => {
   return (
     <div className='inf-a'>
         <select name="" id="" className='sarea-inf'>
-            <option value="">Area</option>
-            <option value="">doosito</option>
-            <option value="">tresito</option>
+            <option value="">Decimo</option>
+            <option value="">Once</option>
+            <option value="">Noveno</option>
         </select>
     </div>
   )

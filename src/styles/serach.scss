@@ -3,7 +3,7 @@
 .searh{
     display: flex;
     flex-direction: row;
-    width: 30%;
+    width: 300px;
     margin-left: 5%;
 }
 .inp-searchtxt {
@@ -22,8 +22,8 @@
 }
 .search-logo{
     margin-top: 2%;
-    width: 13%;
-    height: 16%;
+    width: 25px;
+    height: 25px;
     background-color: var(--shadow-blue);
     border-radius: 0.2rem;
     cursor: pointer;

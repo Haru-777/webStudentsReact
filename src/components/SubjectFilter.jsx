@@ -7,7 +7,7 @@ const SubjectFilter = () => {
         <select className='ssub-inf'>
             <option>Materia</option>
             <option>la materia mas larga del mundo</option>
-            <option>3</option>
+            <option>Pole</option>
         </select>
       
     </div>
