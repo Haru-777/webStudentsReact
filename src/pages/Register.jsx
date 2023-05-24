@@ -2,18 +2,27 @@ import React, { useEffect, useRef, useState } from "react";
 import '../styles/register.scss';
 import '../styles/global.scss';
 import reglogo from '../assets/logos/regssma.png';
-import txtreg from '../assets/logos/regtxt.png'
 import axios from "axios";
 
 
 const Register = () => {
 
-    
+    const form = useRef(null);    
     const [schoolReg, setschoolReg] = useState([]); 
-    const [gradesReg, setgradesReg] = useState([]); 
+    const [gradesReg, setgradesReg] = useState([]);
+    const [checked, setChecked] = useState(false);
+    
+    const [formReg, setFormReg] = useState({
+        nameReg: '',
+        lnameReg: '',
+        emailReg: '',
+        passwordReg: '',
+        cpasswordReg: '',
+        chosegrade: '',
+        choseSchool: ''
 
+    });
 
-    const form = useRef(null);
 
     useEffect(() => {
         axios({
@@ -38,19 +47,6 @@ const Register = () => {
             console.log(error)
         })
     }, [])
-
-    const [checked, setChecked] = useState(false);
-
-    const [formReg, setFormReg] = useState({
-        nameReg: '',
-        lnameReg: '',
-        emailReg: '',
-        passwordReg: '',
-        cpasswordReg: '',
-        chosegrade: '',
-        choseSchool: ''
-
-    });
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -144,7 +140,6 @@ const Register = () => {
             passwordReg: formDatar.get('passwordReg'),
             choseSchool: formDatar.get('choseSchool'),
             chosegrade: formDatar.get('chosegrade')
-
         }
         console.log(data);
 
@@ -161,8 +156,9 @@ const Register = () => {
 
             }
         }).then(function (response) {
-            localStorage.setItem("register", JSON.stringify(response.data))//guarda en el local storege
-            window.location.reload()
+            /*localStorage.setItem("register", JSON.stringify(response.data))//guarda en el local storege
+            window.location.reload()*/
+            console.log('Registro exitoso');
         }).catch(function (error) {
             console.log(error)
         }) 
@@ -270,7 +266,7 @@ const Register = () => {
                     <button type="submit"
                         className="btnlogin"
                         onClick={handleSubmit}
-                        disabled={formReg.emailError !== ''}>
+                        >
 
                         Registrarse
                     </button>

@@ -10,7 +10,7 @@ const Filters = () => {
             <Search />
             <SubjectFilter />
             <AreasFilter />
-            <Information />
+            
         </>
     )
 }

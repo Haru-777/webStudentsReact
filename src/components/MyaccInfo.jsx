@@ -127,7 +127,9 @@ const MyaccInfo = () => {
             */
         }
         const info_studiante = JSON.parse(localStorage.getItem("login"));
+        if (!info_studiante.student) return 
         const id_studet = info_studiante.student.id_estudiante;
+        
 
         axios({
             method: 'post',
