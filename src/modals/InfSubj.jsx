@@ -14,7 +14,6 @@ const InfSubj = ({ open, onClose }) => {
                     <p onClick={onClose} className="close-btn">X</p>
                 </div>
                 <div className="lo-tex">
-                    <img src={see} alt="Informacion" className='solve' ></img>
                     <p className='txt-dud' >
                         Inicia tu proceso de aprendizaje en casa. <br />
                         Sigue el paso a paso de SMARTFC, en el lugar que se te indique:
@@ -32,11 +31,12 @@ const InfSubj = ({ open, onClose }) => {
                                 Recuerda realizarlo unicamente cuando estes seguro de haber entendido el video.
                             </li>
                             <li>
-                                En clase, descarga el taller y presenta tu evaluación
+                                En clase, descarga el taller y presenta tu evaluación.
                             </li>
                         </ul>
                         ¡Buena suerte!
                     </p>
+                    <img src={see} alt="Informacion" className='solve' ></img>
                 </div>
             </div>
         </div>

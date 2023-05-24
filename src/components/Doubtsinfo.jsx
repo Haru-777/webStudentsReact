@@ -31,7 +31,7 @@ export const Doubtsinfo = () => {
             <div className='doubtsInfo' onClick={() => handleclick()}>
                 <div className='info'> 
                     <h2>Referencia pregunta:
-                        responseq =  {responseq.id_duda}
+                        {responseq.id_duda}
                     </h2>
                     <p>Actividad: </p>
                     <p>Estado: </p>
