@@ -10,7 +10,7 @@ const Modal = ({ open, onClose, response }) => {
 
             <div className="modal-container">
                 <div className="mat-x">
-                    <h2 className="letter-modal">Duda</h2>
+                    <h2 className="letter-modal">{response?.duda?.pregunta}</h2>
                     <p onClick={onClose} className="close-btn">X</p>
                 </div>
                 <div className="lo-tex">

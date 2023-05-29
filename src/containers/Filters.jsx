@@ -9,7 +9,7 @@ const Filters = () => {
         <>
             <Search />
             <SubjectFilter />
-            <AreasFilter />
+         
             
         </>
     )
