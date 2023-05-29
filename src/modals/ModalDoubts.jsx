@@ -15,7 +15,7 @@ const Modal = ({ open, onClose, response }) => {
                 </div>
                 <div className="lo-tex">
                     <p className='txt-dud' >{
-                        response
+                        response?.duda?.respuesta
                     }</p>
                     <img src={solve} alt="Respuesta" className='solve' ></img>
                 </div>
