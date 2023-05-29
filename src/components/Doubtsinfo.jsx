@@ -57,10 +57,10 @@ export const Doubtsinfo = () => {
                 return (
                     <div className='doubtsInfo' key={index} onClick={() => handleclick(doubt.id_duda)}>
                         <div className='info' >
-                            <h2>Referencia pregunta:
-                                {doubt.id_duda}
+                            <h2>Pregunta:
+                                {doubt.pregunta}
                             </h2>
-                            <p>Actividad: {doubt.id_actividad}</p>
+                            <p>Referencia pregunta: {doubt. id_duda}</p>
                             <p>Estado: {doubt.estado_duda}</p>
                             {matter}
                         </div>
