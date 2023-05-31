@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import hi from '../assets/logos/saludo.png';
 import '../styles/global.scss';
 import '../styles/modals.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Modal = ({ open, onClose }) => {
+    const navigate = useNavigate();
     if (!open) return null;
     return (
         <div className='overlay'>
@@ -17,9 +19,9 @@ const Modal = ({ open, onClose }) => {
                     <img src={hi} alt="saludo" className='hi' ></img>
                 </div>
                 <div className="btn-div">
-                    <button className='btn-modal'>Practica en Casa</button>
-                    <button className='btn-modal'>Practica en Clase</button>
-                    <button className='btn-modal'>Realiza tu Examen</button>
+                    <button onClick={() => navigate("/Myactivity")} className='btn-modal'>Practica en Casa</button>
+                    <button onClick={() => navigate("/classActy")} className='btn-modal'>Practica en Clase</button>
+                    <button onClick={() => navigate("/test")} className='btn-modal'>Realiza tu Examen</button>
                 </div>
             </div>
         </div>
