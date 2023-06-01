@@ -36,6 +36,7 @@
     height: fit-content;
     width: 90%;
 }
+
 .inp-emailtxt {
     border: 1px solid var(--text-input-field);
     height: 30px;
@@ -46,6 +47,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
 .labele {
     position: relative;
     width: 23vh;
@@ -86,6 +88,7 @@
     width: 95%;
     padding-top: 2%;
 }
+
 .inp-passtxt {
     border: 1px solid var(--text-input-field);
     height: 30px;
@@ -96,6 +99,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
 .labelcx {
     position: relative;
     width: 15vh;
@@ -124,7 +128,7 @@
     opacity: 0;
 }
 
-.error-message{
+.error-message {
     font-size: 12.5px;
     font-weight: bold;
     color: var(--danger--red);
@@ -209,7 +213,8 @@
     display: flex;
     cursor: pointer;
 }
-.imapptx{
+
+.imapptx {
     width: 10%;
     opacity: 0;
     font-size: 10px;
@@ -217,17 +222,18 @@
     transform: translateX(-60px);
 }
 
-.imapp:hover + .imapptx{
+.imapp:hover+.imapptx {
     opacity: 1;
     transform: translateY(20px);
 }
 
-@media (max-width: 667px)  {
-    .Login-container{
+@media (max-width: 667px) {
+    .Login-container {
         width: 280px;
         height: max-content;
         margin-left: 4%;
     }
+
     .logo-login {
         display: block;
         margin-top: 10%;
@@ -237,21 +243,26 @@
     .inp-passw {
         font-size: 16px;
     }
-    .labele{
+
+    .labele {
         width: 56%;
     }
-    .labelcx{
+
+    .labelcx {
         width: 12vh;
-    } 
-    .endlogin{
+    }
+
+    .endlogin {
         width: 280px;
         height: fit-content;
     }
-    .txtservidor{
+
+    .txtservidor {
         margin-left: 5%;
         margin-right: 30%;
     }
-    .imapp{
+
+    .imapp {
         display: block;
         width: 40px;
         height: 45px;
@@ -260,56 +271,63 @@
 }
 
 @media (min-width: 668px) and (max-width: 1023px) {
-    .Login-container{
+    .Login-container {
         margin-top: 5%;
         width: 500px;
         height: max-content;
     }
+
     .logo-login {
         display: block;
         margin-top: 15%;
     }
-    .labele{
+
+    .labele {
         width: 12vh;
     }
-    .labelcx{
+
+    .labelcx {
         width: 7vh;
-    } 
+    }
+
     .inp-email,
     .inp-passw {
         font-size: 16px;
     }
-    .endlogin{
+
+    .endlogin {
         width: 500px;
         height: fit-content;
     }
-    .txtservidor{
+
+    .txtservidor {
         margin-left: 1%;
         margin-right: 30%;
     }
-    .imapp{
+
+    .imapp {
         display: block;
         width: 70px;
         height: 75px;
         margin-left: 10vh;
     }
-   
+
 }
 
-@media (min-width: 1024px){
-    .Login-container{
+@media (min-width: 1024px) {
+    .Login-container {
         width: 500px;
         height: min-content;
     }
-    .imapp{
+
+    .imapp {
         width: 60px;
         height: 65px;
         margin-left: 10vh;
     }
-    .txtservidor{
+
+    .txtservidor {
         margin-left: 3%;
         margin-right: 25%;
     }
 }
-
-
