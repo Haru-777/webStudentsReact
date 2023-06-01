@@ -13,30 +13,28 @@
     align-items: center;
     width: 350px;
     height: 200px;
-    margin-top: 5%;
+    margin-top: 3%;
+    margin-bottom: 2%;
 }
 
 .form-login {
     display: flex;
-    justify-content: center;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
-    margin-top: 5%;
     justify-content: center;
     align-items: center;
 }
 
 .inp-email {
     display: flex;
+    margin-bottom: 0%;
     flex-direction: column;
-    margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
     width: 90%;
-    padding-top: 2%;
 }
 .inp-emailtxt {
     border: 1px solid var(--text-input-field);
@@ -50,8 +48,8 @@
 }
 .labele {
     position: relative;
-    width: 37%;
-    font-size: 14px;
+    width: 23vh;
+    font-size: 4px;
     transition: 0.5s;
     margin-left: 15%;
     opacity: 0;
@@ -63,11 +61,13 @@
 }
 
 .inp-emailtxt:focus+.labele {
-    transform: translateY(-255%);
+    transform: translateY(-8vh);
     top: -80%;
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
+    font-size: 14px;
+    height: 12px;
 }
 
 .inp-emailtxt:focus::placeholder {
@@ -98,8 +98,8 @@
 }
 .labelcx {
     position: relative;
-    width: 37%;
-    font-size: 14px;
+    width: 15vh;
+    font-size: 4px;
     transition: 0.5s;
     margin-left: 15%;
     opacity: 0;
@@ -116,6 +116,7 @@
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
+    font-size: 14px;
 }
 
 .inp-passtxt:focus::placeholder {
@@ -131,7 +132,7 @@
 
 .btnlogin {
     width: 90%;
-    height: 25%;
+    height: 25px;
     display: flex;
     padding: 15px 30px;
     border: none;
@@ -153,7 +154,7 @@
 
 .btnregister {
     width: 73%;
-    height: 7%;
+    height: 7vh;
     display: flex;
     padding: 15px 30px;
     border: none;
@@ -253,6 +254,7 @@
 
 @media (min-width: 668px) and (max-width: 1023px) {
     .Login-container{
+        margin-top: 5%;
         width: 500px;
         height: max-content;
     }
@@ -285,7 +287,7 @@
 @media (min-width: 1024px) {
     .Login-container{
         width: 500px;
-        height: 100vh;
+        height: min-content;
     }
     .imapp{
         width: 60px;
