@@ -116,8 +116,7 @@ const Login = () => {
                 </div>
                 <div className="endlogin">
                     <div className="txtservidor"><span data-toggle="modal" data-target="#mimodalejemplo">Servidor:</span>
-                        <span className="text-info pl-1" >Conectado</span>
-                        <span className="text-danger pl-1" >Desconectado</span>
+                        <span>Conectado</span>
                     </div>
                     <img src={donwload} className="imapp" alt="App Movil" />
                     <label className="imapptx" >Descarga la app Móvil</label>
