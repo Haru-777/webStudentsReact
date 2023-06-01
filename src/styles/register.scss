@@ -4,51 +4,52 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 600px;
-    height: 100%;
     background-color: transparent;
 }
 
-.reg-logo{
-    width: 110%;
+.reg-logo {
+    width: 550px;
+    height: 160px;
     margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .form-ref {
     display: flex;
     justify-content: center;
-    width: 80%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
-    margin-top: 5%;
     justify-content: center;
     align-items: center;
 }
 
 .inp-name {
     display: flex;
+    margin-bottom: 0%;
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
-    width: 80%;
-    padding-top: 2%;
+    width: 90%;
 }
+
 .inp-nametxt {
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 80%;
+    width: 90%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
     margin-left: auto;
     margin-right: auto;
 }
+
 .name-lab {
     position: relative;
     width: 15%;
-    font-size: 14px;
+    font-size: 4px;
     transition: 0.5s;
     margin-left: 15%;
     opacity: 0;
@@ -65,6 +66,7 @@
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
+    font-size: 14px;
 }
 
 .inp-nametxt:focus::placeholder {
@@ -75,26 +77,29 @@
 
 .inp-lname {
     display: flex;
+    margin-bottom: 0%;
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
-    width: 80%;
+    width: 90%;
 }
+
 .inp-lnametxt {
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 80%;
+    width: 90%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
     margin-left: auto;
     margin-right: auto;
 }
+
 .lname-lab {
     position: relative;
     width: 15%;
-    font-size: 14px;
+    font-size: 4px;
     transition: 0.5s;
     margin-left: 15%;
     opacity: 0;
@@ -111,6 +116,7 @@
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
+    font-size: 14px;
 }
 
 .inp-lnametxt:focus::placeholder {
@@ -126,19 +132,21 @@
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
-    width: 80%;
+    width: 90%;
 }
-.sch-lab{
+
+.sch-lab {
     color: var(--very-light-pink);
     font-size: 15px;
-    width: 80%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
-.sch-ch{
+
+.sch-ch {
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 80%;
+    width: 90%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
@@ -146,6 +154,7 @@
     margin-right: auto;
     color: var(--select--dark-blue);
 }
+
 .sch-ch:focus {
     border: 3px solid var(--baby-blue);
     box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
@@ -159,27 +168,29 @@
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
-    width: 80%;
-    padding-top: 2%;
+    width: 90%;
 }
+
 .inp-emailtxtreg {
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 80%;
+    width: 90%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
     margin-left: auto;
     margin-right: auto;
 }
+
 .labelreg {
     position: relative;
     width: 32%;
-    font-size: 14px;
+    font-size: 4px;
     transition: 0.5s;
     margin-left: 15%;
     opacity: 0;
 }
+
 .inp-emailtxtreg:focus {
     border: 3px solid var(--baby-blue);
     box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
@@ -191,6 +202,7 @@
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
+    font-size: 14px;
 }
 
 .inp-emailtxtreg:focus::placeholder {
@@ -202,31 +214,32 @@
 .inp-passreg {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
-    width: 80%;
-    padding-top: 2%;
+    width: 90%;
 }
+
 .inp-passtxtreg {
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 80%;
+    width: 90%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
     margin-left: auto;
     margin-right: auto;
 }
+
 .labelcxreg {
     position: relative;
     width: 20%;
-    font-size: 14px;
+    font-size: 4px;
     transition: 0.5s;
     margin-left: 15%;
     opacity: 0;
 }
+
 .inp-passtxtreg:focus {
     border: 3px solid var(--baby-blue);
     box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
@@ -238,6 +251,7 @@
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
+    font-size: 14px;
 }
 
 .inp-passtxtreg:focus::placeholder {
@@ -249,23 +263,23 @@
 .inp-cpassreg {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
-    width: 80%;
-    padding-top: 2%;
+    width: 90%;
 }
+
 .inp-cpasstxtreg {
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 80%;
+    width: 90%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
     margin-left: auto;
     margin-right: auto;
 }
+
 .clabelcxreg {
     position: relative;
     width: 37%;
@@ -274,6 +288,7 @@
     margin-left: 15%;
     opacity: 0;
 }
+
 .inp-cpasstxtreg:focus {
     border: 3px solid var(--baby-blue);
     box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
@@ -285,6 +300,7 @@
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
+    font-size: 14px;
 }
 
 .inp-cpasstxtreg:focus::placeholder {
@@ -292,21 +308,22 @@
     opacity: 0;
 }
 
-.checkregister{
+.checkregister {
     width: 1em;
     height: 1em;
     border-radius: 0.15em;
     margin-right: 0.5em;
-    border: 0.15em solid var(--select--dark-blue); 
+    border: 0.15em solid var(--select--dark-blue);
     cursor: pointer;
 }
-.txtchregister{
+
+.txtchregister {
     color: var(--select--dark-blue);
     font-size: 12px;
     font-weight: bold;
 }
 
-.error-message{
+.error-message {
     font-size: 12.5px;
     font-weight: bold;
     color: var(--danger--red);
@@ -328,7 +345,104 @@
     font-size: 16px;
     margin-bottom: 5px;
 }
+
 .btnlogin:hover {
     background-color: var(--shadow-blue);
     transform: translateY(-2px);
+}
+
+@media (max-width: 667px) {
+    .Register-container {
+        width: 280px;
+        height: max-content;
+        margin-left: 4%;
+    }
+
+    .reg-logo {
+        display: block;
+        height: 70px;
+        width: 280px;
+        margin-top: 10%;
+    }
+
+    .inp-name,
+    .inp-lname,
+    .inp-sch,
+    .inp-emailreg,
+    .inp-passreg,
+    .inp-cpassreg {
+        font-size: 16px;
+    }
+
+    .name-lab {
+        width: 30%;
+    }
+
+    .lname-lab {
+        width: 30%;
+    }
+
+    .labelreg {
+        width: 56%;
+    }
+
+    .labelcxreg {
+        width: 38%;
+    }
+
+    .clabelcxreg {
+        width: 76%;
+    }
+
+}
+
+@media (min-width: 668px) and (max-width: 1023px) {
+    .Register-container {
+        margin-top: 5%;
+        width: 500px;
+        height: max-content;
+    }
+
+    .reg-logo {
+        display: block;
+        margin-top: 15%;
+    }
+
+    .inp-name,
+    .inp-lname,
+    .inp-sch,
+    .inp-emailreg,
+    .inp-passreg,
+    .inp-cpassreg {
+        font-size: 16px;
+    }
+
+    .name-lab {
+        width: 15%;
+    }
+
+    .lname-lab {
+        width: 17%;
+    }
+
+    .labelreg {
+        width: 36%;
+    }
+
+    .labelcxreg {
+        width: 20%;
+    }
+
+    .clabelcxreg {
+        width: 36%;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .Register-container {
+        width: 500px;
+        height: min-content;
+    }
+
 }
