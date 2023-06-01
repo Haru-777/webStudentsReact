@@ -222,9 +222,9 @@
     transform: translateY(20px);
 }
 
-@media (max-width: 667px) {
+@media (max-width: 667px)  {
     .Login-container{
-        width: 300px;
+        width: 280px;
         height: max-content;
     }
     .logo-login {
@@ -236,12 +236,18 @@
     .inp-passw {
         font-size: 16px;
     }
+    .labele{
+        width: 56%;
+    }
+    .labelcx{
+        width: 12vh;
+    } 
     .endlogin{
-        width: 300px;
+        width: 280px;
         height: fit-content;
     }
     .txtservidor{
-        margin-left: 1%;
+        margin-left: 5%;
         margin-right: 30%;
     }
     .imapp{
@@ -260,9 +266,14 @@
     }
     .logo-login {
         display: block;
-        margin-top: 10%;
+        margin-top: 15%;
     }
-
+    .labele{
+        width: 12vh;
+    }
+    .labelcx{
+        width: 7vh;
+    } 
     .inp-email,
     .inp-passw {
         font-size: 16px;
@@ -284,7 +295,7 @@
    
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px){
     .Login-container{
         width: 500px;
         height: min-content;
