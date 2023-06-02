@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Layaout from '../containers/Layout';
-//import Login from '../containers/Login';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Activitys from '../pages/Activityes';

@@ -35,6 +35,7 @@ const Register = () => {
             console.log(error)
         })
     }, [])
+    console.log(schoolReg);
 
     useEffect(() => {
         axios({
@@ -152,7 +153,7 @@ const Register = () => {
                 correo_electronico: data.emailReg, //Quitar esto para un get
                 contrasena: data.passwordReg,
                 grado_estudiante:data.chosegrade,
-                nombre_colegio:data.choseSchool
+                id_colegio:data.choseSchool
 
             }
         }).then(function (response) {
@@ -204,7 +205,7 @@ const Register = () => {
                         >
                             {gradesReg.map((grade) => (
                                 <option key={grade.id} value={grade.id}>
-                                    {grade.nombre_grado}
+                                    {grade.id_grado}
                                 </option>
                             ))}
 
@@ -214,7 +215,7 @@ const Register = () => {
                         <label htmlFor="school" className="sch-lab" >Seleccione su colegio:</label>
                         <select className="sch-ch" id="choseSchool" name="choseSchool">
                             {schoolReg.map((school) => (
-                                <option key={school.id} value={school.id}>
+                                <option key={school.id} value={school.id_colegio}>
                                     {school.nombre_colegio}
                                 </option>
                             ))}
