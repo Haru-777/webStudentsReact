@@ -9,7 +9,7 @@ export const Doubtsinfo = () => {
     const [responseq, setresponseq] = useState([]);
     const [matter, setMatter] = useState('');
     const [openModal, setOpenModal] = useState(false);
-    const [idduda, setIdduda] = useState(0)
+    const [idduda, setIdduda] = useState(0);
 
     const handleclick = (id) => {
         setOpenModal(true);

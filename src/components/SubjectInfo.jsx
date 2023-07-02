@@ -7,6 +7,7 @@ import axios from 'axios';
 const SubjectInfo = () => {
   const [response, setresponse] = useState([]);
   const navigate = useNavigate();
+ 
 
   useEffect(() => {
     const info_studianteS = JSON.parse(localStorage.getItem("login"));
@@ -33,7 +34,7 @@ const SubjectInfo = () => {
     <>
     {response.map((subject, indexs) => {
       return(
-      <div className='subject-info' key={indexs} onClick={() => navigate("/myCourses")}>
+      <div className='subject-info' key={indexs} onClick={() => {localStorage.setItem("infosubject", JSON.stringify(subject)); navigate("/myCourses")}}>
         <div className='txt-subjectinf'>
           <h2>Materia: {subject.nombre_materiaActiva} </h2>
           <p>Grado: {subject.id_grado} </p>

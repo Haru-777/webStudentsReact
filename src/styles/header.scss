@@ -7,13 +7,21 @@ nav {
     border-bottom: 1px solid var(--baby-blue);
     position: relative;
     background-color: var(--select-blue);
+    text-align: center;
 }
-
+.navbar-left {
+    display: flex;
+    justify-content: start;
+    width: 90%;
+    margin-top: 0.3%;
+    margin-bottom: 0.2%;
+}
 .logo {
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    margin-top: 2%;
+    margin-right: 5px;
+    cursor: pointer;
 }
 
 .navbar-left ul {
@@ -22,30 +30,93 @@ nav {
     margin: 0;
     display: flex;
     align-items: center;
-    height: 60px;
 }
 
-.navbar-left {
+.short {
     display: flex;
-}
-
-.navbar-left ul {
-    margin-left: 12px;
-}
-
-.navbar-left ul li a {
     text-decoration: none;
     color: var(--very-light-pink);
     border: 1px solid var(--white);
     padding: 8px;
     border-radius: 8px;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    margin-right: 4px;
 }
 
-.navbar-left ul li a:hover {
+.short:hover {
     border: 1px solid var(--baby-blue);
     color: var(--baby-blue);
 }
+.med {
+    display: flex;
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+    width: 93px;
+    height: 20px;
+    text-align: center;
+    margin-right: 4px;
+}
 
+.med:hover {
+    border: 1px solid var(--baby-blue);
+    color: var(--baby-blue);
+}
+.large {
+    display: flex;
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+    width: 107px;
+    height: 20px;
+    text-align: center;
+    margin-right: 4px;
+}
+
+.large:hover {
+    border: 1px solid var(--baby-blue);
+    color: var(--baby-blue);
+}
+.e-large {
+    display: flex;
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+    width: 182px;
+    height: 20px;
+    text-align: center;
+    margin-right: 4px;
+}
+
+.e-large:hover {
+    border: 1px solid var(--baby-blue);
+    color: var(--baby-blue);
+}
+.e-large {
+    display: flex;
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+    width: 182px;
+    height: 20px;
+    text-align: center;
+    margin-right: 4px;
+}
+
+.e-large:hover {
+    border: 1px solid var(--baby-blue);
+    color: var(--baby-blue);
+}
 .dropdown {
     display: flex;
     overflow: hidden;
@@ -56,31 +127,89 @@ nav {
     background-color: transparent;
     margin: 0;
     align-items: center;
+    margin-top: 7px;
     color: var(--very-light-pink);
     border: 1px solid var(--white);
     padding: 8px;
     border-radius: 8px;
-    height: 60px;
+    height: 30px;
+    width: 60px;
     left: 100%;
 }
 
-/* Style the dropdown content (hidden by default) */
+/* Style the dropdown content (hidden by default)
+  display: flex;
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+    width: 182px;
+    height: 20px;
+    text-align: center;
+    margin-right: 4px;
+}
+
+.e-large:hover {
+    border: 1px solid var(--baby-blue);
+    color: var(--baby-blue);
+}
+
+*/
 .dropdown-content {
     display: flex;
+    text-decoration: none;
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 50%;
-    right: 10%;
-    background-color: var(--baby-blue);
-    min-width: 160px;
+    top: 95%;
+    right: 5%;
+    width: 90px;
+    height: 40px;
+}
+.dropdown-content-p {
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 115%;
+    width: 105px;
+    height: 20px;
     box-shadow: var(--baby-blue);
     z-index: 1;
-    
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+    margin-right: 4px;
+    background-color: var(--select-blue);    
+    cursor: pointer;
 }
 
+.dropdown-content-a {
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 3%;
+    width: 105px;
+    height: 30px;
+    box-shadow: var(--baby-blue);
+    z-index: 1;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+    margin-right: 4px;
+    background-color: var(--select-blue);    
+}
+
+
+
 /* Style the links inside the dropdown */
-.dropdown-content a {
+.dropdown-content a p {
     float: none;
     color: var(--very-light-pink);
     border: 1px solid var(--white); 
@@ -89,39 +218,100 @@ nav {
     text-align: center;
 }
 
-/* Add a dark background on topnav links and the dropdown button on hover 
-.topnav a:hover,
-.dropdown:hover .dropbtn {
-    border: 1px solid var(--baby-blue);
-    color: var(--baby-blue);
-}
-
- Add a grey background to dropdown links on hover 
-.dropdown-content a:hover {
-    text-decoration: none;
-    color: var(--white);
-    border: 1px solid var(--white);
-    padding: 8px;
-    border-radius: 8px;
-}
-
-/* Show the dropdown menu when the user moves the mouse over the dropdown button 
-.dropdown:hover .dropdown-content {
-    display: block;
-    align-items: center;
-    color: var(--white);
-    border: 1px solid var(--white);
-    padding: 8px;
-    border-radius: 8px;
-}*/
 
 
-@media (max-width: 640px) {
-    .navbar-left ul {
-        display: none;
+@media (max-width: 667px) {
+    .Register-container {
+        width: 280px;
+        height: max-content;
+        margin-left: 4%;
     }
 
-    .navbar-email {
-        display: none;
+    .reg-logo {
+        display: block;
+        height: 70px;
+        width: 280px;
+        margin-top: 10%;
     }
+
+    .inp-name,
+    .inp-lname,
+    .inp-sch,
+    .inp-emailreg,
+    .inp-passreg,
+    .inp-cpassreg {
+        font-size: 16px;
+    }
+
+    .name-lab {
+        width: 30%;
+    }
+
+    .lname-lab {
+        width: 30%;
+    }
+
+    .labelreg {
+        width: 56%;
+    }
+
+    .labelcxreg {
+        width: 38%;
+    }
+
+    .clabelcxreg {
+        width: 76%;
+    }
+
+}
+
+@media (min-width: 668px) and (max-width: 1023px) {
+    .Register-container {
+        margin-top: 5%;
+        width: 500px;
+        height: max-content;
+    }
+
+    .reg-logo {
+        display: block;
+        margin-top: 15%;
+    }
+
+    .inp-name,
+    .inp-lname,
+    .inp-sch,
+    .inp-emailreg,
+    .inp-passreg,
+    .inp-cpassreg {
+        font-size: 16px;
+    }
+
+    .name-lab {
+        width: 15%;
+    }
+
+    .lname-lab {
+        width: 17%;
+    }
+
+    .labelreg {
+        width: 36%;
+    }
+
+    .labelcxreg {
+        width: 20%;
+    }
+
+    .clabelcxreg {
+        width: 36%;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .Register-container {
+        width: 500px;
+        height: min-content;
+    }
+
 }

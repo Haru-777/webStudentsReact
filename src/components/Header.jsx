@@ -11,22 +11,22 @@ const Header = () => {
     return (
         <nav>
             <div className="navbar-left">
-                <img src={logo} alt="logo" className="logo" />
+                <img src={logo} alt="logo" className="logo" href="/mySubjects" />
                 <ul>
                     <li>
-                        <a href="/mySubjects">Mis Materias</a>
+                        <a className='med' href="/mySubjects">Mis Materias</a>
                     </li>
                     <li>
-                        <a href="/doubts">Dudas</a>
+                        <a className='short' href="/doubts">Dudas</a>
                     </li>
                     <li>
-                        <a href="/downloads">Actividades Descargadas</a>
+                        <a className='e-large' href="/downloads">Actividades Descargadas</a>
                     </li>
                     <li>
-                        <a href="/rea">Contenido Rea</a>
+                        <a className='large' href="/rea">Contenido Rea</a>
                     </li>
                     <li>
-                        <a href="/activitys">Actividades</a>
+                        <a className='med' href="/activitys">Actividades</a>
                     </li>
                 </ul>
             </div>
@@ -35,8 +35,8 @@ const Header = () => {
                 </button>
                 { isActive && 
                 <div className="dropdown-content">
-                    <a href="/myAcount">Modificar Perfil</a>
-                    <p onClick={handleLogout}> Cerrar Sesión</p>
+                    <a className="dropdown-content-a" href="/myAcount">Modificar Perfil</a>
+                    <p className="dropdown-content-p" onClick={handleLogout}> Cerrar Sesión</p>
                 </div>}
             </div>
         </nav >
