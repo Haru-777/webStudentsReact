@@ -11,8 +11,12 @@ const Header = () => {
     return (
         <nav>
             <div className="navbar-left">
-                <img src={logo} alt="logo" className="logo" href="/mySubjects" />
-                <ul>
+                <ul className='list'>
+                    <li>
+                        <a className='x-short' href='/'>
+                        <img src={logo} alt="logo" className="logo" href="/mySubjects" />
+                        </a>
+                    </li>
                     <li>
                         <a className='med' href="/mySubjects">Mis Materias</a>
                     </li>
@@ -31,13 +35,13 @@ const Header = () => {
                 </ul>
             </div>
             <div className="dropdown">
-                <button onClick={() => setIsActive(!isActive) } className='dropbtn'>Perfil
+                <button onClick={() => setIsActive(!isActive)} className='dropbtn'>Perfil
                 </button>
-                { isActive && 
-                <div className="dropdown-content">
-                    <a className="dropdown-content-a" href="/myAcount">Modificar Perfil</a>
-                    <p className="dropdown-content-p" onClick={handleLogout}> Cerrar Sesión</p>
-                </div>}
+                {isActive &&
+                    <div className="dropdown-content">
+                        <a className="dropdown-content-a" href="/myAcount">Modificar Perfil</a>
+                        <p className="dropdown-content-p" onClick={handleLogout}> Cerrar Sesión</p>
+                    </div>}
             </div>
         </nav >
     );
