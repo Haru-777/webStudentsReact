@@ -26,22 +26,34 @@ const Login = () => {
     const handleBlur = () => {
         const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
         const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
-        if (!emailRegex.test(formLogin.usename)) {
+        if(formLogin.usename === '') {
+            setFormLogin((prevState) => ({
+                ...prevState,
+                emailError: 'El correo electrónico es obligatorio'
+            }));
+        }
+        else if (!emailRegex.test(formLogin.usename)) {
             setFormLogin((prevState) => ({
                 ...prevState,
                 emailError: 'Por favor ingrese una dirección de correo electrónico válida.'
             }));
-        } else {
+        }
+        else {
             setFormLogin((prevState => ({
                 ...prevState,
                 emailError: ''
             })));
         }
-        if (!passRegex.test(formLogin.password)) {
+        if(formLogin.password === '') {
             setFormLogin((prevState) => ({
                 ...prevState,
-                passError: 'Por favor ingrese una contraseña de 8 Caracteres, la menos un número y una letra.'
+                passError: 'La contraseña es obligatoria'
+            }));
+        }
+        else if (!passRegex.test(formLogin.password)) {
+            setFormLogin((prevState) => ({
+                ...prevState,
+                passError: 'Por favor ingrese una contraseña de 8 Caracteres, al menos un número y una letra.'
             }));
         } else {
             setFormLogin((prevState => ({
@@ -84,9 +96,6 @@ const Login = () => {
                             onBlur={handleBlur}
                             placeholder="Correo Electronico" className="inp-emailtxt" />
                         <label htmlFor="email" className="labele" >Correo Electronico</label>
-                        {formLogin.usename.trim() === '' && (
-                            <div className="error-message"> El usuario es obligatorio</div>
-                        )}
                         {formLogin.emailError && (
                             <div className="error-message">{formLogin.emailError}</div>
                         )}
@@ -96,9 +105,6 @@ const Login = () => {
                             onBlur={handleBlur}
                             placeholder="Contraseña" className="inp-passtxt" />
                         <label htmlFor="password" className="labelcx">Contraseña</label>
-                        {formLogin.password.trim() === '' && (
-                            <div className="error-message"> La contraseña es obligatoria</div>
-                        )}
                         {formLogin.passError && (
                             <div className="error-message">{formLogin.passError}</div>
                         )}
