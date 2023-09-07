@@ -11,7 +11,7 @@ const SubjetList = () => {
 
     return (
         <section className='main-container'>
-            <div className='Bottom'>
+            <div className='container-doubts'>
                 <div className='search-cp'>
                     <Filters/>
                     <Information onClick={() => setOpenInfo(true)}/>

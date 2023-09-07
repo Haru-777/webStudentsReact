@@ -1,5 +1,9 @@
 @import '__vars';
 
+.container-doubts{
+    display: flex;
+    flex-direction: column;
+}
 .search-cp{
     width: 100%;
     height: fit-content;

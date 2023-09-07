@@ -6,7 +6,7 @@ import '../styles/global.scss';
 export const DownloadLis = () => {
   return (
     <section className="main-container">
-			<div className='Bottom'>
+			<div className='container-doubts'>
 			<h2>Aquí podrás encontrar los archivos descargados en tu computadora.</h2>
 				<ul className='matterList'>
 					<li>

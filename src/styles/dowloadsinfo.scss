@@ -10,6 +10,7 @@
     cursor: pointer;
     color: var(--very-light-pink);
     display: flex;
+    flex-direction: column;
     flex-direction: row;
 }
 .downloadInfo:hover {

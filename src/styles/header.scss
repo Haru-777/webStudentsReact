@@ -12,9 +12,13 @@ nav {
 .navbar-left {
     display: flex;
     justify-content: start;
-    width: 90%;
+    width: 100%;
     margin-top: 0.3%;
     margin-bottom: 0.2%;
+}
+.list{
+    width: 100%;
+    display: flex;
 }
 .logo {
     border-radius: 50%;
@@ -132,24 +136,24 @@ nav {
     border: 1px solid var(--baby-blue);
     color: var(--baby-blue);
 }
+.dplast{
+    margin-left: auto;
+}
 .dropdown {
     display: flex;
     overflow: hidden;
-
 }
 
 .dropdown .dropbtn {
     background-color: transparent;
     margin: 0;
     align-items: center;
-    margin-top: 7px;
     color: var(--very-light-pink);
     border: 1px solid var(--white);
     padding: 8px;
     border-radius: 8px;
     height: 30px;
     width: 60px;
-    left: 100%;
 }
 
 /* Style the dropdown content (hidden by default)
@@ -236,6 +240,9 @@ nav {
 
 
 @media (max-width: 667px) {
+    nav{
+        width: 50%;
+    }
     .navbar-left {
         width: 200px;
         display:flex;
@@ -244,10 +251,11 @@ nav {
     }
     .list{
         display:flex;
-        flex-direction:column;
-        
+        flex-direction:column;    
     }
-
+    .dplast{
+        margin-left: 0%;
+    }
     .reg-logo {
         display: block;
         height: 70px;
@@ -287,12 +295,17 @@ nav {
 }
 
 @media (min-width: 668px) and (max-width: 1023px) {
+    nav{
+        width: 100%;
+    }
     .Register-container {
         margin-top: 5%;
         width: 500px;
         height: max-content;
     }
-
+    .dplast{
+        margin-left: 0%;
+    }
     .reg-logo {
         display: block;
         margin-top: 15%;

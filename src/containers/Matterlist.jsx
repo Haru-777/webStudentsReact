@@ -13,7 +13,7 @@ const Matterlist = () => {
 
 	return (
 		<section className="main-container">
-			<div className='Bottom'>
+			<div className='container-doubts'>
 				<div className='search-sh'>
 					<Search/>
 					<Information onClick={() => setOpenModal(true)}/>
