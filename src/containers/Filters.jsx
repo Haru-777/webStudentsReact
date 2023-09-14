@@ -4,10 +4,10 @@ import SubjectFilter from '../components/SubjectFilter';
 import AreasFilter from '../components/AreasFilter';
 import Information from '../components/Information';
 
-const Filters = () => {
+const Filters = ({handleChange}) => {
     return (
         <>
-            <Search />
+            <Search handleChange={handleChange}/>
             <SubjectFilter />
          
             

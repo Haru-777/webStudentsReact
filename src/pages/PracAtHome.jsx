@@ -15,7 +15,7 @@ const PracAtHome = () => {
     const [openMaked, setopenMaked] = useState(false);
    
     return (
-        <div className='Bottom'>
+        <div className='bodyah'>
             <div className="mat-x">
                 <h2 className="letter-imodal">Materia</h2>
                 <Information onClick={() => setopenInfMatter(true)} />

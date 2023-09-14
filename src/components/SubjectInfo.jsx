@@ -4,9 +4,10 @@ import pruSubject from '../assets/logos/prusubject.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const SubjectInfo = () => {
+const SubjectInfo = ({filter}) => {
   const [response, setresponse] = useState([]);
   const navigate = useNavigate();
+  console.log(filter);
  
 
   useEffect(() => {
@@ -28,11 +29,19 @@ const SubjectInfo = () => {
     })
   }, [])
 
+  const dataFilter = () => { 
+    if (filter == '') {
+      return(response)
+    }
+    else {
+      return(response.filter(itemfilter => itemfilter.nombre_materiaActiva.toLowerCase().includes(filter.toLowerCase())))
+    }
+  }
   console.log(response);
 
   return (
     <>
-    {response.map((subject, indexs) => {
+    {dataFilter().map((subject, indexs) => {
       return(
       <div className='subject-info' key={indexs} onClick={() => {localStorage.setItem("infosubject", JSON.stringify(subject)); navigate("/myCourses")}}>
         <div className='txt-subjectinf'>

@@ -1,7 +1,9 @@
 @import '__vars';
+$mobile:425px;
 
 nav {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     padding: 0 24px;
     border-bottom: 1px solid var(--baby-blue);
@@ -10,15 +12,40 @@ nav {
     text-align: center;
 }
 .navbar-left {
-    display: flex;
+    display: flex;  
     justify-content: start;
     width: 100%;
     margin-top: 0.3%;
     margin-bottom: 0.2%;
+    flex-direction: column;
 }
 .list{
     width: 100%;
     display: flex;
+    @media only screen and (max-width: $mobile) {
+        &{ display: none;}
+        
+    }
+}
+.list-mobile{
+    display: none;
+    list-style: none;
+    @media only screen and (max-width: $mobile) {
+        &{ display: flex;}
+        
+    }
+
+}
+.list-mobile-menu{
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    box-sizing: border-box;
+    width: 100vw;
+    background-color: var(--select-blue);
+    flex-direction: column;
+    list-style: none;
 }
 .logo {
     border-radius: 50%;
@@ -28,11 +55,10 @@ nav {
     align-items:center;
 }
 
-.navbar-left ul {
+.navbar-left .list {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
     align-items: center;
 }
 
@@ -239,7 +265,7 @@ nav {
 
 
 
-@media (max-width: 667px) {
+/*@media (max-width: 667px) {
     nav{
         width: 50%;
     }
@@ -348,4 +374,4 @@ nav {
         height: min-content;
     }
 
-}
+}*/
