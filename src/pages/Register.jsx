@@ -82,8 +82,13 @@ const Register = () => {
         const emailreg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
         const passreg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-
-        if (!namereg.test(formReg.nameReg)) {
+        if (formReg.nameReg === '') {
+            setFormReg((prevState) => ({
+                ...prevState,
+                nameRError: 'El nombre es obligatorio'
+            }));
+        }
+        else if (!namereg.test(formReg.nameReg)) {
             setFormReg((prevState) => ({
                 ...prevState,
                 nameRError: 'Por favor ingrese un nombre válido.'
@@ -94,7 +99,13 @@ const Register = () => {
                 nameRError: ''
             })));
         }
-        if (!lnamereg.test(formReg.lnameReg)) {
+        if(formReg.lnameReg === '') {
+            setFormReg((prevState) => ({
+                ...prevState,
+                lnameRError: 'El apellido es obligatorio'
+            }));
+        }
+        else if (!lnamereg.test(formReg.lnameReg)) {
             setFormReg((prevState) => ({
                 ...prevState,
                 lnameRError: 'Por favor ingrese un apellido válido.'
@@ -105,7 +116,13 @@ const Register = () => {
                 lnameRError: ''
             })));
         }
-        if (!emailreg.test(formReg.emailReg)) {
+        if(formReg.emailReg.trim() === ''){
+            setFormReg((prevState) => ({
+                ...prevState,
+                emailRError:'El correo es obligatorio'
+            }));
+        }
+        else if (!emailreg.test(formReg.emailReg)) {
             setFormReg((prevState) => ({
                 ...prevState,
                 emailRError: 'Por favor ingrese una dirección de correo electrónico válida.'
@@ -116,7 +133,13 @@ const Register = () => {
                 emailRError: ''
             })));
         }
-        if (!passreg.test(formReg.passwordReg)) {
+        if (formReg.passwordReg === ''){
+            setFormReg((prevState) => ({
+                ...prevState,
+                passRError: 'La contraseña es obligatoria'
+            }))
+        }
+        else if (!passreg.test(formReg.passwordReg)) {
             setFormReg((prevState) => ({
                 ...prevState,
                 passRError: 'Por favor ingrese una contraseña de 8 Caracteres, la menos un número y una letra.'
@@ -125,6 +148,21 @@ const Register = () => {
             setFormReg((prevState => ({
                 ...prevState,
                 passRError: ''
+            })));
+        }
+        {formReg.cpasswordReg.trim() !== formReg.passwordReg && (
+            <div className="error-message">Las contraseñas no coinciden</div>
+        )}
+        if(formReg.cpasswordReg.trim() !== formReg.passwordReg ){
+            setFormReg((prevState) => (prevState) =>({
+                ...prevState,
+                cpasswordRegError: 'Las contraseñas no coinciden'
+            }));
+        }
+        else {
+            setFormReg((prevState => ({
+                ...prevState,
+                cpasswordRegError:''
             })));
         }
     };
@@ -178,9 +216,6 @@ const Register = () => {
                             onChange={handleChange}
                             onBlur={handleBlur} />
                         <label htmlFor="name" className="name-lab" >Nombres</label>
-                        {formReg.nameReg.trim() === '' && (
-                            <div className="error-message"> El nombre es obligatorio</div>
-                        )}
                         {formReg.nameRError && (
                             <div className="error-message">{formReg.nameRError}</div>
                         )}
@@ -191,9 +226,6 @@ const Register = () => {
                             onChange={handleChange}
                             onBlur={handleBlur} />
                         <label htmlFor="apellidos" className="lname-lab" >Apellidos</label>
-                        {formReg.lnameReg.trim() === '' && (
-                            <div className="error-message">El apellido es obligatorio</div>
-                        )}
                         {formReg.lnameRError && (
                             <div className="error-message">{formReg.lnameRError}</div>
                         )}
@@ -228,9 +260,6 @@ const Register = () => {
                             onChange={handleChange}
                             onBlur={handleBlur} />
                         <label htmlFor="email" className="labelreg" >Correo Electronico</label>
-                        {formReg.emailReg.trim() === '' && (
-                            <div className="error-message">El email es obligatorio</div>
-                        )}
                         {formReg.emailRError && (
                             <div className="error-message">{formReg.emailRError}</div>
                         )}
@@ -241,9 +270,6 @@ const Register = () => {
                             onChange={handleChange}
                             onBlur={handleBlur} />
                         <label htmlFor="password" className="labelcxreg">Contraseña</label>
-                        {formReg.passwordReg.trim() === '' && (
-                            <div className="error-message">La contraseña es obligatoria</div>
-                        )}
                         {formReg.passRError && (
                             <div className="error-message">{formReg.passRError}</div>
                         )}
@@ -254,10 +280,10 @@ const Register = () => {
                             onChange={handleChange}
                             onBlur={handleBlur} />
                         <label htmlFor="password" className="clabelcxreg">Confirmar contraseña</label>
-
-                        {formReg.cpasswordReg.trim() !== formReg.passwordReg && (
-                            <div className="error-message">Las contraseñas no coinciden</div>
-                        )}
+                            {formReg.cpasswordRegError && (
+                                <div className="error-message">{formReg.cpasswordRegError}</div>
+                            )}
+                        
                     </div>
                     <div>
                         <input type="checkbox" checked={checked}

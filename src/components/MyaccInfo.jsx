@@ -145,6 +145,12 @@ const MyaccInfo = () => {
                 cpasswordAccError: 'Las contraseñas no coinciden'
             }));
         }
+        else {
+            setFormAcc((prevState => ({
+                ...prevState,
+                cpasswordAccError: ''
+            })));
+        }
     };
 
 
