@@ -187,7 +187,7 @@ const MyaccInfo = () => {
             console.log(error)
         })
     };
-
+    console.log(formAcc);
     return (
         <div className="myacc-container">
             <div className='imac'>
@@ -249,7 +249,7 @@ const MyaccInfo = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur} />
                             <label htmlFor="email" className="labelact" >Correo Electronico</label>
-                            {formAcc.emailAcc && (
+                            {formAcc.emailRError && (
                                 <div className="error-message">{formAcc.emailRError}</div>
                             )}
                         </div>
@@ -259,7 +259,7 @@ const MyaccInfo = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur} />
                             <label htmlFor="password" className="labelcxact">Contraseña</label>
-                            {formAcc.passwordAcc && (
+                            {formAcc.passRError && (
                                 <div className="error-message">{formAcc.passRError}</div>
                             )}
                         </div>
@@ -268,7 +268,7 @@ const MyaccInfo = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur} />
                             <label htmlFor="password" className="clabelcxact">Confirmar contraseña</label>
-                            {formAcc.cpasswordAcc && (
+                            {formAcc.cpasswordAccError && (
                                 <div className="error-message">{formAcc.cpasswordAccError}</div>
                             )}
                         </div>
