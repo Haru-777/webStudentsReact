@@ -1,4 +1,6 @@
 @import '__vars';
+$mobile:425px;
+$tablet:768px;
 
 .Bottom {
     width: 100%;
@@ -236,7 +238,7 @@
     transform: translateY(20px);
 }
 
-@media (max-width: 667px) {
+@media (max-width: $mobile) {
     .Login-container {
         width: 280px;
         height: max-content;
@@ -279,7 +281,7 @@
     }
 }
 
-@media (min-width: 668px) and (max-width: 1023px) {
+@media (min-width: $mobile) and (max-width: $tablet) {
     .Login-container {
         margin-top: 5%;
         width: 500px;
@@ -292,11 +294,11 @@
     }
 
     .labele {
-        width: 12vh;
+        width: 15vh;
     }
 
     .labelcx {
-        width: 7vh;
+        width: 9vh;
     }
 
     .inp-email,

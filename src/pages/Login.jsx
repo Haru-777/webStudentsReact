@@ -26,7 +26,7 @@ const Login = () => {
     const handleBlur = () => {
         const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
         const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-        if(formLogin.usename === '') {
+        if (formLogin.usename === '') {
             setFormLogin((prevState) => ({
                 ...prevState,
                 emailError: 'El correo electrónico es obligatorio'
@@ -44,7 +44,7 @@ const Login = () => {
                 emailError: ''
             })));
         }
-        if(formLogin.password === '') {
+        if (formLogin.password === '') {
             setFormLogin((prevState) => ({
                 ...prevState,
                 passError: 'La contraseña es obligatoria'

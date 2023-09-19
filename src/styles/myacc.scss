@@ -1,21 +1,36 @@
 @import '__vars';
+$mobile:425px;
+$tablet:768px;
 
 .myacc-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     background-color: transparent;
 }
 
-.ac-logo{
-    width: 100%;
-}
 .imac{
+    width: 100%;
+    display: contents;
+    margin-top: 1%;
+}
+.mac-logotxt{
+    width: 35%;
+}
+.formacp{
     display: flex;
-    width: 20%;
-    margin-left: 2%;
+    flex-direction: row;
+    width: 80%;
+    height: max-content;
+    margin-top: 1%;
+}
+.ac-logo{
+    margin-top: 2%;
+    width: 10%;
+    height: 20%;
 }
 .fomac{
     display: flex;
@@ -30,156 +45,299 @@
     width: 100%;
 }
 
-.inp-emailac {
+.inp-actname {
     display: flex;
+    margin-bottom: 0%;
     flex-direction: column;
-    margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
-    width: 80%;
-    padding-top: 2%;
+    width: 90%;
 }
-.inp-emailtxtac {
+
+.inp-actnametxt{
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 80%;
+    width: 95%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
     margin-left: auto;
     margin-right: auto;
 }
-.labelac {
+.nameact-lab {
     position: relative;
-    width: 32%;
-    font-size: 14px;
+    width: 7vh;
+    font-weight: bold;
+    font-size: 4px;
     transition: 0.5s;
     margin-left: 15%;
     opacity: 0;
 }
-.inp-emailtxtac:focus {
+
+.inp-actnametxt:focus {
     border: 3px solid var(--baby-blue);
     box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
 }
 
-.inp-emailtxtac:focus+.labelac {
-    transform: translateY(-255%);
+.inp-actnametxt:focus+.nameact-lab {
+    transform: translateY(1%);
     top: -80%;
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
+    font-size: 14px;
 }
 
-.inp-emailtxtac:focus::placeholder {
+.inp-actnametxt:focus::placeholder {
     color: transparent;
     opacity: 0;
 }
 
-
-.inp-passac {
+.inp-actlname {
     display: flex;
+    margin-bottom: 0%;
     flex-direction: column;
-    margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
-    width: 80%;
-    padding-top: 2%;
+    width: 90%;
 }
-.inp-passtxtac {
+
+.inp-actlnametxt{
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 80%;
+    width: 95%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
     margin-left: auto;
     margin-right: auto;
 }
-.labelcxac {
+.lnameact-lab {
     position: relative;
-    width: 20%;
-    font-size: 14px;
+    width: 7vh;
+    font-weight: bold;
+    font-size: 4px;
     transition: 0.5s;
     margin-left: 15%;
     opacity: 0;
 }
-.inp-passtxtac:focus {
+
+.inp-actlnametxt:focus {
     border: 3px solid var(--baby-blue);
     box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
 }
 
-.inp-passtxtac:focus+.labelcxac {
-    transform: translateY(-255%);
+.inp-actlnametxt:focus+.lnameact-lab {
+    transform: translateY(1%);
     top: -80%;
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
+    font-size: 14px;
 }
 
-.inp-passtxtac:focus::placeholder {
+.inp-actlnametxt:focus::placeholder {
     color: transparent;
     opacity: 0;
 }
 
+.sh-gr{
+    display: flex;
+    flex-direction: row;
+}
 
-.inp-cpassac {
+.inpact-sch {
     display: flex;
     flex-direction: column;
     margin-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
     height: fit-content;
-    width: 80%;
-    padding-top: 2%;
+    width: 40%;
 }
-.inp-cpasstxtac {
+
+.schact-lab {
+    color: var(--very-light-pink);
+    font-size: 15px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.schact-ch {
     border: 1px solid var(--text-input-field);
     height: 30px;
-    width: 80%;
+    width: 90%;
+    border-radius: 0.5rem;
+    padding: 0.5px;
+    outline: none;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--select--dark-blue);
+}
+
+.schact-ch:focus {
+    border: 3px solid var(--baby-blue);
+    box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
+}
+
+.inp-emailact {
+    display: flex;
+    margin-bottom: 0%;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+    width: 90%;
+    margin-top: 1%;
+}
+
+.inp-emailtxtact{
+    border: 1px solid var(--text-input-field);
+    height: 30px;
+    width: 95%;
     border-radius: 0.5rem;
     padding: 0.5px;
     outline: none;
     margin-left: auto;
     margin-right: auto;
 }
-.clabelcxac {
+.labelact {
     position: relative;
-    width: 37%;
-    font-size: 14px;
+    width: 13vh;
+    font-weight: bold;
+    font-size: 4px;
     transition: 0.5s;
     margin-left: 15%;
     opacity: 0;
 }
-.inp-cpasstxtac:focus {
+
+.inp-emailtxtact:focus {
     border: 3px solid var(--baby-blue);
     box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
 }
 
-.inp-cpasstxtac:focus+.clabelcxac {
-    transform: translateY(-255%);
+.inp-emailtxtact:focus+.labelact {
+    transform: translateY(1%);
     top: -80%;
     color: var(--baby-blue);
     background-color: var(--bg--white);
     opacity: 1;
+    font-size: 14px;
 }
 
-.inp-cpasstxtac:focus::placeholder {
+.inp-emailtxtact:focus::placeholder {
     color: transparent;
     opacity: 0;
 }
 
+.inp-passact {
+    display: flex;
+    margin-bottom: 0%;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+    width: 90%;
+}
 
+.inp-passtxtact{
+    border: 1px solid var(--text-input-field);
+    height: 30px;
+    width: 95%;
+    border-radius: 0.5rem;
+    padding: 0.5px;
+    outline: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.labelcxact {
+    position: relative;
+    width: 9vh;
+    font-weight: bold;
+    font-size: 4px;
+    transition: 0.5s;
+    margin-left: 15%;
+    opacity: 0;
+}
+
+.inp-passtxtact:focus {
+    border: 3px solid var(--baby-blue);
+    box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
+}
+
+.inp-passtxtact:focus+.labelcxact {
+    transform: translateY(1%);
+    top: -70%;
+    color: var(--baby-blue);
+    background-color: var(--bg--white);
+    opacity: 1;
+    font-size: 14px;
+}
+
+.inp-passtxtact:focus::placeholder {
+    color: transparent;
+    opacity: 0;
+}
+.inp-cpassact {
+    display: flex;
+    margin-bottom: 0%;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+    width: 90%;
+}
+
+.inp-cpasstxtact{
+    border: 1px solid var(--text-input-field);
+    height: 30px;
+    width: 95%;
+    border-radius: 0.5rem;
+    padding: 0.5px;
+    outline: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.clabelcxact {
+    position: relative;
+    width: 15vh;
+    font-weight: bold;
+    font-size: 4px;
+    transition: 0.5s;
+    margin-left: 15%;
+    opacity: 0;
+}
+
+.inp-cpasstxtact:focus {
+    border: 3px solid var(--baby-blue);
+    box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
+}
+
+.inp-cpasstxtact:focus+.clabelcxact {
+    transform: translateY(1%);
+    top: -70%;
+    color: var(--baby-blue);
+    background-color: var(--bg--white);
+    opacity: 1;
+    font-size: 14px;
+}
+
+.inp-cpasstxtact:focus::placeholder {
+    color: transparent;
+    opacity: 0;
+}
 .error-message{
     font-size: 12.5px;
     font-weight: bold;
     color: var(--danger--red);
 }
 
-.btnac {
+.btnact {
     width: 90%;
-    height: 25%;
+    height: 35px;
     display: flex;
     padding: 15px 30px;
     border: none;
