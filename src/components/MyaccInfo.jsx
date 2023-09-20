@@ -69,73 +69,73 @@ const MyaccInfo = () => {
         if (formAcc.nameAcc === '') {
             setFormAcc((prevState) => ({
                 ...prevState,
-                nameRError: 'El nombre es obligatorio',
+                nameAcError: 'El nombre es obligatorio',
             }));
         }
         else if (!nameacc.test(formAcc.nameAcc)) {
             setFormAcc((prevState) => ({
                 ...prevState,
-                nameRError: 'Por favor ingrese un nombre válido.'
+                nameAcError: 'Por favor ingrese un nombre válido.'
             }));
         }
         else {
             setFormAcc((prevState => ({
                 ...prevState,
-                nameRError: ''
+                nameAcError: ''
             })));
         }
 
         if (formAcc.lnameAcc === '') {
             setFormAcc((prevState) => ({
                 ...prevState,
-                lnameRError: 'El apellido es obligatorio'
+                lnameAcError: 'El apellido es obligatorio'
             }));
         }
         else if (!lnameacc.test(formAcc.lnameAcc)) {
             setFormAcc((prevState) => ({
                 ...prevState,
-                lnameRError: 'Por favor ingrese un apellido válido.'
+                lnameAcError: 'Por favor ingrese un apellido válido.'
             }));
         } else {
             setFormAcc((prevState => ({
                 ...prevState,
-                lnameRError: ''
+                lnameAcError: ''
             })));
         }
 
         if (formAcc.emailAcc === '') {
             setFormAcc((prevState) => ({
                 ...prevState,
-                emailRError: 'El correo electronico es obligatorio'
+                emailAcError: 'El correo electronico es obligatorio'
             }));
         }
         else if (!emailacc.test(formAcc.emailAcc)) {
             setFormAcc((prevState) => ({
                 ...prevState,
-                emailRError: 'Por favor ingrese una dirección de correo electrónico válida.'
+                emailAcError: 'Por favor ingrese una dirección de correo electrónico válida.'
             }));
         } else {
             setFormAcc((prevState => ({
                 ...prevState,
-                emailRError: ''
+                emailAcError: ''
             })));
         }
 
         if (formAcc.passwordAcc === '') {
             setFormAcc((prevState) => ({
                 ...prevState,
-                passRError: 'La contraseña es obligatoria'
+                passAcError: 'La contraseña es obligatoria'
             }));
         }
         else if (!passacc.test(formAcc.passwordAcc)) {
             setFormAcc((prevState) => ({
                 ...prevState,
-                passRError: 'Por favor ingrese una contraseña de 8 Caracteres, la menos un número y una letra.'
+                passAcError: 'Por favor ingrese una contraseña de 8 Caracteres, la menos un número y una letra.'
             }));
         } else {
             setFormAcc((prevState => ({
                 ...prevState,
-                passRError: ''
+                passAcError: ''
             })));
         }
 
@@ -195,8 +195,8 @@ const MyaccInfo = () => {
     };
     
     const btnatldisabled = () => { 
-        if(formAcc.nameRError || formAcc.lnameRError || formAcc.emailRError || formAcc.passwordRError || formAcc.passRError || formAcc.cpasswordAccError ) return(true);
-        else if (formAcc.nameAcc || formAcc.lnameAcc || formAcc.emailAcc || formAcc.passwordAcc || formAcc.cpasswordAcc)return(true);
+        if(formAcc.nameAcError || formAcc.lnameAcError || formAcc.emailAcError || formAcc.passAcError || formAcc.cpasswordAccError ) return(true);
+        else if (formAcc.nameAcc || formAcc.lnameAcc || formAcc.emailAcc || formAcc.passwordAcc || formAcc.cpasswordAcc) return(true);
         else return(false);
     }
 

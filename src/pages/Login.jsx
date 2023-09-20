@@ -84,8 +84,11 @@ const Login = () => {
             console.log(error)
         })
     };
-
-
+    const btnlogindisabled = () =>{
+        if(formLogin.emailError || formLogin.passError) return(true);
+        else if(formLogin.usename === "" || formLogin.password === "") return(true);
+        else return(false);     
+    }
     return (
         <div className="Bottom">
             <div className="Login-container">
@@ -110,9 +113,10 @@ const Login = () => {
                         )}
                     </div>
                     <button type="submit"
+                        className="btnlogin"
+                        disabled={btnlogindisabled()}
                         onClick={handleSubmit}
-                        disabled={formLogin.emailError !== '' && formLogin.passError !== ''}
-                        className="btnlogin">
+                        >
                         Iniciar sesión
                     </button>
 

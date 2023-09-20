@@ -292,7 +292,7 @@ const Register = () => {
                         <label htmlFor="terminos" className="txtchregister">Acepto terminos y condiciones</label>
                     </div>
                     <button type="submit"
-                        className="btnlogin"
+                        className="btnregister"
                         disabled = {btndisabled()}
                         onClick={handleSubmit}
                         >

@@ -329,7 +329,7 @@
     color: var(--danger--red);
 }
 
-.btnlogin {
+.btnregister {
     width: 90%;
     height: 25%;
     display: flex;
@@ -353,7 +353,7 @@
     }
 }
 
-.btnlogin:hover {
+.btnregister:hover {
     background-color: var(--shadow-blue);
     transform: translateY(-2px);
 }
