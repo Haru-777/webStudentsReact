@@ -196,7 +196,7 @@ const MyaccInfo = () => {
     
     const btnatldisabled = () => { 
         if(formAcc.nameAcError || formAcc.lnameAcError || formAcc.emailAcError || formAcc.passAcError || formAcc.cpasswordAccError ) return(true);
-        else if (formAcc.nameAcc || formAcc.lnameAcc || formAcc.emailAcc || formAcc.passwordAcc || formAcc.cpasswordAcc) return(true);
+        else if (formAcc.nameAcc === "" || formAcc.lnameAcc === "" || formAcc.emailAcc === "" || formAcc.passwordAcc === "" || formAcc.cpasswordAcc ==="" ) return(true);
         else return(false);
     }
 

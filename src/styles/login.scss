@@ -174,27 +174,6 @@ $tablet:768px;
     transform: translateY(-2px);
 }
 
-.btnregister {
-    width: 73%;
-    height: 7vh;
-    display: flex;
-    padding: 15px 30px;
-    border: none;
-    background-color: var(--baby-blue);
-    box-shadow: 2px 2px 0.5px 0.5px var(--shadow-blue);
-    color: var(--white);
-    justify-content: center;
-    margin: auto;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.btnregister:hover {
-    background-color: var(--shadow-blue);
-    transform: translateY(-2px);
-}
-
 .txtcuenta {
     align-items: center;
     margin-left: auto;
