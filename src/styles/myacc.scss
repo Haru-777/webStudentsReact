@@ -350,6 +350,13 @@ $tablet:768px;
     cursor: pointer;
     font-size: 16px;
     margin-bottom: 5px;
+    &:disabled{
+        opacity: 0.5;
+        cursor: none;
+        &:hover{
+            background-color: var(--baby-blue);
+        }
+    }
 }
 .btnac:hover {
     background-color: var(--shadow-blue);

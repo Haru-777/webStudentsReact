@@ -193,7 +193,13 @@ const MyaccInfo = () => {
             console.log(error)
         })
     };
-    console.log(formAcc);
+    
+    const btnatldisabled = () => { 
+        if(formAcc.nameRError || formAcc.lnameRError || formAcc.emailRError || formAcc.passwordRError || formAcc.passRError || formAcc.cpasswordAccError ) return(true);
+        else if (formAcc.nameAcc || formAcc.lnameAcc || formAcc.emailAcc || formAcc.passwordAcc || formAcc.cpasswordAcc)return(true);
+        else return(false);
+    }
+
     return (
         <div className="myacc-container">
             <div className='imac'>
@@ -280,6 +286,7 @@ const MyaccInfo = () => {
                         </div>
                         <button type="submit"
                             className="btnact"
+                            disabled = {btnatldisabled()}
                             onClick={handleLogoutacc}
                         >
                             Actualizar
