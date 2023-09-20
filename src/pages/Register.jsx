@@ -137,7 +137,7 @@ const Register = () => {
             setFormReg((prevState) => ({
                 ...prevState,
                 passRError: 'La contraseña es obligatoria'
-            }))
+            }));
         }
         else if (!passreg.test(formReg.passwordReg)) {
             setFormReg((prevState) => ({
@@ -150,14 +150,11 @@ const Register = () => {
                 passRError: ''
             })));
         }
-        {formReg.cpasswordReg.trim() !== formReg.passwordReg && (
-            <div className="error-message">Las contraseñas no coinciden</div>
-        )}
         if(formReg.cpasswordReg.trim() !== formReg.passwordReg ){
-            setFormReg((prevState) => (prevState) =>({
+            setFormReg((prevState => ({
                 ...prevState,
                 cpasswordRegError: 'Las contraseñas no coinciden'
-            }));
+            })));
         }
         else {
             setFormReg((prevState => ({
@@ -203,7 +200,11 @@ const Register = () => {
         }) 
 
     };
-
+     const btndisabled = () =>{
+         if(formReg.nameRError || formReg.lnameRError || formReg.emailRError || formReg.passRError || formReg.cpasswordRegError) return(true);
+         else if (formReg.namereg === "" || formReg.lnameReg === '' || formReg.emailReg === "" || formReg.passwordReg === "" || formReg.cpasswordReg === "") return(true);
+         else return(false);
+     }
     return (
         <div className="Bottom">
             <div className="Register-container">
@@ -292,6 +293,7 @@ const Register = () => {
                     </div>
                     <button type="submit"
                         className="btnlogin"
+                        disabled = {btndisabled()}
                         onClick={handleSubmit}
                         >
 
