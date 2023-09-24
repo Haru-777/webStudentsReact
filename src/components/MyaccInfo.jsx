@@ -193,11 +193,11 @@ const MyaccInfo = () => {
             console.log(error)
         })
     };
-    
-    const btnatldisabled = () => { 
-        if(formAcc.nameAcError || formAcc.lnameAcError || formAcc.emailAcError || formAcc.passAcError || formAcc.cpasswordAccError ) return(true);
-        else if (formAcc.nameAcc === "" || formAcc.lnameAcc === "" || formAcc.emailAcc === "" || formAcc.passwordAcc === "" || formAcc.cpasswordAcc ==="" ) return(true);
-        else return(false);
+
+    const btnatldisabled = () => {
+        if (formAcc.nameAcError || formAcc.lnameAcError || formAcc.emailAcError || formAcc.passAcError || formAcc.cpasswordAccError) return (true);
+        else if (formAcc.nameAcc === "" || formAcc.lnameAcc === "" || formAcc.emailAcc === "" || formAcc.passwordAcc === "" || formAcc.cpasswordAcc === "") return (true);
+        else return (false);
     }
 
     return (
@@ -230,9 +230,9 @@ const MyaccInfo = () => {
                             )}
                         </div>
                         <div className='sh-gr'>
-                        <div className="inpact-sch">
-                            <label htmlFor="grade" className="schact-lab" >Seleccione su curso:</label>
-                            <select className="schact-ch" id="chosegrade" name="chosegrade"
+                            <div className="inpact-sch">
+                                <label htmlFor="grade" className="schact-lab" >Seleccione su curso:</label>
+                                <select className="schact-ch" id="chosegrade" name="chosegrade"
 
                             >
                                 {gradeAcc.map((grade) => (
@@ -240,7 +240,6 @@ const MyaccInfo = () => {
                                         {grade.nombre_grado}
                                     </option>
                                 ))}
-
                             </select>
                         </div>
 
@@ -286,7 +285,7 @@ const MyaccInfo = () => {
                         </div>
                         <button type="submit"
                             className="btnact"
-                            disabled = {btnatldisabled()}
+                            disabled={btnatldisabled()}
                             onClick={handleLogoutacc}
                         >
                             Actualizar
