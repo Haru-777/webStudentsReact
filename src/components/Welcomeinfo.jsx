@@ -11,7 +11,7 @@ const Welcomeinfo = () => {
             <h1>Bienvenido!</h1>
             En la barra podrás encontrar todas las opciones para interactuar con el aplicativo.
              A continuación, realizaremos una breve descripción.
-            <ul>
+            <ul className='ul-welcome'>
                 <li>
                     <a className='txt-welcome'>Mis cursos:</a> Encontrarás todos los cursos en los 
                     que te encuentres matriculado, además, al darle clic, aparecerán las actividades correspondientes al curso.
@@ -29,7 +29,7 @@ const Welcomeinfo = () => {
                     <a className='txt-welcome'>Actividades: </a> Al dar clic encontrarás el progreso de cada una de tus actividades realizadas.
                 </li>
             </ul>
-            <p>Si deseas mas informacion, da click aqui : </p>
+            <p className='p-welcome'>Si deseas mas informacion, da click aqui : </p>
         </div>
     );
 }

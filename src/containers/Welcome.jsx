@@ -6,7 +6,7 @@ import '../styles/global.scss';
 
 const Welcome = () => {
 	return (
-		<section className="main-container">
+		<section className="main-containerwelcome">
             <Header/>
 			<div className="Bottom">
 				<WelcomeInfo/>

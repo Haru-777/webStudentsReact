@@ -1,5 +1,11 @@
 @import '__vars';
+$mobile:425px;
+$tablet:768px;
 
+.main-containerwelcome{
+    width: 100%;
+    height: 100vh;
+}
 .welcomeInfo {
     display: flex;
     flex-direction: column;
@@ -9,7 +15,9 @@
     background-color: transparent;
     color: var(--txt--dark-blue);
 }
-
+.ul-welcome{
+    list-style: none;
+}
 .logo-hi {
     display: flex;
     flex-direction: column;
@@ -22,11 +30,38 @@
 .txt-welcome {
     font-weight: bold;
 }
+.p-welcome{
+    font-weight: lighter;
+}
 
-@media (max-width: 640px) {
+@media (max-width: $mobile) {
+    .main-containerwelcome{
+        width: 100%;
+        height: 513px;
+    }
     .logo-hi {
         display: block;
-        width: 350px;
-        height: 175px;
+        width: 150px;
+        height: 55px;
+    }
+    .welcomeInfo{
+        width: 320px;
+        height: 513px;
+        margin-left: 1%;
+        font-size: 14px;
+    }
+}
+@media (min-width: $mobile) and (max-width: $tablet) {
+    .main-containerwelcome{
+        width: 100%;
+        height: 513px;
+    }
+    .logo-hi {
+        display: block;
+        width: 250px;
+        height: 105px;
+    }
+    .welcomeInfo{
+        margin-left: 2%;
     }
 }
