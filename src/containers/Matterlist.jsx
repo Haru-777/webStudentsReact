@@ -12,8 +12,8 @@ const Matterlist = () => {
 	const [openModal, setOpenModal] = useState(false);
 
 	return (
-		<section className="main-container">
-			<div className='container-doubts'>
+		<section className="main-containercourses">
+			<div className='container-courses'>
 				<div className='search-sh'>
 					<Search/>
 					<Information onClick={() => setOpenModal(true)}/>

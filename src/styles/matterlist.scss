@@ -1,6 +1,21 @@
 @import '__vars';
+$mobile:425px;
+$tablet:768px;
 
+.main-containercourses{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.container-courses{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
 .matterList {
     list-style-type: none;
-    width: 80%;
+    width: 95%;
 }
