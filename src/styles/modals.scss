@@ -50,7 +50,10 @@
     font-size: 28px;
     margin-right: 55%;
 }
+.list-subj{
+    list-style: none;
 
+}
 .close-btn{
     color: var(--select--dark-blue);
     font-size: 25px;
@@ -73,6 +76,19 @@
 }
 .txt-dud{
     width: 80%;   
+}
+.txt-dudsubj{
+    font-size: 17px;
+    margin-left: 20px;
+}
+.subj-a{
+    font-weight: bold;
+}
+.txr-subj{
+    font-weight: bold;
+    text-align: center;
+    font-size: 22px;
+    margin-left: 40%;
 }
 .txt-f{
     margin-top: 10%;
