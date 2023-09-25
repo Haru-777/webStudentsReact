@@ -1,4 +1,6 @@
 @import '__vars';
+$mobile:425px;
+$tablet:768px;
 
 .matterInfo { 
     padding: 2% 2% 2% 2%;
@@ -20,7 +22,7 @@
 
 .search-sh{
     width: 100%;
-    height: fit-content;
+    height: 50px;
     display: flex;
     flex-direction: row;
     margin-left: auto;
@@ -28,5 +30,15 @@
     align-self: auto;
     align-items: center;
     justify-content: space-evenly;
+    @media only screen and (max-width:$mobile){
+        &{
+            margin-left: 20px;
+            width: 320px;
+            height: 50px;
+        }
+    }
+    @media only screen and (min-width:$mobile) and (max-width:$tablet){
+        width: 100%;
+    }
 
 }
