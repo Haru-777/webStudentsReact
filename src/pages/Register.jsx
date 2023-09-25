@@ -7,11 +7,10 @@ import axios from "axios";
 
 const Register = () => {
 
-    const form = useRef(null);    
-    const [schoolReg, setschoolReg] = useState([]); 
+    const form = useRef(null);
+    const [schoolReg, setschoolReg] = useState([]);
     const [gradesReg, setgradesReg] = useState([]);
-    const [checked, setChecked] = useState(false);
-    
+
     const [formReg, setFormReg] = useState({
         nameReg: '',
         lnameReg: '',
@@ -19,7 +18,8 @@ const Register = () => {
         passwordReg: '',
         cpasswordReg: '',
         chosegrade: '',
-        choseSchool: ''
+        choseSchool: '',
+        checkedreg: false
 
     });
 
@@ -50,13 +50,21 @@ const Register = () => {
     }, [])
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
+        const { name, value, checked } = event.target;
+        if (name === "checkedreg") {
+            setFormReg((prevState) => ({
+                ...prevState,
+                [name]: checked
+            }));
 
-        setFormReg((prevState) => ({
-            ...prevState,
-            [name]: value
-        }));
+        } else {
+            console.log(name);
 
+            setFormReg((prevState) => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
         /*axios(config)
         .then((res) => {
           if (res.data.res === false) {
@@ -99,7 +107,7 @@ const Register = () => {
                 nameRError: ''
             })));
         }
-        if(formReg.lnameReg === '') {
+        if (formReg.lnameReg === '') {
             setFormReg((prevState) => ({
                 ...prevState,
                 lnameRError: 'El apellido es obligatorio'
@@ -116,10 +124,36 @@ const Register = () => {
                 lnameRError: ''
             })));
         }
-        if(formReg.emailReg.trim() === ''){
+        if(formReg.chosegrade === ''){
             setFormReg((prevState) => ({
                 ...prevState,
-                emailRError:'El correo es obligatorio'
+                gradeRError: 'El grado es obligatorio.'
+            }));
+        }
+        else{
+            setFormReg((prevState) => ({
+                ...prevState,
+                gradeRError: ''
+            }));
+        } 
+
+        if(formReg.choseSchool === ''){
+            setFormReg((prevState) => ({
+                ...prevState,
+                schoolRError: 'El colegio es obligatorio.'
+            }));
+        }
+        else{
+            setFormReg((prevState) => ({
+                ...prevState,
+                schoolRError: ''
+            }));
+        } 
+
+        if (formReg.emailReg.trim() === '') {
+            setFormReg((prevState) => ({
+                ...prevState,
+                emailRError: 'El correo es obligatorio'
             }));
         }
         else if (!emailreg.test(formReg.emailReg)) {
@@ -133,7 +167,7 @@ const Register = () => {
                 emailRError: ''
             })));
         }
-        if (formReg.passwordReg === ''){
+        if (formReg.passwordReg === '') {
             setFormReg((prevState) => ({
                 ...prevState,
                 passRError: 'La contraseña es obligatoria'
@@ -150,7 +184,7 @@ const Register = () => {
                 passRError: ''
             })));
         }
-        if(formReg.cpasswordReg.trim() !== formReg.passwordReg ){
+        if (formReg.cpasswordReg.trim() !== formReg.passwordReg) {
             setFormReg((prevState => ({
                 ...prevState,
                 cpasswordRegError: 'Las contraseñas no coinciden'
@@ -159,7 +193,19 @@ const Register = () => {
         else {
             setFormReg((prevState => ({
                 ...prevState,
-                cpasswordRegError:''
+                cpasswordRegError: ''
+            })));
+        }
+        if (!formReg.checkedreg) {
+            setFormReg((prevState) => ({
+                ...prevState,
+                checkedRegError: 'Debe aceptar los terminos y condiciones'
+            }));
+        }
+        else {
+            setFormReg((prevState => ({
+                ...prevState,
+                checkedRegError: ''
             })));
         }
     };
@@ -187,8 +233,8 @@ const Register = () => {
                 apellido_estudiante: data.lnameReg,
                 correo_electronico: data.emailReg, //Quitar esto para un get
                 contrasena: data.passwordReg,
-                grado_estudiante:data.chosegrade,
-                id_colegio:data.choseSchool
+                grado_estudiante: data.chosegrade,
+                id_colegio: data.choseSchool
 
             }
         }).then(function (response) {
@@ -197,14 +243,15 @@ const Register = () => {
             console.log('Registro exitoso');
         }).catch(function (error) {
             console.log(error)
-        }) 
+        })
 
     };
-     const btndisabled = () =>{
-         if(formReg.nameRError || formReg.lnameRError || formReg.emailRError || formReg.passRError || formReg.cpasswordRegError) return(true);
-         else if (formReg.namereg === "" || formReg.lnameReg === '' || formReg.emailReg === "" || formReg.passwordReg === "" || formReg.cpasswordReg === "") return(true);
-         else return(false);
-     }
+    const btndisabled = () => {
+        if (formReg.nameRError || formReg.lnameRError || formReg.emailRError || formReg.passRError || formReg.cpasswordRegError || formReg.checkedRegError || formReg.schoolRError || formReg.gradeRError) return (true);
+        else if (formReg.namereg === "" || formReg.lnameReg === '' || formReg.emailReg === "" || formReg.passwordReg === "" || formReg.cpasswordReg === "" ) return (true);
+        else return (false);
+    }
+    console.log(formReg);
     return (
         <div className="Bottom">
             <div className="Register-container">
@@ -215,7 +262,7 @@ const Register = () => {
                         <input type="text" placeholder="Nombres" className="inp-nametxt" id="nameReg" name="nameReg"
                             value={formReg.nameReg}
                             onChange={handleChange}
-                            onBlur={handleBlur} />
+                            onBlurh={handleBlur} />
                         <label htmlFor="name" className="name-lab" >Nombres</label>
                         {formReg.nameRError && (
                             <div className="error-message">{formReg.nameRError}</div>
@@ -234,26 +281,36 @@ const Register = () => {
                     <div className="inp-sch">
                         <label htmlFor="grade" className="sch-lab" >Seleccione su curso:</label>
                         <select className="sch-ch" id="chosegrade" name="chosegrade"
-
-                        >
+                         value={formReg.chosegrade}
+                         onChange={handleChange}
+                         onBlur={handleBlur} >
+                            <option value="">Seleccione</option>
                             {gradesReg.map((grade) => (
                                 <option key={grade.id} value={grade.id}>
                                     {grade.id_grado}
                                 </option>
                             ))}
-
                         </select>
+                        {formReg.gradeRError && (
+                            <div className="error-message">{formReg.gradeRError}</div>
+                        )}
                     </div>
                     <div className="inp-sch">
                         <label htmlFor="school" className="sch-lab" >Seleccione su colegio:</label>
-                        <select className="sch-ch" id="choseSchool" name="choseSchool">
+                        <select className="sch-ch" id="choseSchool" name="choseSchool"
+                        value={formReg.choseSchool}
+                        onChange={handleChange}
+                        onBlur={handleBlur} >
+                            <option value="">Seleccione</option>
                             {schoolReg.map((school) => (
                                 <option key={school.id} value={school.id_colegio}>
                                     {school.nombre_colegio}
                                 </option>
                             ))}
-
                         </select>
+                        {formReg.schoolRError && (
+                            <div className="error-message">{formReg.schoolRError}</div>
+                        )}
                     </div>
                     <div className="inp-emailreg">
                         <input type="email" placeholder="Correo Electronico" className="inp-emailtxtreg" name="emailReg"
@@ -281,21 +338,26 @@ const Register = () => {
                             onChange={handleChange}
                             onBlur={handleBlur} />
                         <label htmlFor="password" className="clabelcxreg">Confirmar contraseña</label>
-                            {formReg.cpasswordRegError && (
-                                <div className="error-message">{formReg.cpasswordRegError}</div>
-                            )}
-                        
+                        {formReg.cpasswordRegError && (
+                            <div className="error-message">{formReg.cpasswordRegError}</div>
+                        )}
+
                     </div>
                     <div>
-                        <input type="checkbox" checked={checked}
-                            onChange={e => setChecked(e.target.checked)} className="checkregister" />
+                        <input type="checkbox" name="checkedreg" 
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            className="checkregister" />
                         <label htmlFor="terminos" className="txtchregister">Acepto terminos y condiciones</label>
+                        {formReg.checkedRegError && (
+                            <div className="error-message">{formReg.checkedRegError}</div>
+                        )}
                     </div>
                     <button type="submit"
                         className="btnregister"
-                        disabled = {btndisabled()}
+                        disabled={btndisabled()}
                         onClick={handleSubmit}
-                        >
+                    >
 
                         Registrarse
                     </button>

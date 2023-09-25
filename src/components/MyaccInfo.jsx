@@ -102,6 +102,18 @@ const MyaccInfo = () => {
                 lnameAcError: ''
             })));
         }
+         if(formAcc.chosegrade === ''){
+            setFormAcc((prevState) => ({
+                ...prevState,
+                gradeAccError: 'El grado es obligatorio.'
+            }));
+        }
+        else{
+            setFormAcc((prevState) => ({
+                ...prevState,
+                gradeAccError: ''
+            }));
+        } 
 
         if (formAcc.emailAcc === '') {
             setFormAcc((prevState) => ({
@@ -195,11 +207,11 @@ const MyaccInfo = () => {
     };
 
     const btnatldisabled = () => {
-        if (formAcc.nameAcError || formAcc.lnameAcError || formAcc.emailAcError || formAcc.passAcError || formAcc.cpasswordAccError) return (true);
-        else if (formAcc.nameAcc === "" || formAcc.lnameAcc === "" || formAcc.emailAcc === "" || formAcc.passwordAcc === "" || formAcc.cpasswordAcc === "") return (true);
+        if (formAcc.nameAcError || formAcc.lnameAcError || formAcc.emailAcError || formAcc.passAcError || formAcc.cpasswordAccError || formAcc.gradeAccError) return (true);
+        else if (formAcc.nameAcc === "" || formAcc.lnameAcc === "" || formAcc.emailAcc === "" || formAcc.passwordAcc === "" || formAcc.cpasswordAcc === "" || formAcc.chosegrade === "") return (true);
         else return (false);
     }
-
+    console.log(formAcc);
     return (
         <div className="myacc-container">
             <div className='imac'>
@@ -215,8 +227,8 @@ const MyaccInfo = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur} />
                             <label htmlFor="name" className="nameact-lab" >Nombres</label>
-                            {formAcc.nameRError && (
-                                <div className="error-message">{formAcc.nameRError}</div>
+                            {formAcc.nameAcError && (
+                                <div className="error-message">{formAcc.nameAcError}</div>
                             )}
                         </div>
                         <div className="inp-actlname">
@@ -225,22 +237,26 @@ const MyaccInfo = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur} />
                             <label htmlFor="apellidos" className="lnameact-lab" >Apellidos</label>
-                            {formAcc.lnameRError && (
-                                <div className="error-message">{formAcc.lnameRError}</div>
+                            {formAcc.lnameAcError && (
+                                <div className="error-message">{formAcc.lnameAcError}</div>
                             )}
                         </div>
                         <div className='sh-gr'>
                             <div className="inpact-sch">
                                 <label htmlFor="grade" className="schact-lab" >Seleccione su curso:</label>
                                 <select className="schact-ch" id="chosegrade" name="chosegrade"
-
-                            >
+                                 value={formAcc.chosegrade}
+                                 onChange={handleChange}
+                                 onBlur={handleBlur}>
+                                     <option value="">Seleccione</option>
                                 {gradeAcc.map((grade) => (
                                     <option key={grade.id} value={grade.id}>
                                         {grade.nombre_grado}
                                     </option>
                                 ))}
                             </select>
+                            {formAcc.gradeAccError && (
+                                <div className="error-message">{formAcc.gradeAccError}</div> )}
                         </div>
 
                         <div className="inpact-sch">
@@ -260,8 +276,8 @@ const MyaccInfo = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur} />
                             <label htmlFor="email" className="labelact" >Correo Electronico</label>
-                            {formAcc.emailRError && (
-                                <div className="error-message">{formAcc.emailRError}</div>
+                            {formAcc.emailAcError && (
+                                <div className="error-message">{formAcc.emailAcError}</div>
                             )}
                         </div>
                         <div className="inp-passact">
@@ -270,8 +286,8 @@ const MyaccInfo = () => {
                                 onChange={handleChange}
                                 onBlur={handleBlur} />
                             <label htmlFor="password" className="labelcxact">Contraseña</label>
-                            {formAcc.passRError && (
-                                <div className="error-message">{formAcc.passRError}</div>
+                            {formAcc.passAcError && (
+                                <div className="error-message">{formAcc.passAcError}</div>
                             )}
                         </div>
                         <div className="inp-cpassact">
