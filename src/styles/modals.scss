@@ -1,4 +1,6 @@
 @import '__vars';
+$mobile:425px;
+$tablet:768px;
 
 .bodyah {
     width: 100%;
@@ -12,11 +14,25 @@
 .overlay {
     position: absolute;
     left: 50%;
-    top: 60%;
+    top: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
-    height: 100%;
+    width: 830px;
+    height: 800px;
     padding-top: 5%;
+    @media only screen and (max-width:$mobile){
+        &{
+            width: 320px;
+            height: 340px;
+            top: 40%;
+            padding-top: 0%;
+        }
+    }
+    @media only screen and (min-width:426px) and (max-width:$tablet){
+        &{
+            width: 500px;
+            height: 505px;
+        }
+    }
 }
 
 .modal-container {
@@ -32,6 +48,18 @@
     color: var(--very-light-pink);
     display: flex;
     flex-direction: column;
+    @media only screen and (max-width:$mobile){
+        &{
+            width: 300px;
+            height: 340px;
+        }
+    }
+    @media only screen and (min-width:426px) and (max-width:$tablet){
+        &{
+            width: 600px;
+            height: 605px;
+        }
+    }
 }
 
 .mat-x {
@@ -79,6 +107,8 @@
 .lo-tex {
     display: flex;
     flex-direction: row;
+    text-align: center;
+    align-items: center;
 }
 
 .txt-dud {
@@ -102,13 +132,25 @@
 }
 
 .txt-f {
-    margin-top: 10%;
-    margin-left: 9%;
-    width: 50%;
+    margin-top: 5%;
+    width: max-content;
     font-weight: bold;
+    font-size: 20px;
     color: var(--select--dark-blue);
     text-align: center;
-    float: left;
+    @media only screen and (max-width:$mobile){
+        &{
+           margin-top: 3%;
+           font-size: 15px;
+        }
+    }
+    @media only screen and (min-width:426px) and (max-width:$tablet){
+        &{
+            width: 600px;
+            height: 605px;
+        }
+    }
+    
 }
 
 .hi {
@@ -120,6 +162,20 @@
     border-radius: 50%;
     margin-top: 10px;
     margin: auto;
+    @media only screen and (max-width:$mobile){
+        &{
+            width: 85px;
+            height: 100px;
+            top: 40%;
+            padding-top: 0%;
+        }
+    }
+    @media only screen and (min-width:426px) and (max-width:$tablet){
+        &{
+            width: 100px;
+            height: 105px;
+        }
+    }
 }
 
 .solve {
@@ -188,26 +244,4 @@
 .btn-modal:hover {
     background-color: var(--shadow-blue);
     transform: translateY(-2px);
-}
-
-
-@media (max-width: 640px) {
-    .modal-container {
-        position: absolute;
-        padding: 2% 2% 2% 2%;
-        margin: 0;
-        width: 100%;
-        height: max-content;
-        background-color: var(--white);
-        border: 1px solid var(--baby-blue);
-        border-radius: 8px;
-        cursor: pointer;
-        color: var(--very-light-pink);
-        display: flex;
-        flex-direction: column;
-    }
-
-    .hi {
-        width: 50%;
-    }
 }
