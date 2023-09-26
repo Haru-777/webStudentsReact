@@ -17,7 +17,7 @@ $tablet:768px;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 830px;
-    height: 800px;
+    height: max-content;
     padding-top: 5%;
     @media only screen and (max-width:$mobile){
         &{
@@ -51,7 +51,7 @@ $tablet:768px;
     @media only screen and (max-width:$mobile){
         &{
             width: 300px;
-            height: 340px;
+            height: max-content;
         }
     }
     @media only screen and (min-width:426px) and (max-width:$tablet){
@@ -109,6 +109,17 @@ $tablet:768px;
     flex-direction: row;
     text-align: center;
     align-items: center;
+    @media only screen and (max-width:$mobile){
+        &{
+            font-size: 15px;
+        }
+    }
+    @media only screen and (min-width:426px) and (max-width:$tablet){
+        &{
+            width: 600px;
+            height: 605px;
+        }
+    }
 }
 
 .txt-dud {
