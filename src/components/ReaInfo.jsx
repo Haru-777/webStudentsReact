@@ -3,7 +3,7 @@ import '../styles/matterinfo.scss';
 import Modal from '../modals/Modal';
 import axios from 'axios';
 
-export const ReaInfo = () => {
+export const ReaInfo = ({filter}) => {
   const [openModal, setOpenModal] = useState(false);
   const [responser, setresponser] = useState([]);
 
@@ -17,9 +17,19 @@ export const ReaInfo = () => {
       console.log(error);
     })
   }, [])
+
+  const datafilterREA = () => {
+    if(filter == ''){
+      return(responser)
+    }
+    else {
+      return(responser.filter(itemfilter => itemfilter.nombre_CREA.toLowerCase().includes(filter.toLowerCase())))
+    }
+  }
+
   return (
     <>
-      {responser.map((rea, indexr) => {
+      {datafilterREA().map((rea, indexr) => {
         return (
           <>
             <div className='matterInfo' key={indexr} onClick={() => setOpenModal(true)}>
