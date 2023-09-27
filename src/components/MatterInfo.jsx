@@ -3,7 +3,7 @@ import '../styles/matterinfo.scss';
 import Modal from '../modals/Modal';
 import axios from 'axios';
 
-const Matterinfo = () => {
+const Matterinfo = ({filter}) => {
     const [matter, setMatter] = useState('');
     const [responsem, setresponsem] = useState([]);
     const [idact, setIdact] = useState(0);
@@ -27,10 +27,19 @@ const Matterinfo = () => {
             console.log(error);
         })
     }, [])
+    
+    const dataFilterAcc = () => {
+        if(filter == ''){
+            return(responsem)
+        }
+        else{
+            return(responsem.filter(itemfilter => itemfilter.titulo_actividad.toLowerCase().includes(filter.toLowerCase())))
+        }
+    } 
 
     return (
         <>
-            {responsem.map((activity, indexa) => {
+            {dataFilterAcc().map((activity, indexa) => {
 
                 return (
                     <>

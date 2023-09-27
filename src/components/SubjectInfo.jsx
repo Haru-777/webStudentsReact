@@ -7,7 +7,7 @@ import axios from 'axios';
 const SubjectInfo = ({filter}) => {
   const [response, setresponse] = useState([]);
   const navigate = useNavigate();
-  console.log(filter);
+  
  
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const SubjectInfo = ({filter}) => {
       return(response.filter(itemfilter => itemfilter.nombre_materiaActiva.toLowerCase().includes(filter.toLowerCase())))
     }
   }
-  console.log(response);
+  
 
   return (
     <>
