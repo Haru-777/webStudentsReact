@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink,useNavigate } from "react-router-dom";
 import '../styles/login.scss';
 import '../styles/global.scss';
 import logo from '../assets/logos/Logo-in.png';
@@ -8,6 +8,7 @@ import axios from "axios";
 
 const Login = () => {
     const form = useRef(null);
+    const navigate = useNavigate();
 
     const [formLogin, setFormLogin] = useState({
         usename: '',
@@ -22,6 +23,10 @@ const Login = () => {
             [name]: value
         }));
     };
+    const handleGuest = () => {
+        navigate("/guest");
+        
+    }
 
     const handleBlur = () => {
         const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -121,6 +126,11 @@ const Login = () => {
                     </button>
 
                 </form>
+                <button onClick={() => navigate("/guest")}
+                        className="btnlogin"
+                        >
+                        Iniciar como Invitado
+                    </button>
                 <div className="txtcuenta">
                     ¿No tienes cuenta? <a name="linkRegister" className="txtreg" href="/register">Registrate</a>
                 </div>

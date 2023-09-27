@@ -40,6 +40,7 @@ const App = () => {
             {!isvalid && <Routes>
                 <Route path='/*' element ={ <Login/>} />
                 <Route path='/register' element ={ <Register/>} />
+                <Route exact path='/guest' element ={ <Guest/>} />
             </Routes> }
             {isvalid &&
         <Routes>
@@ -49,7 +50,6 @@ const App = () => {
             <Route exact path='/test' element ={<PraAtTest/>} />
             <Route exact path='/doubts' element ={ <Doubts/>} />
             <Route exact path='/downloads' element ={ <Downloads/>} />
-            <Route exact path='/guest' element ={ <Guest/>} />
             <Route exact path='/myAcount' element ={ <MyAcount/>} />
             <Route exact path='/myCourses' element ={ <MyCourses/>} />
             <Route exact path='/mySubjects' element={<MySubjects/>} />
