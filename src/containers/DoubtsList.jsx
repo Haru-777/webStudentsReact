@@ -6,22 +6,26 @@ import Infdoubts from '../modals/Infdoubts';
 import Doubtsinfo from '../components/Doubtsinfo';
 import Filters from './Filters';
 import Information from '../components/Information';
+import SearchDoub from '../components/SearchDoub';
 
 const DoubtsList = () => {
 
+	const [filterDoub, setFilterDoub] = useState('');
 	const [openInfoDoubts, setOpenInfoDoubts] = useState(false);
+	const handleChange = (e) => {setFilterDoub(e.target.value)}
+    
 
 	return (
 		<section className="main-container">
 			<div className='container-doubts'>
 				<div className='search-cp'>
-					<Filters />
+					<SearchDoub handleChange={handleChange} />
 					<Information onClick={() => setOpenInfoDoubts(true)}/>
 					<Infdoubts open ={openInfoDoubts} onClose={() =>setOpenInfoDoubts(false)}/>
 				</div>
 				<ul className='matterList'>
 					<li>
-						<Doubtsinfo />
+						<Doubtsinfo  filter={filterDoub}/>
 					</li>
 				</ul>
 			</div>

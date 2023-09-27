@@ -4,7 +4,7 @@ import ModalDoubt from '../modals/ModalDoubts';
 import question from '../assets/logos/qestion.png';
 import axios from "axios";
 
-export const Doubtsinfo = () => {
+export const Doubtsinfo = ({filter}) => {
     const [response, setresponse] = useState('');
     const [responseq, setresponseq] = useState([]);
     const [matter, setMatter] = useState('');
@@ -49,18 +49,26 @@ export const Doubtsinfo = () => {
         })
     }, [])
 
-    console.log(response);
+    const dataFilterDoub = () => {
+        if (filter == '') {
+            return(responseq)
+        }
+        else {
+            return(responseq.filter(itemfilter => itemfilter.pregunta.toLowerCase().includes(filter.toLowerCase())))
+        }
+    }
+    //console.log(response);
     return (
         <>
 
-            {responseq.map((doubt, index) => {
+            {dataFilterDoub().map((doubt, index) => {
                 return (
                     <div className='doubtsInfo' key={index} onClick={() => handleclick(doubt.id_duda)}>
                         <div className='info' >
                             <h2>Pregunta:
                                 {doubt.pregunta}
                             </h2>
-                            <p>Referencia pregunta: {doubt. id_duda}</p>
+                            <p>Referencia pregunta: {doubt.id_duda}</p>
                             <p>Estado: {doubt.estado_duda}</p>
                             {matter}
                         </div>
