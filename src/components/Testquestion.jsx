@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/testquestion.scss';
 import preguntas from '../pages/Preguntas';
+import { useNavigate } from 'react-router-dom';
 
 const Testquestion = () => {
     const [acQuestion, setacQuestion] = useState(0);
@@ -8,15 +9,27 @@ const Testquestion = () => {
     const [isFinish, setisFinish] = useState(false);
     const [restTime, setrestTime] = useState(10);
     const [areDisable, setareDisable] = useState(false);
+    const navigate = useNavigate();
 
     function handleAnswSubmit(isCorrect, e) {
-        //puntuacion
-        if (isCorrect) setpuntuacion(puntuacion + 1);
+        //puntuacion  
+        setrestTime(10)      
+        if (isCorrect) {
+            setpuntuacion(puntuacion + 1)
+        };
+        if (acQuestion === preguntas.length - 1) {
+            setisFinish(true);
+        }
+        else {
+            setacQuestion(acQuestion + 1);
+
+        }
+
         //estilos
         e.target.classList.add(isCorrect ? "correct" : "incorrect");
         //cambiar a la sg pregunta
 
-        setTimeout(() => {
+        /* setTimeout(() => {
             if (acQuestion === preguntas.length - 1) {
                 setisFinish(true);
             }
@@ -24,10 +37,10 @@ const Testquestion = () => {
                 setacQuestion(acQuestion + 1);
 
             }
-        }, 1000);
+        }, 1000); */
     }
 
-    useEffect(() => {
+    useEffect(() => { 
         const intervalo = setInterval(() => {
             if (restTime > 0) setrestTime((prev) => prev - 1);
             if (restTime === 0) setareDisable(true);
@@ -38,7 +51,9 @@ const Testquestion = () => {
     if (isFinish) return (
         <main className='test-container'>
             <div className='up-cont'></div>
-            <span> Obtuviste {puntuacion} de {preguntas.length}</span>
+            <h3 className ="titulo-result"> Obtuviste {puntuacion} de {preguntas.length}</h3>
+            <button onClick={() => navigate("/classActy")} className='pick-btn'>Practica en Clase</button>
+            <button onClick={() => navigate("/test")} className='pick-btn'>Realiza tu Examen</button>
         </main>
     )
 
@@ -68,14 +83,15 @@ const Testquestion = () => {
                         <span className='rest-time'>Tiempo restante: {restTime} </span>
                     ) : (
                         <div className='dt'>
-                        <p className='txt-t'>Se ha terminado tu tiempo, porfavor da click en continuar.</p>
-                        <button className='ctn-btn'
-                            onClick={() => {
-                            setrestTime (10);
-                            setareDisable(false);
-                            setacQuestion(acQuestion + 1 ); }}>
-                            Continuar
-                        </button>
+                            <p className='txt-t'>Se ha terminado tu tiempo, porfavor da click en continuar.</p>
+                            <button className='ctn-btn'
+                                onClick={() => {
+                                    setrestTime(10);
+                                    setareDisable(false);
+                                    setacQuestion(acQuestion + 1);
+                                }}>
+                                Continuar
+                            </button>
                         </div>
                     )}
                 </div>

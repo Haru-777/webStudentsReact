@@ -24,6 +24,11 @@
 .titulo-pregunta {
     font-family: 'Quicksand', sans-serif;
 }
+.titulo-result{
+    font-size: 32px;
+    margin-top: 50px;
+    color: var(--txt--dark-blue);
+}
 .down-cont{
     width: 100%;
     display: flex;
@@ -97,5 +102,27 @@ button:hover {
 }
 .ctn-btn:hover {
     background-color: var(--very-light-pinkr);
+    transform: translateY(-2px);
+}
+.pick-btn{
+    margin-top: 30px;
+    width: 300px;
+    height: 45px;
+    display: flex;
+    padding: 15px;
+    border: none;
+    text-decoration: none;
+    background-color: var(--txt--dark-blue);
+    box-shadow: 2px 2px 0.5px 0.5px var(--baby-blue);
+    color: white;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.pick-btn:hover {
+    background-color: var(-shadow-blue);
     transform: translateY(-2px);
 }
