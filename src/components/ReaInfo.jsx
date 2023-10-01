@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import '../styles/matterinfo.scss';
 import Modal from '../modals/Modal';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export const ReaInfo = ({filter}) => {
-  const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
   const [responser, setresponser] = useState([]);
 
   useEffect(() => {
@@ -32,12 +33,11 @@ export const ReaInfo = ({filter}) => {
       {datafilterREA().map((rea, indexr) => {
         return (
           <>
-            <div className='matterInfo' key={indexr} onClick={() => setOpenModal(true)}>
+            <div className='matterInfo' key={indexr} onClick={() => navigate("/myactivity")}>
               <h2>{rea.nombre_CREA}</h2>
               <p>{rea.id_grado} </p>
 
             </div>
-            <Modal open={openModal} onClose={() => setOpenModal(false)} />
           </>
         )
       })}
