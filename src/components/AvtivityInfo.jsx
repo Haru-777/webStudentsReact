@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/matterinfo.scss';
+import ProgressBar from './ProgressBar';
 
 export const AvtivityInfo = () => {
     return (
@@ -9,7 +10,7 @@ export const AvtivityInfo = () => {
             <p>Nota Quizz: </p>
             <p>Nota Evaluación: </p>
             <div>
-                <p>Barra de progreso</p>
+                <ProgressBar />
             </div>
         </div>
     );

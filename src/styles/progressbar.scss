@@ -1,0 +1,25 @@
+@import '__vars';
+$mobile:425px;
+$tablet:768px;
+
+
+.parentdiv {
+    height: 20px;
+    width: 90%;
+    background-color: var(--select-bluee);
+    border-radius: 40px;
+    margin: 50px;
+  }
+  
+.childdiv {
+    height: 20px;
+    background-color: var(--shadow-blue) ;
+    border-radius:40px;
+    text-align: right;
+  }
+  
+.progresstext  {
+    padding: 10px;
+    color: var(--txt--dark-blue);
+    font-weight: 16px;
+  }
