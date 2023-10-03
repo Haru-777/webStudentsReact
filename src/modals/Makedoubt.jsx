@@ -40,7 +40,7 @@ const Makedoubt = ({ openM, onCloseM }) => {
                 pregunta: formQuestion.question
             }
         }).then(function(response){
-            localStorage.setItem("lquestion", JSON.stringify(response.data))
+            //localStorage.setItem("lquestion", JSON.stringify(response.data))
             window.location.reload()
         }).catch(function(error){
             console.log(error)

@@ -2,31 +2,61 @@ import React, { useEffect, useState } from 'react';
 import '../styles/testquestion.scss';
 import preguntas from '../pages/Preguntas';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Testquestion = () => {
-    const [acQuestion, setacQuestion] = useState(0);
+    const [acQuestion, setacQuestion] = useState(1);
     const [puntuacion, setpuntuacion] = useState(0);
     const [isFinish, setisFinish] = useState(false);
     const [restTime, setrestTime] = useState(10);
     const [areDisable, setareDisable] = useState(false);
+    const [responset, setresponset] = useState([]);
+    const [preguntasLength, setPreguntasLength] = useState([])
+    const [respuestas, setRespuestas] = useState([]);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const info_question = JSON.parse(localStorage.getItem("idmateria"));
+        //if (!info_question.student) return
+        const id_qstudet = info_question[0].id_actividad;
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/loadActivity',
+            data: {
+                id_actividad: id_qstudet,
+            
+            }
+
+        }).then(function (response) {
+            console.log('usefect');  
+            setresponset(response.data)
+            setRespuestas([response.data[0]['A'+acQuestion+'1'], response.data[0]['A'+acQuestion+'2'], response.data[0]['A'+acQuestion+'3'],response.data[0]['A'+acQuestion+'4']])
+        }).catch(function (error) {
+            console.log(error);
+        })
+    }, [])
+
+
+
     function handleAnswSubmit(isCorrect, e) {
-        //puntuacion  
-        setrestTime(10)      
+        //puntuacion
+        setacQuestion(acQuestion + 1);
+        console.log(acQuestion)
+        setPreguntasLength([...preguntasLength,responset[0]['Q'+(acQuestion+1)]])
+        if(responset[0]['Q'+(acQuestion+1)]){
+            setRespuestas([responset[0]['A'+(acQuestion+1)+'1'], responset[0]['A'+(acQuestion+1)+'2'], responset[0]['A'+(acQuestion+1)+'3'],responset[0]['A'+(acQuestion+1)+'4']])
+        }
+        else {
+            console.log(responset[0]['Q1'])
+            setisFinish(true);
+        }
+        setrestTime(10)
         if (isCorrect) {
             setpuntuacion(puntuacion + 1)
         };
-        if (acQuestion === preguntas.length - 1) {
-            setisFinish(true);
-        }
-        else {
-            setacQuestion(acQuestion + 1);
-
-        }
 
         //estilos
-        e.target.classList.add(isCorrect ? "correct" : "incorrect");
+        //e.target.classList.add(isCorrect + 1 === responset[0]['CA'+ acQuestion] ? "correct" : "incorrect");
         //cambiar a la sg pregunta
 
         /* setTimeout(() => {
@@ -40,7 +70,7 @@ const Testquestion = () => {
         }, 1000); */
     }
 
-    useEffect(() => { 
+    useEffect(() => {
         const intervalo = setInterval(() => {
             if (restTime > 0) setrestTime((prev) => prev - 1);
             if (restTime === 0) setareDisable(true);
@@ -51,53 +81,60 @@ const Testquestion = () => {
     if (isFinish) return (
         <main className='test-container'>
             <div className='up-cont'></div>
-            <h3 className ="titulo-result"> Obtuviste {puntuacion} de {preguntas.length}</h3>
+            <h3 className="titulo-result"> Obtuviste {puntuacion} de {preguntasLength.length}</h3>
             <button onClick={() => navigate("/classActy")} className='pick-btn'>Practica en Clase</button>
             <button onClick={() => navigate("/test")} className='pick-btn'>Realiza tu Examen</button>
         </main>
     )
-
+    console.log(preguntasLength.length)
 
     return (
-        <div className='test-container'>
-            <div className='up-cont'>
-                <div className='numero-pregunta'>
-                    <span>pregunta {acQuestion + 1} de</span> {preguntas.length}
-                </div>
-                <div className='titulo-pregunta'>
-                    <h3>{preguntas[acQuestion].titulo}</h3>
-                </div>
-            </div>
-            <div className='down-cont'>
-                {preguntas[acQuestion].opciones.map((respuesta) => (
-                    <button
-                        disabled={areDisable}
-                        key={respuesta.textoRespuesta}
-                        onClick={(e) => handleAnswSubmit(respuesta.isCorrect, e)
-                        }>
-                        {respuesta.textoRespuesta}
-                    </button>
-                ))}
-                <div>
-                    {!areDisable ? (
-                        <span className='rest-time'>Tiempo restante: {restTime} </span>
-                    ) : (
-                        <div className='dt'>
-                            <p className='txt-t'>Se ha terminado tu tiempo, porfavor da click en continuar.</p>
-                            <button className='ctn-btn'
-                                onClick={() => {
-                                    setrestTime(10);
-                                    setareDisable(false);
-                                    setacQuestion(acQuestion + 1);
-                                }}>
-                                Continuar
-                            </button>
+        <>
+            {responset.map((question, indext) => {
+                return (
+                    <div className='test-container' key={indext}>
+                        <div className='up-cont'>
+                            <div className='numero-pregunta'>
+                                <span>pregunta {acQuestion}</span>
+                            </div>
+                            <div className='titulo-pregunta'>
+                                <h3>{question['Q'+acQuestion]}</h3>
+                            </div>
                         </div>
-                    )}
-                </div>
+                        <div className='down-cont'>
+                            {respuestas.map((respuesta) => (
+                                <button
+                                    disabled={areDisable}
+                                    key={respuesta.textoRespuesta}
+                                    onClick={(e) => handleAnswSubmit(respuestas.indexOf(respuesta), e)
+                                    }>
+                                    {respuesta}
+                                </button>
+                            ))}
+                            <div>
+                                {!areDisable ? (
+                                    <span className='rest-time'>Tiempo restante: {restTime} </span>
+                                ) : (
+                                    <div className='dt'>
+                                        <p className='txt-t'>Se ha terminado tu tiempo, porfavor da click en continuar.</p>
+                                        <button className='ctn-btn'
+                                            onClick={(e) => {
+                                                setrestTime(10);
+                                                setareDisable(false);
+                                                handleAnswSubmit(false,e)
+                                            }}>
+                                            Continuar
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
 
-            </div>
-        </div>
+                        </div>
+                    </div>
+
+                )
+            })}
+        </>
     )
 }
 

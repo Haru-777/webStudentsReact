@@ -29,6 +29,7 @@ const SubjectInfo = ({filter}) => {
     })
   }, [])
 
+
   const dataFilter = () => { 
     if (filter == '') {
       return(response)

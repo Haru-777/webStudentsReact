@@ -29,7 +29,7 @@ const PracAtHome = () => {
                 volume='0.8'
                 loop />
             <div className='bnt-quest'>
-                <button className='btn-modalqt'>Realiza el TEST</button>
+                <button onClick={() => navigate("/test")} className='btn-modalqt'>Realiza el TEST</button>
                 <img src={question} alt="Pregunta" className='questionh'  onClick={() => setopenMaked(true)}></img>
                 <Makedoubt openM={openMaked} onCloseM={()=> setopenMaked(false)}/>
             </div>
