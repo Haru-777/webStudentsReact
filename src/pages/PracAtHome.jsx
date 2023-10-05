@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import ReactPlayer from 'react-player';
 import { useNavigate } from 'react-router-dom';
 import question from '../assets/logos/qestion.png';
 import InfMatter from '../modals/InfMatter';
@@ -7,6 +6,7 @@ import Makedoubt from '../modals/Makedoubt';
 import '../styles/global.scss';
 import '../styles/modals.scss';
 import Information from '../components/Information';
+import VideoplayerComp from '../containers/VideoplayerComp';
 
 
 const PracAtHome = () => {
@@ -22,14 +22,8 @@ const PracAtHome = () => {
                 <InfMatter openx={openInfMatter} onClosex ={() => setopenInfMatter(false)}/>
                 <p className="close-btn" onClick={() => navigate("/myCourses")}>X</p>
             </div>
-            <ReactPlayer
-                url={require('../documents/ver.mp4')}
-                controls
-                playing
-                volume='0.8'
-                loop />
+            <VideoplayerComp/>
             <div className='bnt-quest'>
-                <button onClick={() => navigate("/test")} className='btn-modalqt'>Realiza el TEST</button>
                 <img src={question} alt="Pregunta" className='questionh'  onClick={() => setopenMaked(true)}></img>
                 <Makedoubt openM={openMaked} onCloseM={()=> setopenMaked(false)}/>
             </div>

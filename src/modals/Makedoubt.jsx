@@ -28,7 +28,7 @@ const Makedoubt = ({ openM, onCloseM }) => {
         const info_mduda = JSON.parse(localStorage.getItem("idmateria"));
         if(!info_lduda.student && !info_mduda.student) return
         const id_dstudent = info_lduda.student.id_estudiante;
-        const id_dmatter = info_mduda[0].id_actividad;
+        const id_dmatter = info_mduda.id_actividad;
         
         event.preventDefault();
         axios ({
@@ -46,7 +46,7 @@ const Makedoubt = ({ openM, onCloseM }) => {
             console.log(error)
         })
     };
-    console.log(    );
+    
     return (
         <div className='overlaym'>
 
