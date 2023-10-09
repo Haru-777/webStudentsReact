@@ -23,7 +23,6 @@ const Matterinfo = ({filter}) => {
             }
         }).then((response) => {
             setresponsem(response.data)
-            localStorage.setItem("idmateria", JSON.stringify(response.data));
         }).catch((error) => {
             console.log(error);
         })

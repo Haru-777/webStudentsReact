@@ -16,9 +16,9 @@ const Testquestion = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const info_question = JSON.parse(localStorage.getItem("idmateria"));
+        const info_question = JSON.parse(localStorage.getItem("materia"));
         //if (!info_question.student) return
-        const id_qstudet = info_question[0].id_actividad;
+        const id_qstudet = info_question.id_actividad;
         axios({
             method: 'post',
             url: 'http://localhost:3001/api/loadActivity',
@@ -28,7 +28,7 @@ const Testquestion = () => {
             }
 
         }).then(function (response) {
-            console.log('usefect');  
+            console.log(response);  
             setresponset(response.data)
             setRespuestas([response.data[0]['A'+acQuestion+'1'], response.data[0]['A'+acQuestion+'2'], response.data[0]['A'+acQuestion+'3'],response.data[0]['A'+acQuestion+'4']])
         }).catch(function (error) {

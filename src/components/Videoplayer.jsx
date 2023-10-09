@@ -25,7 +25,7 @@ const Videoplayer = ({ onVideoEnd, playerRef, videoWatched }) => {
 
     return (
         <>
-                return (
+                
                     <ReactPlayer
                         url={responsev.urlvideo}
                         controls
@@ -34,7 +34,7 @@ const Videoplayer = ({ onVideoEnd, playerRef, videoWatched }) => {
                         onEnded={onVideoEnd}
                         ref={playerRef}
                         style={videoWatched ? { display: "none" } : null} />
-                )
+                
             
 
         </>
