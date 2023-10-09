@@ -37,6 +37,12 @@ const Matterinfo = ({filter}) => {
             return(responsem.filter(itemfilter => itemfilter.titulo_actividad.toLowerCase().includes(filter.toLowerCase())))
         }
     } 
+    const handleMateria = (data) => {
+        setOpenModal(true);
+        console.log(data)
+        localStorage.setItem('materia', JSON.stringify({id_actividad:data.id_actividad, id_colegio:data.id_colegio, id_grado:data.id_grado}))
+    }
+    console.log(dataFilterAcc())
 
     return (
         <>
@@ -44,7 +50,7 @@ const Matterinfo = ({filter}) => {
 
                 return (
                     <>
-                        <div className='matterInfo' key={indexa} onClick={() => setOpenModal(true)}>
+                        <div className='matterInfo' key={indexa} onClick={() => handleMateria(activity)}>
                             <h2>Actividad: {activity.titulo_actividad}</h2>
                             <p>Objetivo: {activity.descripcion_actividad}</p>
                             {matter}
