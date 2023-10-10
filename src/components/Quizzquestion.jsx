@@ -4,33 +4,33 @@ import preguntas from '../pages/Preguntas';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Testquestion = () => {
-    const [actQuestion, setactQuestion] = useState(1);
-    const [puntuaciont, setpuntuaciont] = useState(0);
-    const [isFinisht, setisFinisht] = useState(false);
-    const [restTimet, setrestTimet] = useState(10);
-    const [areDisablet, setareDisablet] = useState(false);
-    const [responsett, setresponsett] = useState([]);
-    const [preguntastLength, setPreguntastLength] = useState([])
-    const [respuestast, setRespuestast] = useState([]);
+const Quizzquestion = () => {
+    const [acQuestion, setacQuestion] = useState(1);
+    const [puntuacion, setpuntuacion] = useState(0);
+    const [isFinish, setisFinish] = useState(false);
+    const [restTime, setrestTime] = useState(10);
+    const [areDisable, setareDisable] = useState(false);
+    const [responset, setresponset] = useState([]);
+    const [preguntasLength, setPreguntasLength] = useState([])
+    const [respuestas, setRespuestas] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const info_questiont = JSON.parse(localStorage.getItem("materia"));
+        const info_question = JSON.parse(localStorage.getItem("materia"));
         //if (!info_question.student) return
-        const id_tstudet = info_questiont.id_actividad;
+        const id_qstudet = info_question.id_actividad;
         axios({
             method: 'post',
             url: 'http://localhost:3001/api/loadActivity',
             data: {
-                id_actividad: id_tstudet,
+                id_actividad: id_qstudet,
             
             }
 
         }).then(function (response) {
             //console.log(response);  
-            setresponsett(response.data)
-            setRespuestast([response.data[0]['EA'+actQuestion+'1'], response.data[0]['EA'+actQuestion+'2'], response.data[0]['EA'+actQuestion+'3'],response.data[0]['EA'+actQuestion+'4']])
+            setresponset(response.data)
+            setRespuestas([response.data[0]['A'+acQuestion+'1'], response.data[0]['A'+acQuestion+'2'], response.data[0]['A'+acQuestion+'3'],response.data[0]['A'+acQuestion+'4']])
         }).catch(function (error) {
             console.log(error);
         })
@@ -40,19 +40,19 @@ const Testquestion = () => {
 
     function handleAnswSubmit(isCorrect, e) {
         //puntuacion
-        setactQuestion(actQuestion + 1);
+        setacQuestion(acQuestion + 1);
         //console.log(acQuestion)
-        setPreguntastLength([...preguntastLength,responsett[0]['EQ'+(actQuestion+1)]])
-        if(responsett[0]['EQ'+(actQuestion+1)]){
-            setRespuestast([responsett[0]['EA'+(actQuestion+1)+'1'], responsett[0]['EA'+(actQuestion+1)+'2'], responsett[0]['EA'+(actQuestion+1)+'3'],responsett[0]['EA'+(actQuestion+1)+'4']])
+        setPreguntasLength([...preguntasLength,responset[0]['Q'+(acQuestion+1)]])
+        if(responset[0]['Q'+(acQuestion+1)]){
+            setRespuestas([responset[0]['A'+(acQuestion+1)+'1'], responset[0]['A'+(acQuestion+1)+'2'], responset[0]['A'+(acQuestion+1)+'3'],responset[0]['A'+(acQuestion+1)+'4']])
         }
         else {
             //console.log(responset[0]['Q1'])
-            setisFinisht(true);
+            setisFinish(true);
         }
-        setrestTimet(10)
+        setrestTime(10)
         if (isCorrect) {
-            setpuntuaciont(puntuaciont + 1)
+            setpuntuacion(puntuacion + 1)
         };
 
         //estilos
@@ -72,55 +72,55 @@ const Testquestion = () => {
 
     useEffect(() => {
         const intervalo = setInterval(() => {
-            if (restTimet > 0) setrestTimet((prev) => prev - 1);
-            if (restTimet === 0) setareDisablet(true);
+            if (restTime > 0) setrestTime((prev) => prev - 1);
+            if (restTime === 0) setareDisable(true);
         }, 1000);
         return () => clearInterval(intervalo);
-    }, [restTimet]);
+    }, [restTime]);
 
-    if (isFinisht) return (
+    if (isFinish) return (
         <main className='test-container'>
             <div className='up-cont'></div>
-            <h3 className="titulo-result"> Obtuviste {puntuaciont} de {preguntastLength.length}</h3>
-            <h1 className="titulo-end"> Finalizaste tu actividad, da click en "Mis Materias" para continuar aprendiendo</h1>
-            <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Mis Materias</button>
+            <h3 className="titulo-result"> Obtuviste {puntuacion} de {preguntasLength.length}</h3>
+            <button onClick={() => navigate("/classActy")} className='pick-btn'>Practica en Clase</button>
+            <button onClick={() => navigate("/test")} className='pick-btn'>Realiza tu Examen</button>
         </main>
     )
     //console.log(preguntasLength.length)
 
     return (
         <>
-            {responsett.map((question, indextt) => {
+            {responset.map((question, indext) => {
                 return (
-                    <div className='test-container' key={indextt}>
+                    <div className='test-container' key={indext}>
                         <div className='up-cont'>
                             <div className='numero-pregunta'>
-                                <span>pregunta {actQuestion}</span>
+                                <span>pregunta {acQuestion}</span>
                             </div>
                             <div className='titulo-pregunta'>
-                                <h3>{question['EQ'+actQuestion]}</h3>
+                                <h3>{question['Q'+acQuestion]}</h3>
                             </div>
                         </div>
                         <div className='down-cont'>
-                            {respuestast.map((respuesta) => (
+                            {respuestas.map((respuesta) => (
                                 <button
-                                    disabled={areDisablet}
+                                    disabled={areDisable}
                                     key={respuesta.textoRespuesta}
-                                    onClick={(e) => handleAnswSubmit(respuestast.indexOf(respuesta), e)
+                                    onClick={(e) => handleAnswSubmit(respuestas.indexOf(respuesta), e)
                                     }>
                                     {respuesta}
                                 </button>
                             ))}
                             <div>
-                                {!areDisablet ? (
-                                    <span className='rest-time'>Tiempo restante: {restTimet} </span>
+                                {!areDisable ? (
+                                    <span className='rest-time'>Tiempo restante: {restTime} </span>
                                 ) : (
                                     <div className='dt'>
                                         <p className='txt-t'>Se ha terminado tu tiempo, porfavor da click en continuar.</p>
                                         <button className='ctn-btn'
                                             onClick={(e) => {
-                                                setrestTimet(10);
-                                                setareDisablet(false);
+                                                setrestTime(10);
+                                                setareDisable(false);
                                                 handleAnswSubmit(false,e)
                                             }}>
                                             Continuar
@@ -138,4 +138,4 @@ const Testquestion = () => {
     )
 }
 
-export default Testquestion;
+export default Quizzquestion;

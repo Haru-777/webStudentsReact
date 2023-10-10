@@ -1,11 +1,11 @@
 import React from 'react';
-import Testquestion from '../components/Testquestion';
+import Quizzquestion from '../components/Quizzquestion';
 
 const Quizz = () => {
     return (
         <section className='main-container'>
             <div className='Bottom'>
-                <Testquestion/>
+                <Quizzquestion/>
             </div>
         </section>
     )

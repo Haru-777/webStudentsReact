@@ -12,7 +12,7 @@ const Matterinfo = ({filter}) => {
 
     useEffect(() => {
         const info_matter = JSON.parse(localStorage.getItem("infosubject"));
-        console.log(info_matter);
+        //console.log(info_matter);
         if(!info_matter) return 
         const id_materia = info_matter.id_materiaActiva
         axios({
@@ -38,10 +38,10 @@ const Matterinfo = ({filter}) => {
     } 
     const handleMateria = (data) => {
         setOpenModal(true);
-        console.log(data)
+        //console.log(data)
         localStorage.setItem('materia', JSON.stringify({id_actividad:data.id_actividad, id_colegio:data.id_colegio, id_grado:data.id_grado}))
     }
-    console.log(dataFilterAcc())
+    //console.log(dataFilterAcc())
 
     return (
         <>

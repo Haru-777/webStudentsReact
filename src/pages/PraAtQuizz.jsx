@@ -1,7 +1,7 @@
 import React from 'react'
 import Quizz from '../containers/Quizz';
 
-const PraAtTest = () => {
+const PraAtQuizz = () => {
   return (
     <div>
       <Quizz/>
@@ -9,4 +9,4 @@ const PraAtTest = () => {
   )
 }
 
-export default PraAtTest;
+export default PraAtQuizz;

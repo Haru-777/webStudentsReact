@@ -25,7 +25,7 @@ const Makedoubt = ({ openM, onCloseM }) => {
         event.preventDefault();
        
         const info_lduda = JSON.parse(localStorage.getItem("login"));
-        const info_mduda = JSON.parse(localStorage.getItem("idmateria"));
+        const info_mduda = JSON.parse(localStorage.getItem("materia"));
         if(!info_lduda.student && !info_mduda.student) return
         const id_dstudent = info_lduda.student.id_estudiante;
         const id_dmatter = info_mduda.id_actividad;

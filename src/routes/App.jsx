@@ -15,8 +15,9 @@ import NotFound from '../pages/NotFound';
 import '../styles/global.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PracAtHome from '../pages/PracAtHome';
-import PraAtTest from '../pages/PraAtTest';
+import PraAtQuizz from '../pages/PraAtQuizz';
 import PracAtSch from '../pages/PracAtSch';
+import PracAtTest from '../pages/PracAtTest';
 
 
 
@@ -47,7 +48,8 @@ const App = () => {
             <Route exact path='/activitys' element ={<Activitys/>} />
             <Route exact path='/myactivity' element ={<PracAtHome/>} />
             <Route exact path='/classActy' element ={<PracAtSch/>} />
-            <Route exact path='/test' element ={<PraAtTest/>} />
+            <Route exact path='/quizz' element ={<PraAtQuizz/>} />
+            <Route exact path='/test' element ={<PracAtTest/>} />
             <Route exact path='/doubts' element ={ <Doubts/>} />
             <Route exact path='/downloads' element ={ <Downloads/>} />
             <Route exact path='/myAcount' element ={ <MyAcount/>} />

@@ -1,10 +1,10 @@
 import React from 'react';
-import Quizz from '../containers/Quizz';
+import Workshop from '../components/Workshop';
 
 const PracAtSch = () => {
   return (
     <div>
-      <Quizz/>
+      <Workshop/>
     </div>
   )
 }

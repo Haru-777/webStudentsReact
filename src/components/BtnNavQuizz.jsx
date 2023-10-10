@@ -5,7 +5,7 @@ const BtnNavQuizz = () => {
     const navigate = useNavigate();
     return (
         <div>
-            <button onClick={() => navigate("/test")} className='btn-modalqt'>Realiza el TEST</button>
+            <button onClick={() => navigate("/quizz")} className='btn-modalqt'>Realiza el TEST</button>
         </div>
     )
 }
