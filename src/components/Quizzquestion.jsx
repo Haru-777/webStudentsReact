@@ -82,8 +82,7 @@ const Quizzquestion = () => {
         <main className='test-container'>
             <div className='up-cont'></div>
             <h3 className="titulo-result"> Obtuviste {puntuacion} de {preguntasLength.length}</h3>
-            <button onClick={() => navigate("/classActy")} className='pick-btn'>Practica en Clase</button>
-            <button onClick={() => navigate("/test")} className='pick-btn'>Realiza tu Examen</button>
+            <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Volver a mis materias</button>
         </main>
     )
     //console.log(preguntasLength.length)
