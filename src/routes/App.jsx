@@ -18,6 +18,7 @@ import PracAtHome from '../pages/PracAtHome';
 import PraAtQuizz from '../pages/PraAtQuizz';
 import PracAtSch from '../pages/PracAtSch';
 import PracAtTest from '../pages/PracAtTest';
+import PracAtHomeRea from '../pages/PracAtHomeRea';
 
 
 
@@ -46,7 +47,8 @@ const App = () => {
             {isvalid &&
         <Routes>
             <Route exact path='/activitys' element ={<Activitys/>} />
-            <Route exact path='/myactivity' element ={<PracAtHome/>} />
+            <Route exact path='/myactivity' element ={<PracAtHome/>} />       
+            <Route exact path='/reaActivity' element ={<PracAtHomeRea/>} />
             <Route exact path='/classActy' element ={<PracAtSch/>} />
             <Route exact path='/quizz' element ={<PraAtQuizz/>} />
             <Route exact path='/test' element ={<PracAtTest/>} />

@@ -3,10 +3,12 @@ import '../styles/matterinfo.scss';
 import Modal from '../modals/Modal';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useVideoUrl } from '../context';
 
 export const ReaInfo = ({filter}) => {
   const navigate = useNavigate();
   const [responser, setresponser] = useState([]);
+  const {videoUrl, setVideoUrl} = useVideoUrl();
 
   useEffect(() => {
     axios({
@@ -29,13 +31,18 @@ export const ReaInfo = ({filter}) => {
       return(responser.filter(itemfilter => itemfilter.nombre_CREA.toLowerCase().includes(filter.toLowerCase())))
     }
   }
+  const HandleContent = (video) => {
+    navigate("/reaActivity");
+    localStorage.setItem("video", JSON.stringify(video))
+
+  }
 
   return (
     <>
       {datafilterREA().map((rea, indexr) => {
         return (
           <>
-            <div className='matterInfo' key={indexr} onClick={() => navigate("/myactivity")}>
+            <div className='matterInfo' key={indexr} onClick={() => HandleContent(rea.id_materia)}>
               <h2>{rea.nombre_CREA}</h2>
               <p>{rea.id_grado} </p>
 

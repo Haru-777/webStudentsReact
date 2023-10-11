@@ -18,10 +18,10 @@ const PracAtHomeRea = () => {
     return (
         <div className='bodyah'>
             <div className="mat-x">
-                <h2 className="letter-imodal">Materia</h2>
+                <h2 className="letter-imodal">Contenido REA</h2>
                 <Information onClick={() => setopenInfMatter(true)} />
                 <InfMatter openx={openInfMatter} onClosex ={() => setopenInfMatter(false)}/>
-                <p className="close-btn" onClick={() => navigate("/myCourses")}>X</p>
+                <p className="close-btn" onClick={() => navigate("/rea")}>X</p>
             </div>
             <VideoplayerRea/>
         </div>

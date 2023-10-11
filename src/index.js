@@ -4,6 +4,7 @@ import App from './routes/App';
 import reportWebVitals from './reportWebVitals';
 import 'react-router-dom';
 import { createRoot } from 'react-dom/client';
+import { VideoUrlProvider } from './context';
 
 
 const container = document.getElementById('root');
@@ -12,7 +13,9 @@ const root = createRoot(container);
 
 root.render(
   /* <React.StrictMode>   */
+    <VideoUrlProvider>
     <App />,
+    </VideoUrlProvider>
   /* </React.StrictMode>, */
 );
 
