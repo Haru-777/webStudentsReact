@@ -14,6 +14,8 @@ export const ReaInfo = ({filter}) => {
       url: 'http://localhost:3001/api/loadAllcontents',
     }).then(response => {
       setresponser(response.data)
+      localStorage.setItem("rea", JSON.stringify(response.data))
+      console.log(response.data);
     }).catch((error) => {
       console.log(error);
     })

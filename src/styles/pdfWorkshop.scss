@@ -1,0 +1,27 @@
+@import '__vars';
+$mobile:425px;
+$tablet:768px;
+
+.pdfdi{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media only screen and (max-width:$mobile){
+        &{
+            width: 425px;
+            height: 513px;
+        }
+    }
+    @media only screen and (min-width:$mobile) and (max-width:$tablet){
+        width: 100%;
+    }
+}
+.pdf-title{
+    color: var(--select--dark-blue);
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+
