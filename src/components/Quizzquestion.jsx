@@ -13,6 +13,7 @@ const Quizzquestion = () => {
     const [responset, setresponset] = useState([]);
     const [preguntasLength, setPreguntasLength] = useState([])
     const [respuestas, setRespuestas] = useState([]);
+    const [responsem, setresponsem] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -35,6 +36,33 @@ const Quizzquestion = () => {
             console.log(error);
         })
     }, [])
+
+       
+    useEffect(() => {
+        const info_acivity = JSON.parse(localStorage.getItem("materia"));
+        const id_student = JSON.parse(localStorage.getItem("login"));
+        //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
+         const id_acivity = info_acivity.id_actividad;
+         const  id_students = id_student.student.id_estudiante
+         console.log(id_student);
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/uploadEventoActual',
+            data:{
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+                paso: "5"
+
+                
+            }
+            
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }, [])
+
 
 
 
@@ -78,13 +106,42 @@ const Quizzquestion = () => {
         return () => clearInterval(intervalo);
     }, [restTime]);
 
-    if (isFinish) return (
-        <main className='test-container'>
-            <div className='up-cont'></div>
-            <h3 className="titulo-result"> Obtuviste {puntuacion} de {preguntasLength.length}</h3>
-            <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Volver a mis materias</button>
-        </main>
-    )
+    if (isFinish) { 
+        
+            const info_acivity = JSON.parse(localStorage.getItem("materia"));
+            const id_student = JSON.parse(localStorage.getItem("login"));
+            //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
+             const id_acivity = info_acivity.id_actividad;
+             const  id_students = id_student.student.id_estudiante
+             console.log(id_student);
+            axios({
+                method: 'post',
+                url: 'http://localhost:3001/api/uploadEventoActual',
+                data:{
+                    id_estudiante: id_students,
+                    id_actividad: id_acivity,
+                    paso: "3"
+                    
+                }
+                
+            }).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(error);
+            })
+            return (
+                <main className='test-container'>
+                    <div className='up-cont'></div>
+                    <h3 className="titulo-result"> Obtuviste {puntuacion} de {preguntasLength.length}</h3>
+                    <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Volver a mis materias</button>
+                </main>
+            )
+        
+    } else {
+        console.log("fallo enviando evento metrica");
+    }
+        
+       
     //console.log(preguntasLength.length)
 
     return (
