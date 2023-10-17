@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import question from '../assets/logos/qestion.png';
 import InfMatter from '../modals/InfMatter';
@@ -7,9 +7,37 @@ import '../styles/global.scss';
 import '../styles/modals.scss';
 import Information from '../components/Information';
 import VideoplayerComp from '../containers/VideoplayerComp';
+import axios from 'axios';
 
 
 const PracAtHome = () => {
+    
+    const [responsem, setresponsem] = useState([]);
+       
+    useEffect(() => {
+        const info_acivity = JSON.parse(localStorage.getItem("materia"));
+        const id_student = JSON.parse(localStorage.getItem("login"));
+        //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
+         const id_acivity = info_acivity.id_actividad;
+         const  id_students = id_student.student.id_estudiante
+         console.log(id_student);
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/createEventos',
+            data:{
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+                
+            }
+            
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }, [])
+
+
     const navigate = useNavigate();
     const [openInfMatter, setopenInfMatter] = useState(false);
     const [openMaked, setopenMaked] = useState(false);

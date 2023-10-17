@@ -135,9 +135,9 @@ const Login = () => {
                     ¿No tienes cuenta? <a name="linkRegister" className="txtreg" href="/register">Registrate</a>
                 </div>
                 <div className="endlogin">
-                    <div className="txtservidor"><span data-toggle="modal" data-target="#mimodalejemplo">Servidor:</span>
+                   {/*  <div className="txtservidor"><span data-toggle="modal" data-target="#mimodalejemplo">Servidor:</span>
                         <span>Conectado</span>
-                    </div>
+                    </div> */}
                     <img src={donwload} className="imapp" alt="App Movil" />
                     <label className="imapptx" >Descarga la app Móvil</label>
                 </div>

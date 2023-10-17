@@ -79,12 +79,7 @@ $tablet:768px;
     text-decoration: none;
 }
 
-.lo-tex{
-    display: flex;
-    flex-direction: column;
-    margin-top: 1%;
-    width: 100%;
-}
+
 .txt-dud{
     width: 80%;   
     text-align: center;
@@ -136,14 +131,7 @@ $tablet:768px;
     transform: translateY(-2px);
 }
 
-.solve {
-    float: right;
-    flex-direction: column;
-    align-items: center;
-    width: 20%;
-    height: 20%;
-    margin-top: 10px;
-}
+
 
 .bnt-quest{
     display: flex;

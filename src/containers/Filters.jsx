@@ -8,7 +8,6 @@ const Filters = ({handleChange}) => {
     return (
         <>
             <Search handleChange={handleChange}/>
-            <SubjectFilter />
          
             
         </>
