@@ -11,6 +11,7 @@ const Register = () => {
     const [schoolReg, setschoolReg] = useState([]);
     const [gradesReg, setgradesReg] = useState([]);
     const [error, setError] = useState(" ");
+    const [successR, setSuccessR] = useState(" ");
 
     const [formReg, setFormReg] = useState({
         nameReg: '',
@@ -36,7 +37,7 @@ const Register = () => {
             console.log(error)
         })
     }, [])
-    console.log(schoolReg);
+    //console.log(schoolReg);
 
     useEffect(() => {
         axios({
@@ -59,7 +60,7 @@ const Register = () => {
             }));
 
         } else {
-            console.log(name);
+            //console.log(name);
 
             setFormReg((prevState) => ({
                 ...prevState,
@@ -224,7 +225,7 @@ const Register = () => {
             choseSchool: formDatar.get('choseSchool'),
             chosegrade: formDatar.get('chosegrade')
         }
-        console.log(data);
+        //console.log(data);
 
         axios({
             method: 'post',
@@ -241,6 +242,7 @@ const Register = () => {
         }).then(function (response) {
             /*localStorage.setItem("register", JSON.stringify(response.data))//guarda en el local storege
             window.location.reload()*/
+            setSuccessR("Registro exitoso, ahora puedes iniciar sesion");
             console.log('Registro exitoso');
         }).catch(function (error) {
             setError(error.response.data.error);
@@ -253,7 +255,7 @@ const Register = () => {
         else if (formReg.namereg === "" || formReg.lnameReg === '' || formReg.emailReg === "" || formReg.passwordReg === "" || formReg.cpasswordReg === "" ) return (true);
         else return (false);
     }
-    console.log(formReg);
+    //console.log(formReg);
     return (
         <div className="Bottom">
             <div className="Register-container">
@@ -364,7 +366,7 @@ const Register = () => {
                         Registrarse
                     </button>
                     <div className="error-message">{error}</div>
-                    <div className="success-message">{error}</div>
+                    <div className="success-message">{successR}</div>
 
                 </form>
             </div>

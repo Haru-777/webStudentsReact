@@ -7,12 +7,15 @@ import axios from "axios";
 const MyaccInfo = () => {
     const form = useRef(null);
 
-    const [schoolAcc, setschoolAcc] = useState([]);
+    //const [schoolAcc, setschoolAcc] = useState([]);
     const [gradeAcc, setgradeAcc] = useState([]);
     const [name, setName] = useState('');
     const [lname, setLname] = useState('');
     const [grade, setGrade] = useState('');
     const [mail, setMail] = useState('');
+    
+    const [error, setError] = useState(" ");
+    const [success, setSuccess] = useState(" ");
 
     const handleLogoutacc = () => {
         localStorage.clear()
@@ -27,10 +30,10 @@ const MyaccInfo = () => {
         cpasswordAcc: '',
         num: '',
         chosegrade: '',
-        choseSchool: ''
+        //choseSchool: ''
     });
 
-    useEffect(() => {
+    /* useEffect(() => {
         axios({
             method: 'get',
             url: 'http://localhost:3001/api/loadAllSchools',
@@ -40,7 +43,7 @@ const MyaccInfo = () => {
         }).catch(function (error) {
             console.log(error)
         })
-    }, [])
+    }, []) */
     useEffect(() => {
         axios({
             method: 'get',
@@ -146,193 +149,212 @@ const MyaccInfo = () => {
             }));
         }
 
-
-        if (formAcc.passwordAcc === '') {
-            setFormAcc((prevState) => ({
-                ...prevState,
-                passAcError: 'La contraseña es obligatoria'
-            }));
-        }
-        else if (!passacc.test(formAcc.passwordAcc)) {
-            setFormAcc((prevState) => ({
-                ...prevState,
-                passAcError: 'Por favor ingrese una contraseña de 8 Caracteres, la menos un número y una letra.'
-            }));
-        } else {
-            setFormAcc((prevState => ({
-                ...prevState,
-                passAcError: ''
-            })));
-        }
-
-        if (formAcc.cpasswordAcc !== formAcc.passwordAcc) {
-            setFormAcc((prevState) => ({
-                ...prevState,
-                cpasswordAccError: 'Las contraseñas no coinciden'
-            }));
-        }
-        else {
-            setFormAcc((prevState => ({
-                ...prevState,
-                cpasswordAccError: ''
-            })));
-        }
-    };
-
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const formDatar = new FormData(form.current);
-        const data = {
-            nameAcc: formDatar.get('nameAcc'),
-            lnameAcc: formDatar.get('lnameAcc'),
-            emailAcc: formDatar.get('emailAcc'),
-            passwordAcc: formDatar.get('passwordAcc'),
-            choseSchool: formDatar.get('choseSchool'),
-            chosegrade: formDatar.get('chosegrade'),
-            num: formDatar.get('num')
-            /*choseSchool: formDatar.get('choseSchool'),
-            */
-        }
-        const info_studiante = JSON.parse(localStorage.getItem("login"));
-        if (!info_studiante.student) return
-        const id_studet = info_studiante.student.id_estudiante;
-
-
-        axios({
-            method: 'post',
-            url: 'http://localhost:3001/api/uploadEstudiante',
-            data: {
-                id_estudiante: id_studet,
-                nombre_estudiante: data.nameAcc,
-                apellido_estudiante: data.lnameAcc,
-                correo_electronico: data.emailAcc, //Quitar esto para un get
-                contrasena: data.passwordAcc,
-                grado_estudiante: data.choseSchool,
-                nombre_colegio: data.chosegrade
-            }
-        }).then(function (response) {
-            /*localStorage.setItem("myacc", JSON.stringify(response.data))
-            window.location.reload()*/
-            console.log('estudiante actualizado');
-        }).catch(function (error) {
-            console.log(error)
-        })
-    };
-
-    const btnatldisabled = () => {
-        if (formAcc.nameAcError || formAcc.lnameAcError  || formAcc.passAcError || formAcc.cpasswordAccError || formAcc.gradeAccError) return (true);
-        else if (formAcc.nameAcc === "" || formAcc.lnameAcc === "" || formAcc.passwordAcc === "" || formAcc.cpasswordAcc === "" || formAcc.chosegrade === "") return (true);
-        else return (false);
+    if (formAcc.emailAcc === '') {
+        setFormAcc((prevState) => ({
+            ...prevState,
+            emailAcError: 'El correo electronico es obligatorio'
+        }));
     }
-    //console.log(formAcc);
-    return (
-        <div className="myacc-container">
-            <div className='imac'>
-                <img src={actxt} alt="logo" className="mac-logotxt" ></img>
+    else if (!emailacc.test(formAcc.emailAcc)) {
+        setFormAcc((prevState) => ({
+            ...prevState,
+            emailAcError: 'Por favor ingrese una dirección de correo electrónico válida.'
+        }));
+    } else {
+        setFormAcc((prevState => ({
+            ...prevState,
+            emailAcError: ''
+        })));
+    }
+    if (formAcc.passwordAcc === '') {
+        setFormAcc((prevState) => ({
+            ...prevState,
+            passAcError: 'La contraseña es obligatoria'
+        }));
+    }
+    else if (!passacc.test(formAcc.passwordAcc)) {
+        setFormAcc((prevState) => ({
+            ...prevState,
+            passAcError: 'Por favor ingrese una contraseña de 8 Caracteres, la menos un número y una letra.'
+        }));
+    } else {
+        setFormAcc((prevState => ({
+            ...prevState,
+            passAcError: ''
+        })));
+    }
+
+    if (formAcc.cpasswordAcc !== formAcc.passwordAcc) {
+        setFormAcc((prevState) => ({
+            ...prevState,
+            cpasswordAccError: 'Las contraseñas no coinciden'
+        }));
+    }
+    else {
+        setFormAcc((prevState => ({
+            ...prevState,
+            cpasswordAccError: ''
+        })));
+    }
+};
+
+
+const handleSubmit = (event) => {
+    event.preventDefault();
+    const formDatar = new FormData(form.current);
+    const data = {
+        nameAcc: formDatar.get('nameAcc'),
+        lnameAcc: formDatar.get('lnameAcc'),
+        emailAcc: formDatar.get('emailAcc'),
+        passwordAcc: formDatar.get('passwordAcc'),
+        chosegrade: formDatar.get('chosegrade'),
+        num: formDatar.get('num')
+        /*choseSchool: formDatar.get('choseSchool'),
+        */
+    }
+    const info_studiante = JSON.parse(localStorage.getItem("login"));
+    if (!info_studiante.student) return
+    const id_studet = info_studiante.student.id_estudiante;
+
+
+    axios({
+        method: 'post',
+        url: 'http://localhost:3001/api/uploadEstudiante',
+        data: {
+            id_estudiante: id_studet,
+            nombre_estudiante: data.nameAcc,
+            apellido_estudiante: data.lnameAcc,
+            correo_electronico: data.emailAcc, //Quitar esto para un get
+            contrasena: data.passwordAcc,
+            //grado_estudiante: data.choseSchool,
+            nombre_colegio: data.chosegrade
+        }
+    }).then(function (response) {
+        /*localStorage.setItem("myacc", JSON.stringify(response.data))
+        window.location.reload()*/
+        setSuccess("¡Datos actualizados! Para verificar los cambios cierre sesión y vuelva a ingresar")
+        //console.log(response);
+    }).catch(function (error) {
+        setError(error.response.data);
+        console.log(error)
+    })
+};
+
+const btnatldisabled = () => {
+    if (formAcc.nameAcError || formAcc.lnameAcError || formAcc.emailAcError || formAcc.passAcError || formAcc.cpasswordAccError || formAcc.gradeAccError) return (true);
+    else if (formAcc.nameAcc === "" || formAcc.lnameAcc === "" || formAcc.emailAcc === "" || formAcc.passwordAcc === "" || formAcc.cpasswordAcc === "" || formAcc.chosegrade === "") return (true);
+    else return (false);
+}
+//console.log(formAcc);
+return (
+    <div className="myacc-container">
+        <div className='imac'>
+            <img src={actxt} alt="logo" className="mac-logotxt" ></img>
+
+        </div>
+        <div className='formacp'>
+            <div className='info-studentchange'>
+                <img src={act} alt="logo" className="ac-logo" ></img>
+                <div className='txt-infochange'><label className='lnamechange'>Nombre</label><p className='namechange'> : {name} {lname}</p></div>
+                <div className='txt-infochange'><label className='lnamechange'>Grado</label> <p className='namechange'> : {grade}</p></div>
+                <div className='txt-infochange'><label className='lnamechange'>Email</label><p className='namechange'> : {mail}</p></div>
 
             </div>
-            <div className='formacp'>
-                <div className='info-studentchange'>
-                    <img src={act} alt="logo" className="ac-logo" ></img>
-                    <div className='txt-infochange'><label className='lnamechange'>Nombre</label><p  className='namechange'> : { name} {lname}</p></div>
-                    <div className='txt-infochange'><label className='lnamechange'>Grado</label> <p  className='namechange'> : { grade}</p></div>
-                    <div className='txt-infochange'><label className='lnamechange'>Email</label><p  className='namechange'> : { mail}</p></div>
-            
-                </div>
-                <div className='fomac'>
-                    <form action="/" className="form-acc" id="formAcc" ref={form} onSubmit={handleSubmit}>
-                        <div className="inp-actname">
-                            <input type="text" placeholder="Nombres" className="inp-actnametxt" id="nameAcc" name="nameAcc"
-                                value={formAcc.nameAcc}
+            <div className='fomac'>
+                <form action="/" className="form-acc" id="formAcc" ref={form} onSubmit={handleSubmit}>
+                    <div className="inp-actname">
+                        <input type="text" placeholder="Nombres" className="inp-actnametxt" id="nameAcc" name="nameAcc"
+                            value={formAcc.nameAcc}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
+                        <label htmlFor="name" className="nameact-lab" >Nombres</label>
+                        {formAcc.nameAcError && (
+                            <div className="error-message">{formAcc.nameAcError}</div>
+                        )}
+                    </div>
+                    <div className="inp-actlname">
+                        <input type="text" placeholder="Apellidos" className="inp-actlnametxt" name="lnameAcc"
+                            value={formAcc.lnameAcc}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
+                        <label htmlFor="apellidos" className="lnameact-lab" >Apellidos</label>
+                        {formAcc.lnameAcError && (
+                            <div className="error-message">{formAcc.lnameAcError}</div>
+                        )}
+                    </div>
+                    <div className='sh-gr'>
+                        <div className="inpact-sch">
+                            <label htmlFor="grade" className="schact-lab" >Seleccione su curso:</label>
+                            <select className="schact-ch" id="chosegrade" name="chosegrade"
+                                value={formAcc.chosegrade}
                                 onChange={handleChange}
-                                onBlur={handleBlur} />
-                            <label htmlFor="name" className="nameact-lab" >Nombres</label>
-                            {formAcc.nameAcError && (
-                                <div className="error-message">{formAcc.nameAcError}</div>
-                            )}
+                                onBlur={handleBlur}>
+                                <option value="">Seleccione</option>
+                                {gradeAcc.map((grade) => (
+                                    <option key={grade.id} value={grade.id}>
+                                        {grade.nombre_grado}
+                                    </option>
+                                ))}
+                            </select>
+                            {formAcc.gradeAccError && (
+                                <div className="error-message">{formAcc.gradeAccError}</div>)}
                         </div>
-                        <div className="inp-actlname">
-                            <input type="text" placeholder="Apellidos" className="inp-actlnametxt" name="lnameAcc"
-                                value={formAcc.lnameAcc}
-                                onChange={handleChange}
-                                onBlur={handleBlur} />
-                            <label htmlFor="apellidos" className="lnameact-lab" >Apellidos</label>
-                            {formAcc.lnameAcError && (
-                                <div className="error-message">{formAcc.lnameAcError}</div>
-                            )}
-                        </div>
-                        <div className='sh-gr'>
-                            <div className="inpact-sch">
-                                <label htmlFor="grade" className="schact-lab" >Seleccione su curso:</label>
-                                <select className="schact-ch" id="chosegrade" name="chosegrade"
-                                    value={formAcc.chosegrade}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}>
-                                    <option value="">Seleccione</option>
-                                    {gradeAcc.map((grade) => (
-                                        <option key={grade.id} value={grade.id}>
-                                            {grade.nombre_grado}
-                                        </option>
-                                    ))}
-                                </select>
-                                {formAcc.gradeAccError && (
-                                    <div className="error-message">{formAcc.gradeAccError}</div>)}
-                            </div>
 
-                            <div className="inpact-sch">
-                                <label htmlFor="school" className="schact-lab" >Seleccione su colegio:</label>
-                                <select className="schact-ch" id="choseSchool" name="choseSchool">
-                                    {schoolAcc.map((school) => (
-                                        <option key={school.id} value={school.id}>
-                                            {school.nombre_colegio}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                        </div>
-                        <div className="inp-emailact">
-                            <input type="email" placeholder="Correo Electronico" className="inp-emailtxtact" name="emailAcc"
-                                value={formAcc.emailAcc}
-                                onChange={handleChange}
-                                onBlur={handleBlur} />
-                            <label htmlFor="email" className="labelact" >Correo Electronico</label>
-                            {formAcc.emailAcError && (
-                                <div className="error-message">{formAcc.emailAcError}</div>
-                            )}
-                        </div>
-                        <div className="inp-passact">
-                            <input type="password" placeholder="Contraseña" className="inp-passtxtact" name="passwordAcc"
-                                value={formAcc.passwordAcc}
-                                onChange={handleChange}
-                                onBlur={handleBlur} />
-                            <label htmlFor="password" className="labelcxact">Contraseña</label>
-                            {formAcc.passAcError && (
-                                <div className="error-message">{formAcc.passAcError}</div>
-                            )}
-                        </div>
-                        <div className="inp-cpassact">
-                            <input type="password" placeholder="Confirmar Contraseña" className="inp-cpasstxtact" name="cpasswordAcc"
-                                onChange={handleChange}
-                                onBlur={handleBlur} />
-                            <label htmlFor="password" className="clabelcxact">Confirmar contraseña</label>
-                            {formAcc.cpasswordAccError && (
-                                <div className="error-message">{formAcc.cpasswordAccError}</div>
-                            )}
-                        </div>
-                        <button type="submit"
-                            className="btnact"
-                            disabled={btnatldisabled()}
-                            onClick={handleSubmit}
-                        >
-                            Actualizar
-                        </button>
+                        {/* <div className="inpact-sch">
+                            <label htmlFor="school" className="schact-lab" >Seleccione su colegio:</label>
+                            <select className="schact-ch" id="choseSchool" name="choseSchool">
+                                {schoolAcc.map((school) => (
+                                    <option key={school.id} value={school.id}>
+                                        {school.nombre_colegio}
+                                    </option>
+                                ))}
+                            </select>
+                        </div> */}
+                    </div>
+                    <div className="inp-emailact">
+                        <input type="email" placeholder="Correo Electronico" className="inp-emailtxtact" name="emailAcc"
+                            value={formAcc.emailAcc}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
+                        <label htmlFor="email" className="labelact" >Correo Electronico</label>
+                        {formAcc.emailAcError && (
+                            <div className="error-message">{formAcc.emailAcError}</div>
+                        )}
+                    </div>
+                    <div className="inp-passact">
+                        <input type="password" placeholder="Contraseña" className="inp-passtxtact" name="passwordAcc"
+                            value={formAcc.passwordAcc}
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
+                        <label htmlFor="password" className="labelcxact">Contraseña</label>
+                        {formAcc.passAcError && (
+                            <div className="error-message">{formAcc.passAcError}</div>
+                        )}
+                    </div>
+                    <div className="inp-cpassact">
+                        <input type="password" placeholder="Confirmar Contraseña" className="inp-cpasstxtact" name="cpasswordAcc"
+                            onChange={handleChange}
+                            onBlur={handleBlur} />
+                        <label htmlFor="password" className="clabelcxact">Confirmar contraseña</label>
+                        {formAcc.cpasswordAccError && (
+                            <div className="error-message">{formAcc.cpasswordAccError}</div>
+                        )}
+                    </div>
+                    <button type="submit"
+                        className="btnact"
+                        disabled={btnatldisabled()}
+                        onClick={handleSubmit}
+                    >
+                        Actualizar
+                    </button> 
+                    <div className="error-message">{error}</div>
+                    <div className="success-message">{success}</div>
 
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-    );
+    </div>
+);
 }
 
 export default MyaccInfo;

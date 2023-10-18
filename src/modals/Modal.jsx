@@ -10,14 +10,14 @@ const Modal = ({ open, onClose }) => {
     const [btnHab, setBtnHab] = useState(false);
     useEffect (() => {
     const info_lduda = JSON.parse(localStorage.getItem("metricaq"));
+    if(!validateAnswer) return
     const validateAnswer = info_lduda[0].check_answer;
-    console.log(validateAnswer);
+    /* console.log(validateAnswer); */
 
-   
-
+    
     if (validateAnswer == 1) {
         setBtnHab(true);
-    }}, [])
+    } }, [])
 
     if (!open) return null;
     return (
