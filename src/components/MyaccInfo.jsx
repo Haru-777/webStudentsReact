@@ -9,6 +9,10 @@ const MyaccInfo = () => {
 
     const [schoolAcc, setschoolAcc] = useState([]);
     const [gradeAcc, setgradeAcc] = useState([]);
+    const [name, setName] = useState('');
+    const [lname, setLname] = useState('');
+    const [grade, setGrade] = useState('');
+    const [mail, setMail] = useState('');
 
     const handleLogoutacc = () => {
         localStorage.clear()
@@ -58,6 +62,33 @@ const MyaccInfo = () => {
         }));
 
     };
+    useEffect(() => {
+        const info_studiante = JSON.parse(localStorage.getItem("login"));
+        if (!info_studiante.student) return
+        const id_studet = info_studiante.student.id_estudiante;
+        const name_studet = info_studiante.student.nombre_estudiante;
+        const lname_studet = info_studiante.student.apellido_estudiante;
+        const grade_studet = info_studiante.student.grado_estudiante;
+        const mail_studet = info_studiante.student.correo_electronico;
+
+        //console.log(info_studiante.student.nombre_estudiante);
+
+        if (info_studiante) {
+            setName(name_studet);
+        };
+        if (info_studiante) {
+            setLname(lname_studet);
+        };
+        console.log(name);
+        if (info_studiante) {
+            setGrade(grade_studet);
+        };
+        if (info_studiante) {
+            setMail(mail_studet);
+        };
+
+
+    }, []);
 
 
     const handleBlur = () => {
@@ -102,36 +133,19 @@ const MyaccInfo = () => {
                 lnameAcError: ''
             })));
         }
-         if(formAcc.chosegrade === ''){
+        if (formAcc.chosegrade === '') {
             setFormAcc((prevState) => ({
                 ...prevState,
                 gradeAccError: 'El grado es obligatorio.'
             }));
         }
-        else{
+        else {
             setFormAcc((prevState) => ({
                 ...prevState,
                 gradeAccError: ''
             }));
-        } 
+        }
 
-        if (formAcc.emailAcc === '') {
-            setFormAcc((prevState) => ({
-                ...prevState,
-                emailAcError: 'El correo electronico es obligatorio'
-            }));
-        }
-        else if (!emailacc.test(formAcc.emailAcc)) {
-            setFormAcc((prevState) => ({
-                ...prevState,
-                emailAcError: 'Por favor ingrese una dirección de correo electrónico válida.'
-            }));
-        } else {
-            setFormAcc((prevState => ({
-                ...prevState,
-                emailAcError: ''
-            })));
-        }
 
         if (formAcc.passwordAcc === '') {
             setFormAcc((prevState) => ({
@@ -207,18 +221,25 @@ const MyaccInfo = () => {
     };
 
     const btnatldisabled = () => {
-        if (formAcc.nameAcError || formAcc.lnameAcError || formAcc.emailAcError || formAcc.passAcError || formAcc.cpasswordAccError || formAcc.gradeAccError) return (true);
-        else if (formAcc.nameAcc === "" || formAcc.lnameAcc === "" || formAcc.emailAcc === "" || formAcc.passwordAcc === "" || formAcc.cpasswordAcc === "" || formAcc.chosegrade === "") return (true);
+        if (formAcc.nameAcError || formAcc.lnameAcError  || formAcc.passAcError || formAcc.cpasswordAccError || formAcc.gradeAccError) return (true);
+        else if (formAcc.nameAcc === "" || formAcc.lnameAcc === "" || formAcc.passwordAcc === "" || formAcc.cpasswordAcc === "" || formAcc.chosegrade === "") return (true);
         else return (false);
     }
-    console.log(formAcc);
+    //console.log(formAcc);
     return (
         <div className="myacc-container">
             <div className='imac'>
                 <img src={actxt} alt="logo" className="mac-logotxt" ></img>
+
             </div>
             <div className='formacp'>
-                <img src={act} alt="logo" className="ac-logo" ></img>
+                <div className='info-studentchange'>
+                    <img src={act} alt="logo" className="ac-logo" ></img>
+                    <div className='txt-infochange'><label className='lnamechange'>Nombre</label><p  className='namechange'> : { name} {lname}</p></div>
+                    <div className='txt-infochange'><label className='lnamechange'>Grado</label> <p  className='namechange'> : { grade}</p></div>
+                    <div className='txt-infochange'><label className='lnamechange'>Email</label><p  className='namechange'> : { mail}</p></div>
+            
+                </div>
                 <div className='fomac'>
                     <form action="/" className="form-acc" id="formAcc" ref={form} onSubmit={handleSubmit}>
                         <div className="inp-actname">
@@ -245,30 +266,30 @@ const MyaccInfo = () => {
                             <div className="inpact-sch">
                                 <label htmlFor="grade" className="schact-lab" >Seleccione su curso:</label>
                                 <select className="schact-ch" id="chosegrade" name="chosegrade"
-                                 value={formAcc.chosegrade}
-                                 onChange={handleChange}
-                                 onBlur={handleBlur}>
-                                     <option value="">Seleccione</option>
-                                {gradeAcc.map((grade) => (
-                                    <option key={grade.id} value={grade.id}>
-                                        {grade.nombre_grado}
-                                    </option>
-                                ))}
-                            </select>
-                            {formAcc.gradeAccError && (
-                                <div className="error-message">{formAcc.gradeAccError}</div> )}
-                        </div>
+                                    value={formAcc.chosegrade}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}>
+                                    <option value="">Seleccione</option>
+                                    {gradeAcc.map((grade) => (
+                                        <option key={grade.id} value={grade.id}>
+                                            {grade.nombre_grado}
+                                        </option>
+                                    ))}
+                                </select>
+                                {formAcc.gradeAccError && (
+                                    <div className="error-message">{formAcc.gradeAccError}</div>)}
+                            </div>
 
-                        <div className="inpact-sch">
-                            <label htmlFor="school" className="schact-lab" >Seleccione su colegio:</label>
-                            <select className="schact-ch" id="choseSchool" name="choseSchool">
-                                {schoolAcc.map((school) => (
-                                    <option key={school.id} value={school.id}>
-                                        {school.nombre_colegio}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                            <div className="inpact-sch">
+                                <label htmlFor="school" className="schact-lab" >Seleccione su colegio:</label>
+                                <select className="schact-ch" id="choseSchool" name="choseSchool">
+                                    {schoolAcc.map((school) => (
+                                        <option key={school.id} value={school.id}>
+                                            {school.nombre_colegio}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
                         <div className="inp-emailact">
                             <input type="email" placeholder="Correo Electronico" className="inp-emailtxtact" name="emailAcc"
@@ -302,7 +323,7 @@ const MyaccInfo = () => {
                         <button type="submit"
                             className="btnact"
                             disabled={btnatldisabled()}
-                            onClick={handleLogoutacc}
+                            onClick={handleSubmit}
                         >
                             Actualizar
                         </button>
