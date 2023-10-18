@@ -328,7 +328,11 @@
     font-weight: bold;
     color: var(--danger--red);
 }
-
+.success-message {
+    font-size: 14.5px;
+    font-weight: bold;
+    color: var(--is--correct);
+}
 .btnregister {
     width: 90%;
     height: 25%;

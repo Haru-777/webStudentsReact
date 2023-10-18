@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import hi from '../assets/logos/saludo.png';
 import '../styles/global.scss';
 import '../styles/modals.scss';
@@ -7,6 +7,18 @@ import axios from 'axios';
 
 const Modal = ({ open, onClose }) => {
     const navigate = useNavigate();
+    const [btnHab, setBtnHab] = useState(false);
+    useEffect (() => {
+    const info_lduda = JSON.parse(localStorage.getItem("metricaq"));
+    const validateAnswer = info_lduda[0].check_answer;
+    console.log(validateAnswer);
+
+   
+
+    if (validateAnswer == 1) {
+        setBtnHab(true);
+    }}, [])
+
     if (!open) return null;
     return (
         <div className='overlay'>
@@ -21,7 +33,9 @@ const Modal = ({ open, onClose }) => {
                 </div>
                 <div className="btn-div">
                     <button onClick={() => navigate("/Myactivity")} className='btn-modal'>Practica en Casa</button>
-                    <button onClick={() => navigate("/classActy")} className='btn-modal'>Practica en Clase</button>
+                    <button onClick={() => navigate("/classActy")}
+                        disabled={!btnHab}
+                        className='btn-modal'>Practica en Clase</button>
                     <button onClick={() => navigate("/test")} className='btn-modal'>Realiza tu Examen</button>
                 </div>
             </div>

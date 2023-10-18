@@ -111,7 +111,7 @@ $tablet:768px;
 
 .btnsenq {
     width: 100%;
-    height: 25%;
+    height: 45px;
     display: flex;
     padding: 15px 30px;
     border: none;
@@ -190,3 +190,11 @@ $tablet:768px;
     transform: translateY(-2px);
 }
 
+.q-tex{
+    display: flex;
+    flex-direction: column;
+}
+.solveq{
+    width: 10%;
+    height: 10%;
+}

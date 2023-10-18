@@ -20,7 +20,7 @@ const PracAtHome = () => {
         //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
          const id_acivity = info_acivity.id_actividad;
          const  id_students = id_student.student.id_estudiante
-         console.log(id_student);
+        
         axios({
             method: 'post',
             url: 'http://localhost:3001/api/createEventos',
@@ -32,6 +32,29 @@ const PracAtHome = () => {
             
         }).then((response) => {
             console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }, [])
+    useEffect(() => {
+        const info_acivity = JSON.parse(localStorage.getItem("materia"));
+        const id_student = JSON.parse(localStorage.getItem("login"));
+        //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
+         const id_acivity = info_acivity.id_actividad;
+         const  id_students = id_student.student.id_estudiante
+         console.log(id_student);
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/loadUltimoEvento',
+            data:{
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+                
+            }
+            
+        }).then((response) => {
+            console.log(response);
+            console.log("si entraa");
         }).catch((error) => {
             console.log(error);
         })

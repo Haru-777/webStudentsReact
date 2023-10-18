@@ -9,6 +9,7 @@ import axios from "axios";
 const Login = () => {
     const form = useRef(null);
     const navigate = useNavigate();
+    const [error, setError] = useState(" ");
 
     const [formLogin, setFormLogin] = useState({
         usename: '',
@@ -86,7 +87,8 @@ const Login = () => {
             localStorage.setItem("login", JSON.stringify(response.data))
             window.location.reload()
         }).catch(function (error) {
-            console.log(error)
+            setError(error.response.data.message);
+            console.log(error);
         })
     };
     const btnlogindisabled = () =>{
@@ -131,6 +133,7 @@ const Login = () => {
                         >
                         Iniciar como Invitado
                     </button>
+                    <div className="error-message">{error}</div>
                 <div className="txtcuenta">
                     ¿No tienes cuenta? <a name="linkRegister" className="txtreg" href="/register">Registrate</a>
                 </div>

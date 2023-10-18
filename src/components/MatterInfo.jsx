@@ -8,6 +8,7 @@ const Matterinfo = ({filter}) => {
     const [responsem, setresponsem] = useState([]);
     const [idact, setIdact] = useState(0);
     const [openModal, setOpenModal] = useState(false);
+    const [error, setError] = useState(" ");
 
 
     useEffect(() => {
@@ -24,7 +25,7 @@ const Matterinfo = ({filter}) => {
         }).then((response) => {
             setresponsem(response.data)
         }).catch((error) => {
-            console.log(error);
+            setError(error.response.data.message);
         })
     }, [])
     
@@ -40,6 +41,27 @@ const Matterinfo = ({filter}) => {
         setOpenModal(true);
         //console.log(data)
         localStorage.setItem('materia', JSON.stringify({id_actividad:data.id_actividad, id_colegio:data.id_colegio, id_grado:data.id_grado}))
+        const info_acivity = JSON.parse(localStorage.getItem("materia"));
+        const id_student = JSON.parse(localStorage.getItem("login"));
+        //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
+         const id_acivity = info_acivity.id_actividad;
+         const  id_students = id_student.student.id_estudiante
+         console.log(id_student);
+       axios({
+                method: 'post',
+                url: 'http://localhost:3001/api/loadUltimoEvento',
+                data:{
+                    id_estudiante: id_students,
+                    id_actividad: id_acivity,
+                    
+                }
+                
+            }).then((responseq) => {
+                localStorage.setItem("metricaq", JSON.stringify(responseq.data));
+                console.log("si entraa");
+            }).catch((error) => {
+                console.log(error);
+            })
     }
     //console.log(dataFilterAcc())
 
@@ -58,7 +80,7 @@ const Matterinfo = ({filter}) => {
                     </>
                 )
             })}
-
+            <div className="error-message">{error}</div>
 
         </>
     );

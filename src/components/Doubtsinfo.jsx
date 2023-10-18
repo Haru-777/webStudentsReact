@@ -5,7 +5,7 @@ import question from '../assets/logos/qestion.png';
 import axios from "axios";
 
 export const Doubtsinfo = ({filter}) => {
-    const [response, setresponse] = useState('');
+    const [responsem, setresponsem] = useState('');
     const [responseq, setresponseq] = useState([]);
     const [matter, setMatter] = useState('');
     const [openModal, setOpenModal] = useState(false);
@@ -20,12 +20,12 @@ export const Doubtsinfo = ({filter}) => {
         if( idduda === 0) return
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api//loadDuda',
+            url: 'http://localhost:3001/api/loadDuda',
             data: {
                 id_duda: idduda
             }
-        }).then((response) => {
-            setresponse(response.data)
+        }).then((responsem) => {
+            setresponsem(responsem.data)
         }).catch((error) => {
             console.log(error);
         })
@@ -57,7 +57,7 @@ export const Doubtsinfo = ({filter}) => {
             return(responseq.filter(itemfilter => itemfilter.pregunta.toLowerCase().includes(filter.toLowerCase())))
         }
     }
-    //console.log(response);
+    
     return (
         <>
 
@@ -78,7 +78,7 @@ export const Doubtsinfo = ({filter}) => {
             }
             )}
 
-            <ModalDoubt open={openModal} onClose={() => setOpenModal(false)} response={response} />
+            <ModalDoubt open={openModal} onClose={() => setOpenModal(false)} responsem={responsem} />
         </>
     )
 }

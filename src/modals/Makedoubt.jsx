@@ -55,12 +55,12 @@ const Makedoubt = ({ openM, onCloseM }) => {
                     <h2 className="letter-mmodal">Realiza tu pregunta.</h2>
                     <p onClick={onCloseM} className="close-btn">X</p>
                 </div>
-                <div className="lo-tex">
+                <div className="q-tex">
                     <p className='txt-dud' >
                     Ingresa la pregunta para tu profesor/a
                     </p>
                     <div className='q-form'>
-                    <img src={mquest} alt="Informacion" className='solve' ></img>
+                    <img src={mquest} alt="Informacion" className='solveq' ></img>
                     <form className='formm'>
                         <input id="question" name="question" className='inp-question' 
                          value={formQuestion.question} onChange={handleChange} placeholder='Escribe tu pregunta aquí.'></input>

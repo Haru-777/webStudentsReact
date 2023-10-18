@@ -3,6 +3,7 @@ import '../styles/testquestion.scss';
 import preguntas from '../pages/Preguntas';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import ModalPlayQuizz from '../modals/ModalPlayQuizz';
 
 const Testquestion = () => {
     const [actQuestion, setactQuestion] = useState(1);
@@ -13,6 +14,7 @@ const Testquestion = () => {
     const [responsett, setresponsett] = useState([]);
     const [preguntastLength, setPreguntastLength] = useState([])
     const [respuestast, setRespuestast] = useState([]);
+    const [responsem, setresponsem] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -78,14 +80,61 @@ const Testquestion = () => {
         return () => clearInterval(intervalo);
     }, [restTimet]);
 
-    if (isFinisht) return (
-        <main className='test-container'>
-            <div className='up-cont'></div>
-            <h3 className="titulo-result"> Obtuviste {puntuaciont} de {preguntastLength.length}</h3>
-            <h1 className="titulo-end"> Finalizaste tu actividad, da click en "Mis Materias" para continuar aprendiendo</h1>
-            <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Mis Materias</button>
-        </main>
-    )
+    if (isFinisht) { 
+        
+        const info_acivity = JSON.parse(localStorage.getItem("materia"));
+        const id_student = JSON.parse(localStorage.getItem("login"));
+        //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
+         const id_acivity = info_acivity.id_actividad;
+         const  id_students = id_student.student.id_estudiante
+  
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/uploadEventoActual',
+            data:{
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+                paso: "6"
+                
+            }
+            
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
+          
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/loadUltimoEvento',
+            data:{
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+                
+            }
+            
+        }).then((responseq) => {
+            localStorage.setItem("metricaq", JSON.stringify(responseq.data));
+            console.log("metricaq");
+            console.log("mentiria");
+        }).catch((error) => {
+            console.log(error);
+        })
+
+    
+        return (
+            <main className='test-container'>
+                <div className='up-cont'></div>
+                <h3 className="titulo-result"> Obtuviste {puntuaciont} de {preguntastLength.length}</h3>
+                <h1 className="titulo-end"> Finalizaste tu actividad, da click en "Mis Materias" para continuar aprendiendo</h1>
+                <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Mis Materias</button>
+            </main>
+        )
+    
+} else {
+    console.log("fallo enviando evento metrica");
+}
+
     //console.log(preguntasLength.length)
 
     return (
@@ -130,6 +179,7 @@ const Testquestion = () => {
                             </div>
 
                         </div>
+                        <ModalPlayQuizz/>
                     </div>
 
                 )

@@ -7,6 +7,7 @@ import axios from 'axios';
 const SubjectInfo = ({filter}) => {
   const [response, setresponse] = useState([]);
   const navigate = useNavigate();
+  const [error, setError] = useState(" ");
   
  
 
@@ -25,7 +26,7 @@ const SubjectInfo = ({filter}) => {
     }).then(function (response) {
       setresponse(response.data)
     }).catch(function (error) {
-      console.log(error);
+      setError(error.response.data.message);
     })
   }, [])
 
@@ -50,6 +51,7 @@ const SubjectInfo = ({filter}) => {
           <p>Grado: {subject.id_grado} </p>
         </div>
         <img src={subject.url_imagen} alt="logo" className="sub-logo" ></img>
+        <div className="error-message">{error}</div>
       </div>
     )
     }

@@ -113,7 +113,7 @@ const Quizzquestion = () => {
             //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
              const id_acivity = info_acivity.id_actividad;
              const  id_students = id_student.student.id_estudiante
-             console.log(id_student);
+             //console.log(id_student);
             axios({
                 method: 'post',
                 url: 'http://localhost:3001/api/uploadEventoActual',
@@ -126,6 +126,21 @@ const Quizzquestion = () => {
                 
             }).then((response) => {
                 console.log(response);
+            }).catch((error) => {
+                console.log(error);
+            })
+            axios({
+                method: 'post',
+                url: 'http://localhost:3001/api/loadUltimoEvento',
+                data:{
+                    id_estudiante: id_students,
+                    id_actividad: id_acivity,
+                    
+                }
+                
+            }).then((responseq) => {
+                localStorage.setItem("metricaq", JSON.stringify(responseq.data));
+                console.log("si entraa");
             }).catch((error) => {
                 console.log(error);
             })

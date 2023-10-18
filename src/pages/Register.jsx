@@ -10,6 +10,7 @@ const Register = () => {
     const form = useRef(null);
     const [schoolReg, setschoolReg] = useState([]);
     const [gradesReg, setgradesReg] = useState([]);
+    const [error, setError] = useState(" ");
 
     const [formReg, setFormReg] = useState({
         nameReg: '',
@@ -242,6 +243,7 @@ const Register = () => {
             window.location.reload()*/
             console.log('Registro exitoso');
         }).catch(function (error) {
+            setError(error.response.data.error);
             console.log(error)
         })
 
@@ -361,6 +363,8 @@ const Register = () => {
 
                         Registrarse
                     </button>
+                    <div className="error-message">{error}</div>
+                    <div className="success-message">{error}</div>
 
                 </form>
             </div>
