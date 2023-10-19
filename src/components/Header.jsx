@@ -28,14 +28,14 @@ const Header = () => {
                     <li>
                         <a className='short' href="/doubts">Dudas</a>
                     </li>
-                    <li>
+                    {/* <li>
                         <a className='e-large' href="/downloads">Actividades Descargadas</a>
-                    </li>
+                    </li> */}
                     <li>
                         <a className='large' href="/rea">Contenido Rea</a>
                     </li>
                     <li>
-                        <a className='med' href="/activitys">Actividades</a>
+                        <a className='med' href="/activitys">Mi progreso</a>
                     </li>
                     <li className="dplast">
                         <div className="dropdown">
