@@ -7,6 +7,18 @@ import axios from 'axios';
 
 const Modal = ({ open, onClose }) => {
     const navigate = useNavigate();
+    const [btnHab, setBtnHab] = useState(false);
+    useEffect (() => {
+    const info_lduda = JSON.parse(localStorage.getItem("metricaq"));
+    if(!info_lduda)return
+    const validateAnswer = info_lduda[0].check_answer;
+    console.log(validateAnswer);
+
+
+
+    if (validateAnswer == 1) {
+        setBtnHab(true);
+    }}, [])
    
 
     if (!open) return null;
@@ -24,7 +36,7 @@ const Modal = ({ open, onClose }) => {
                 <div className="btn-div">
                     <button onClick={() => navigate("/Myactivity")} className='btn-modal'>Practica en Casa</button>
                     <button onClick={() => navigate("/classActy")}
-                        //disabled={!btnHab}
+                        disabled={btnHab}
                         className='btn-modal'>Practica en Clase</button>
                     <button onClick={() => navigate("/test")} className='btn-modal'>Realiza tu Examen</button>
                 </div>

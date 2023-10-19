@@ -37,7 +37,7 @@ const PracAtHome = () => {
             console.log(error);
         })
     }, [])
-    useEffect(() => {
+   /*  useEffect(() => {
         const info_acivity = JSON.parse(localStorage.getItem("materia"));
         const id_student = JSON.parse(localStorage.getItem("login"));
         //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
@@ -59,7 +59,7 @@ const PracAtHome = () => {
         }).catch((error) => {
             console.log(error);
         })
-    }, [])
+    }, []) */
 
 
     const navigate = useNavigate();
