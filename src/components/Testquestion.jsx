@@ -26,13 +26,13 @@ const Testquestion = () => {
             url: 'http://localhost:3001/api/loadActivity',
             data: {
                 id_actividad: id_tstudet,
-            
+
             }
 
         }).then(function (response) {
             //console.log(response);  
             setresponsett(response.data)
-            setRespuestast([response.data[0]['EA'+actQuestion+'1'], response.data[0]['EA'+actQuestion+'2'], response.data[0]['EA'+actQuestion+'3'],response.data[0]['EA'+actQuestion+'4']])
+            setRespuestast([response.data[0]['EA' + actQuestion + '1'], response.data[0]['EA' + actQuestion + '2'], response.data[0]['EA' + actQuestion + '3'], response.data[0]['EA' + actQuestion + '4']])
         }).catch(function (error) {
             console.log(error);
         })
@@ -44,9 +44,9 @@ const Testquestion = () => {
         //puntuacion
         setactQuestion(actQuestion + 1);
         //console.log(acQuestion)
-        setPreguntastLength([...preguntastLength,responsett[0]['EQ'+(actQuestion+1)]])
-        if(responsett[0]['EQ'+(actQuestion+1)]){
-            setRespuestast([responsett[0]['EA'+(actQuestion+1)+'1'], responsett[0]['EA'+(actQuestion+1)+'2'], responsett[0]['EA'+(actQuestion+1)+'3'],responsett[0]['EA'+(actQuestion+1)+'4']])
+        setPreguntastLength([...preguntastLength, responsett[0]['EQ' + (actQuestion + 1)]])
+        if (responsett[0]['EQ' + (actQuestion + 1)]) {
+            setRespuestast([responsett[0]['EA' + (actQuestion + 1) + '1'], responsett[0]['EA' + (actQuestion + 1) + '2'], responsett[0]['EA' + (actQuestion + 1) + '3'], responsett[0]['EA' + (actQuestion + 1) + '4']])
         }
         else {
             //console.log(responset[0]['Q1'])
@@ -80,39 +80,41 @@ const Testquestion = () => {
         return () => clearInterval(intervalo);
     }, [restTimet]);
 
-    if (isFinisht) { 
-        
+    if (isFinisht) {
+
         const info_acivity = JSON.parse(localStorage.getItem("materia"));
         const id_student = JSON.parse(localStorage.getItem("login"));
         //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
-         const id_acivity = info_acivity.id_actividad;
-         const  id_students = id_student.student.id_estudiante
-  
+        const id_acivity = info_acivity.id_actividad;
+        const id_students = id_student.student.id_estudiante;
+        var noteTest = ((puntuaciont * 5) / preguntastLength.length);
+
         axios({
             method: 'post',
             url: 'http://localhost:3001/api/uploadEventoActual',
-            data:{
+            data: {
                 id_estudiante: id_students,
                 id_actividad: id_acivity,
-                paso: "6"
-                
+                paso: "6",
+                score_Ea: noteTest
+
             }
-            
+
         }).then((response) => {
             console.log(response);
         }).catch((error) => {
             console.log(error);
         })
-          
+
         axios({
             method: 'post',
             url: 'http://localhost:3001/api/loadUltimoEvento',
-            data:{
+            data: {
                 id_estudiante: id_students,
                 id_actividad: id_acivity,
-                
+
             }
-            
+
         }).then((responseq) => {
             localStorage.setItem("metricaq", JSON.stringify(responseq.data));
             console.log("metricaq");
@@ -121,7 +123,7 @@ const Testquestion = () => {
             console.log(error);
         })
 
-    
+
         return (
             <main className='test-container'>
                 <div className='up-cont'></div>
@@ -130,10 +132,10 @@ const Testquestion = () => {
                 <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Mis Materias</button>
             </main>
         )
-    
-} else {
-    console.log("fallo enviando evento metrica");
-}
+
+    } else {
+        console.log("fallo enviando evento metrica");
+    }
 
     //console.log(preguntasLength.length)
 
@@ -147,7 +149,7 @@ const Testquestion = () => {
                                 <span>pregunta {actQuestion}</span>
                             </div>
                             <div className='titulo-pregunta'>
-                                <h3>{question['EQ'+actQuestion]}</h3>
+                                <h3>{question['EQ' + actQuestion]}</h3>
                             </div>
                         </div>
                         <div className='down-cont'>
@@ -170,7 +172,7 @@ const Testquestion = () => {
                                             onClick={(e) => {
                                                 setrestTimet(10);
                                                 setareDisablet(false);
-                                                handleAnswSubmit(false,e)
+                                                handleAnswSubmit(false, e)
                                             }}>
                                             Continuar
                                         </button>
@@ -179,7 +181,7 @@ const Testquestion = () => {
                             </div>
 
                         </div>
-                        <ModalPlayQuizz/>
+                        <ModalPlayQuizz />
                     </div>
 
                 )

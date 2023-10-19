@@ -25,43 +25,19 @@ const Quizzquestion = () => {
             url: 'http://localhost:3001/api/loadActivity',
             data: {
                 id_actividad: id_qstudet,
-            
+
             }
 
         }).then(function (response) {
             //console.log(response);  
             setresponset(response.data)
-            setRespuestas([response.data[0]['A'+acQuestion+'1'], response.data[0]['A'+acQuestion+'2'], response.data[0]['A'+acQuestion+'3'],response.data[0]['A'+acQuestion+'4']])
+            setRespuestas([response.data[0]['A' + acQuestion + '1'], response.data[0]['A' + acQuestion + '2'], response.data[0]['A' + acQuestion + '3'], response.data[0]['A' + acQuestion + '4']])
         }).catch(function (error) {
             console.log(error);
         })
     }, [])
 
-       
-    useEffect(() => {
-        const info_acivity = JSON.parse(localStorage.getItem("materia"));
-        const id_student = JSON.parse(localStorage.getItem("login"));
-        //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
-         const id_acivity = info_acivity.id_actividad;
-         const  id_students = id_student.student.id_estudiante
-         console.log(id_student);
-        axios({
-            method: 'post',
-            url: 'http://localhost:3001/api/uploadEventoActual',
-            data:{
-                id_estudiante: id_students,
-                id_actividad: id_acivity,
-                paso: "5"
 
-                
-            }
-            
-        }).then((response) => {
-            console.log(response);
-        }).catch((error) => {
-            console.log(error);
-        })
-    }, [])
 
 
 
@@ -70,9 +46,9 @@ const Quizzquestion = () => {
         //puntuacion
         setacQuestion(acQuestion + 1);
         //console.log(acQuestion)
-        setPreguntasLength([...preguntasLength,responset[0]['Q'+(acQuestion+1)]])
-        if(responset[0]['Q'+(acQuestion+1)]){
-            setRespuestas([responset[0]['A'+(acQuestion+1)+'1'], responset[0]['A'+(acQuestion+1)+'2'], responset[0]['A'+(acQuestion+1)+'3'],responset[0]['A'+(acQuestion+1)+'4']])
+        setPreguntasLength([...preguntasLength, responset[0]['Q' + (acQuestion + 1)]])
+        if (responset[0]['Q' + (acQuestion + 1)]) {
+            setRespuestas([responset[0]['A' + (acQuestion + 1) + '1'], responset[0]['A' + (acQuestion + 1) + '2'], responset[0]['A' + (acQuestion + 1) + '3'], responset[0]['A' + (acQuestion + 1) + '4']])
         }
         else {
             //console.log(responset[0]['Q1'])
@@ -106,57 +82,77 @@ const Quizzquestion = () => {
         return () => clearInterval(intervalo);
     }, [restTime]);
 
-    if (isFinish) { 
-        
-            const info_acivity = JSON.parse(localStorage.getItem("materia"));
-            const id_student = JSON.parse(localStorage.getItem("login"));
-            //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
-             const id_acivity = info_acivity.id_actividad;
-             const  id_students = id_student.student.id_estudiante
-             //console.log(id_student);
-            axios({
-                method: 'post',
-                url: 'http://localhost:3001/api/uploadEventoActual',
-                data:{
-                    id_estudiante: id_students,
-                    id_actividad: id_acivity,
-                    paso: "3"
-                    
-                }
-                
-            }).then((response) => {
-                console.log(response);
-            }).catch((error) => {
-                console.log(error);
-            })
-            axios({
-                method: 'post',
-                url: 'http://localhost:3001/api/loadUltimoEvento',
-                data:{
-                    id_estudiante: id_students,
-                    id_actividad: id_acivity,
-                    
-                }
-                
-            }).then((responseq) => {
-                localStorage.setItem("metricaq", JSON.stringify(responseq.data));
-                console.log("si entraa");
-            }).catch((error) => {
-                console.log(error);
-            })
-            return (
-                <main className='test-container'>
-                    <div className='up-cont'></div>
-                    <h3 className="titulo-result"> Obtuviste {puntuacion} de {preguntasLength.length}</h3>
-                    <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Volver a mis materias</button>
-                </main>
-            )
-        
+    if (isFinish) {
+
+        const info_acivity = JSON.parse(localStorage.getItem("materia"));
+        const id_student = JSON.parse(localStorage.getItem("login"));
+        //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
+        const id_acivity = info_acivity.id_actividad;
+        const id_students = id_student.student.id_estudiante;
+        //console.log(id_student);
+        //setQuizzNote((puntuacion*5)/preguntasLength.length);
+        var noteQuizz = ((puntuacion * 5) / preguntasLength.length);
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/uploadEventoActual',
+            data: {
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+                paso: "3"
+
+            }
+
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/uploadEventoActual',
+            data: {
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+                paso: "5",
+                score_a: noteQuizz
+
+            }
+
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/loadUltimoEvento',
+            data: {
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+
+            }
+
+        }).then((responseq) => {
+            localStorage.setItem("metricaq", JSON.stringify(responseq.data));
+            console.log("si entraa");
+        }).catch((error) => {
+            console.log(error);
+        })
+
+        return (
+            <main className='test-container'>
+                <div className='up-cont'></div>
+                <h3 className="titulo-result"> Obtuviste {puntuacion} de {preguntasLength.length}</h3>
+                <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Volver a mis materias</button>
+            </main>
+        )
+
     } else {
         console.log("fallo enviando evento metrica");
     }
-        
-       
+
+
     //console.log(preguntasLength.length)
 
     return (
@@ -169,7 +165,7 @@ const Quizzquestion = () => {
                                 <span>pregunta {acQuestion}</span>
                             </div>
                             <div className='titulo-pregunta'>
-                                <h3>{question['Q'+acQuestion]}</h3>
+                                <h3>{question['Q' + acQuestion]}</h3>
                             </div>
                         </div>
                         <div className='down-cont'>
@@ -192,7 +188,7 @@ const Quizzquestion = () => {
                                             onClick={(e) => {
                                                 setrestTime(10);
                                                 setareDisable(false);
-                                                handleAnswSubmit(false,e)
+                                                handleAnswSubmit(false, e)
                                             }}>
                                             Continuar
                                         </button>

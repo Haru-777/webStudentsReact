@@ -17,7 +17,7 @@ const ModalPlayTest = ({ open, onClose }) => {
                 </div>
                 <div className="lo-tex">
                     <img src={hi} alt="saludo" className='hi' ></img>
-                    <ul className='txt-f'>
+                    <ul className='listplay'>
                         <li>Podras realizar la evaluacion solo una vez.</li>
                         <li>Selecciona una unica respuesta.</li>
                         <li>El resultado estara basado en si la respuesta es correcta y el tiempo que tomes en responder.</li>
