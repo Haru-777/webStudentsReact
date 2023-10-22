@@ -40,7 +40,7 @@ const Matterinfo = ({filter}) => {
     const handleMateria = (data) => {
         setOpenModal(true);
         //console.log(data)
-        localStorage.setItem('materia', JSON.stringify({id_actividad:data.id_actividad, id_colegio:data.id_colegio, id_grado:data.id_grado}))
+        localStorage.setItem('materia', JSON.stringify({id_actividad:data.id_actividad, id_colegio:data.id_colegio, id_grado:data.id_grado, taller:data.taller, evaluacion:data.evaluacion}))
         const info_acivity = JSON.parse(localStorage.getItem("materia"));
         const id_student = JSON.parse(localStorage.getItem("login"));
         //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
@@ -58,7 +58,7 @@ const Matterinfo = ({filter}) => {
                 
             }).then((responseq) => {
                 localStorage.setItem("metricaq", JSON.stringify(responseq.data));
-                console.log("si entraa");
+                //console.log("si entraa");
             }).catch((error) => {
                 console.log(error);
             })

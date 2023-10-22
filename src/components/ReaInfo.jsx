@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useVideoUrl } from '../context';
 
-export const ReaInfo = ({filter}) => {
+export const ReaInfo = ({responsef, filter}) => {
   const navigate = useNavigate();
   const [responser, setresponser] = useState([]);
   const {videoUrl, setVideoUrl} = useVideoUrl();
@@ -23,9 +23,16 @@ export const ReaInfo = ({filter}) => {
     })
   }, [])
 
+  console.log(responsef.length)
+
+
   const datafilterREA = () => {
-    if(filter == ''){
+    if(filter == '' && responsef.length == 0) {
       return(responser)
+    }
+    else if(responsef.length > 0){
+      console.log('entro')
+      return responsef
     }
     else {
       return(responser.filter(itemfilter => itemfilter.nombre_CREA.toLowerCase().includes(filter.toLowerCase())))
@@ -36,6 +43,7 @@ export const ReaInfo = ({filter}) => {
     localStorage.setItem("video", JSON.stringify(video))
 
   }
+  console.log(datafilterREA())
 
   return (
     <>

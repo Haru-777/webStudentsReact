@@ -29,7 +29,7 @@ const Welcomeinfo = () => {
                     <a className='txt-welcome'>Actividades: </a> Al dar clic encontrarás el progreso de cada una de tus actividades realizadas.
                 </li>
             </ul>
-            <p className='p-welcome'>Si deseas mas informacion, da click aqui : </p>
+            <p className='p-welcome'>Si deseas más información, haz clic aquí: <a href="/pdf/usermanual.pdf" target='_blank' download>Manual Usuario</a></p>
         </div>
     );
 }

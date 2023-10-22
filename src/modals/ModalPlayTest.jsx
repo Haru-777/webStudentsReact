@@ -13,7 +13,7 @@ const ModalPlayTest = ({ open, onClose }) => {
             <div className="modal-container">
                 <div className="mat-x">
                     <h2 className="letter-modal">Instrucciones:</h2>
-                    <p onClick={onClose} className="close-btn">X</p>
+                    <p  onClick={() => navigate("/mySubjects")} className="close-btn">X</p>
                 </div>
                 <div className="lo-tex">
                     <img src={hi} alt="saludo" className='hi' ></img>
@@ -25,7 +25,7 @@ const ModalPlayTest = ({ open, onClose }) => {
                     </ul>
                 </div>
                 <div className="btn-div">
-                    <button onClick={() => navigate("/Myactivity")} className='btn-modal'>Jugar</button>
+                    <button onClick={onClose} className='btn-modal'>Jugar</button>
                 </div>
             </div>
         </div>

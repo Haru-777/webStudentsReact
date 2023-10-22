@@ -37,6 +37,10 @@ const Quizzquestion = () => {
         })
     }, [])
 
+    /*response.answers = [{
+        respuesta1: id
+    }]*/
+
 
 
 
