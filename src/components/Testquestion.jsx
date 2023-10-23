@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/testquestion.scss';
-import preguntas from '../pages/Preguntas';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import ModalPlayQuizz from '../modals/ModalPlayQuizz';
 
 const Testquestion = () => {
-    const [actQuestion, setactQuestion] = useState(0);
-    const [puntuaciont, setpuntuaciont] = useState(0);
-    const [isFinisht, setisFinisht] = useState(false);
-    const [restTimet, setrestTimet] = useState(10);
-    const [areDisablet, setareDisablet] = useState(false);
-    const [responsett, setresponsett] = useState([]);
-    const [preguntastLength, setPreguntastLength] = useState([])
-    //const [respuestast, setRespuestast] = useState([]);
-    const [responsem, setresponsem] = useState([]);
+    const [actQuestion, setActQuestion] = useState(0);
+    const [puntuaciont, setPuntuaciont] = useState(0);
+    const [isFinisht, setIsFinisht] = useState(false);
+    const [restTimet, setRestTimet] = useState(10);
+    const [areDisablet, setAreDisablet] = useState(false);
+    const [responsett, setResponsett] = useState([]);
+    const [selectedAnswers, setSelectedAnswers] = useState([]);
 
     const navigate = useNavigate();
 
     useEffect(() => {
         const info_questiont = JSON.parse(localStorage.getItem("materia"));
-        //if (!info_question.student) return
         const id_tstudet = info_questiont.id_actividad;
         const handleBeforeUnload = (e) => {
             e.preventDefault();
@@ -32,70 +27,74 @@ const Testquestion = () => {
             url: 'http://localhost:3001/api/loadActivity',
             data: {
                 id_actividad: id_tstudet,
-
             }
-
         }).then(function (response) {
-            //console.log(response, 'hola');
-            setresponsett(response.data)
-            //setRespuestast([response.data[0]['EA' + actQuestion + '1'], response.data[0]['EA' + actQuestion + '2'], response.data[0]['EA' + actQuestion + '3'], response.data[0]['EA' + actQuestion + '4']])
+            setResponsett(response.data);
         }).catch(function (error) {
             console.log(error);
-        })
+        });
+
+        const info_acivity = JSON.parse(localStorage.getItem("materia"));
+        const id_student = JSON.parse(localStorage.getItem("login"));
+        const id_acivity = info_acivity.id_actividad;
+        const id_students = id_student.student.id_estudiante;
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/uploadEventoActual',
+            data: {
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+                paso: "9"
+            }
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        });
+
+
         window.addEventListener('beforeunload', handleBeforeUnload);
 
         return () => {
             window.removeEventListener('beforeunload', handleBeforeUnload);
         }
-    }, [])
-
-
+    }, []);
 
     function handleAnswSubmit(isCorrect, e) {
-        //puntuacion
-        setactQuestion(actQuestion + 1);
-        if (isCorrect) {
-            setpuntuaciont(puntuaciont + 1);
-        }
+        if (e) {
+            setActQuestion(actQuestion + 1);
 
-        if (actQuestion >= responsett[0]?.questions.length - 1) {
-            setisFinisht(true);
-        } else {
-            setrestTimet(10);
-            setareDisablet(false);
-        }
+            const selectedAnswerId = e.target.id;
 
-        //estilos
-        //e.target.classList.add(isCorrect + 1 === responset[0]['CA'+ acQuestion] ? "correct" : "incorrect");
-        //cambiar a la sg pregunta
+            setSelectedAnswers([...selectedAnswers, selectedAnswerId]);
 
-        /* setTimeout(() => {
-            if (acQuestion === preguntas.length - 1) {
-                setisFinish(true);
+            if (isCorrect) {
+                setPuntuaciont(puntuaciont + 1);
             }
-            else {
-                setacQuestion(acQuestion + 1);
 
+            if (actQuestion >= responsett[0]?.questions.length - 1) {
+                setIsFinisht(true);
+            } else {
+                setRestTimet(10);
+                setAreDisablet(false);
             }
-        }, 1000); */
-    };
+        }
+    }
 
     useEffect(() => {
         const intervalo = setInterval(() => {
-            if (restTimet > 0) setrestTimet((prev) => prev - 1);
-            if (restTimet === 0) setareDisablet(true);
+            if (restTimet > 0) setRestTimet((prev) => prev - 1);
+            if (restTimet === 0) setAreDisablet(true);
         }, 1000);
         return () => clearInterval(intervalo);
     }, [restTimet]);
 
     if (isFinisht) {
-
         const info_acivity = JSON.parse(localStorage.getItem("materia"));
         const id_student = JSON.parse(localStorage.getItem("login"));
-        //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
         const id_acivity = info_acivity.id_actividad;
         const id_students = id_student.student.id_estudiante;
-        var noteTest = ((puntuaciont * 5) / preguntastLength.length);
+        const noteTest = ((puntuaciont * 5) / responsett[0]?.questions.length);
 
         axios({
             method: 'post',
@@ -104,15 +103,14 @@ const Testquestion = () => {
                 id_estudiante: id_students,
                 id_actividad: id_acivity,
                 paso: "6",
-                score_Ea: noteTest
-
+                score_Ea: noteTest,
+                answers: selectedAnswers
             }
-
         }).then((response) => {
             console.log(response);
         }).catch((error) => {
             console.log(error);
-        })
+        });
 
         axios({
             method: 'post',
@@ -120,32 +118,22 @@ const Testquestion = () => {
             data: {
                 id_estudiante: id_students,
                 id_actividad: id_acivity,
-
             }
-
         }).then((responseq) => {
             localStorage.setItem("metricaq", JSON.stringify(responseq.data));
-            console.log("metricaq");
-            console.log("mentiria");
         }).catch((error) => {
             console.log(error);
-        })
-
+        });
 
         return (
             <main className='test-container'>
                 <div className='up-cont'></div>
-                <h3 className="titulo-result"> Obtuviste {puntuaciont} de {preguntastLength.length}</h3>
+                <h3 className="titulo-result"> Obtuviste {puntuaciont} de {responsett[0]?.questions.length}</h3>
                 <h1 className="titulo-end"> Finalizaste tu actividad, da click en "Mis Materias" para continuar aprendiendo</h1>
                 <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Mis Materias</button>
             </main>
-        )
-
-    } else {
-        console.log("fallo enviando evento metrica");
+        );
     }
-
-    //console.log(preguntasLength.length)
 
     return (
         <>
@@ -164,11 +152,29 @@ const Testquestion = () => {
                             <button
                                 disabled={areDisablet}
                                 key={optionIndex}
-                                onClick={() => handleAnswSubmit(option.id === responsett[0]?.questions[actQuestion].correct)}
+                                id={option.id}
+                                onClick={(e) => handleAnswSubmit(option.id === responsett[0]?.questions[actQuestion].correct, e)}
                             >
                                 {option.question}
                             </button>
                         ))}
+                        <div>
+                            {!areDisablet ? (
+                                <span className='rest-time'>Tiempo restante: {restTimet} </span>
+                            ) : (
+                                <div className='dt'>
+                                    <p className='txt-t'>Se ha terminado tu tiempo, por favor da click en continuar.</p>
+                                    <button className='ctn-btn'
+                                        onClick={(e) => {
+                                            setRestTimet(10);
+                                            setAreDisablet(false);
+                                            handleAnswSubmit(false, e);
+                                        }}>
+                                        Continuar
+                                    </button>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             ) : (
@@ -179,6 +185,6 @@ const Testquestion = () => {
             )}
         </>
     )
-            }    
+}
 
 export default Testquestion;

@@ -35,6 +35,27 @@ const Quizzquestion = () => {
         }).catch(function (error) {
             console.log(error);
         })
+        const info_acivity = JSON.parse(localStorage.getItem("materia"));
+        const id_student = JSON.parse(localStorage.getItem("login"));
+        const id_acivity = info_acivity.id_actividad;
+        const id_students = id_student.student.id_estudiante;
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/uploadEventoActual',
+            data: {
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+                paso: "3"
+
+            }
+
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
+
     }, [])
 
     /*response.answers = [{
