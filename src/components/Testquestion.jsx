@@ -6,21 +6,27 @@ import axios from 'axios';
 import ModalPlayQuizz from '../modals/ModalPlayQuizz';
 
 const Testquestion = () => {
-    const [actQuestion, setactQuestion] = useState(1);
+    const [actQuestion, setactQuestion] = useState(0);
     const [puntuaciont, setpuntuaciont] = useState(0);
     const [isFinisht, setisFinisht] = useState(false);
     const [restTimet, setrestTimet] = useState(10);
     const [areDisablet, setareDisablet] = useState(false);
     const [responsett, setresponsett] = useState([]);
     const [preguntastLength, setPreguntastLength] = useState([])
-    const [respuestast, setRespuestast] = useState([]);
+    //const [respuestast, setRespuestast] = useState([]);
     const [responsem, setresponsem] = useState([]);
+
     const navigate = useNavigate();
 
     useEffect(() => {
         const info_questiont = JSON.parse(localStorage.getItem("materia"));
         //if (!info_question.student) return
         const id_tstudet = info_questiont.id_actividad;
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = '¿Seguro que quieres recargar la página?';
+        };
+
         axios({
             method: 'post',
             url: 'http://localhost:3001/api/loadActivity',
@@ -30,12 +36,17 @@ const Testquestion = () => {
             }
 
         }).then(function (response) {
-            //console.log(response);  
+            //console.log(response, 'hola');
             setresponsett(response.data)
-            setRespuestast([response.data[0]['EA' + actQuestion + '1'], response.data[0]['EA' + actQuestion + '2'], response.data[0]['EA' + actQuestion + '3'], response.data[0]['EA' + actQuestion + '4']])
+            //setRespuestast([response.data[0]['EA' + actQuestion + '1'], response.data[0]['EA' + actQuestion + '2'], response.data[0]['EA' + actQuestion + '3'], response.data[0]['EA' + actQuestion + '4']])
         }).catch(function (error) {
             console.log(error);
         })
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        }
     }, [])
 
 
@@ -43,19 +54,16 @@ const Testquestion = () => {
     function handleAnswSubmit(isCorrect, e) {
         //puntuacion
         setactQuestion(actQuestion + 1);
-        //console.log(acQuestion)
-        setPreguntastLength([...preguntastLength, responsett[0]['EQ' + (actQuestion + 1)]])
-        if (responsett[0]['EQ' + (actQuestion + 1)]) {
-            setRespuestast([responsett[0]['EA' + (actQuestion + 1) + '1'], responsett[0]['EA' + (actQuestion + 1) + '2'], responsett[0]['EA' + (actQuestion + 1) + '3'], responsett[0]['EA' + (actQuestion + 1) + '4']])
-        }
-        else {
-            //console.log(responset[0]['Q1'])
-            setisFinisht(true);
-        }
-        setrestTimet(10)
         if (isCorrect) {
-            setpuntuaciont(puntuaciont + 1)
-        };
+            setpuntuaciont(puntuaciont + 1);
+        }
+
+        if (actQuestion >= responsett[0]?.questions.length - 1) {
+            setisFinisht(true);
+        } else {
+            setrestTimet(10);
+            setareDisablet(false);
+        }
 
         //estilos
         //e.target.classList.add(isCorrect + 1 === responset[0]['CA'+ acQuestion] ? "correct" : "incorrect");
@@ -70,7 +78,7 @@ const Testquestion = () => {
 
             }
         }, 1000); */
-    }
+    };
 
     useEffect(() => {
         const intervalo = setInterval(() => {
@@ -141,53 +149,36 @@ const Testquestion = () => {
 
     return (
         <>
-            {responsett.map((question, indextt) => {
-                return (
-                    <div className='test-container' key={indextt}>
-                        <div className='up-cont'>
-                            <div className='numero-pregunta'>
-                                <span>pregunta {actQuestion}</span>
-                            </div>
-                            <div className='titulo-pregunta'>
-                                <h3>{question['EQ' + actQuestion]}</h3>
-                            </div>
+            {actQuestion < responsett[0]?.questions.length ? (
+                <div className='test-container'>
+                    <div className='up-cont'>
+                        <div className='numero-pregunta'>
+                            <span>pregunta {actQuestion + 1}</span>
                         </div>
-                        <div className='down-cont'>
-                            {respuestast.map((respuesta) => (
-                                <button
-                                    disabled={areDisablet}
-                                    key={respuesta.textoRespuesta}
-                                    onClick={(e) => handleAnswSubmit(respuestast.indexOf(respuesta), e)
-                                    }>
-                                    {respuesta}
-                                </button>
-                            ))}
-                            <div>
-                                {!areDisablet ? (
-                                    <span className='rest-time'>Tiempo restante: {restTimet} </span>
-                                ) : (
-                                    <div className='dt'>
-                                        <p className='txt-t'>Se ha terminado tu tiempo, porfavor da click en continuar.</p>
-                                        <button className='ctn-btn'
-                                            onClick={(e) => {
-                                                setrestTimet(10);
-                                                setareDisablet(false);
-                                                handleAnswSubmit(false, e)
-                                            }}>
-                                            Continuar
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-
+                        <div className='titulo-pregunta'>
+                            <h3>{responsett[0]?.questions[actQuestion].question}</h3>
                         </div>
-                        <ModalPlayQuizz />
                     </div>
-
-                )
-            })}
+                    <div className='down-cont'>
+                        {responsett[0]?.questions[actQuestion].options.map((option, optionIndex) => (
+                            <button
+                                disabled={areDisablet}
+                                key={optionIndex}
+                                onClick={() => handleAnswSubmit(option.id === responsett[0]?.questions[actQuestion].correct)}
+                            >
+                                {option.question}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    <p>¡Has completado el cuestionario!</p>
+                    {/* Puedes mostrar un mensaje o realizar una acción aquí */}
+                </div>
+            )}
         </>
     )
-}
+            }    
 
 export default Testquestion;
