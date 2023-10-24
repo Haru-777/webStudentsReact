@@ -2,11 +2,11 @@ import React from 'react';
 import Testquestion from '../components/Testquestion';
 
 
-const Test = () => {
+const Test = ({playTime}) => {
     return (
         <section className='main-container'>
             <div className='Bottom'>
-                <Testquestion/>
+                <Testquestion playTime={playTime}/>
             </div>
         </section>
     )

@@ -3,7 +3,7 @@ import '../styles/testquestion.scss';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Testquestion = () => {
+const Testquestion = ({playTime}) => {
     const [actQuestion, setActQuestion] = useState(0);
     const [puntuaciont, setPuntuaciont] = useState(0);
     const [isFinisht, setIsFinisht] = useState(false);
@@ -11,6 +11,7 @@ const Testquestion = () => {
     const [areDisablet, setAreDisablet] = useState(false);
     const [responsett, setResponsett] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState([]);
+    const [activityCompleted, setActivityCompleted] = useState(false);
 
     const navigate = useNavigate();
 
@@ -21,19 +22,6 @@ const Testquestion = () => {
             e.preventDefault();
             e.returnValue = '¿Seguro que quieres recargar la página?';
         };
-
-        axios({
-            method: 'post',
-            url: 'http://localhost:3001/api/loadActivity',
-            data: {
-                id_actividad: id_tstudet,
-            }
-        }).then(function (response) {
-            setResponsett(response.data);
-        }).catch(function (error) {
-            console.log(error);
-        });
-
         const info_acivity = JSON.parse(localStorage.getItem("materia"));
         const id_student = JSON.parse(localStorage.getItem("login"));
         const id_acivity = info_acivity.id_actividad;
@@ -47,9 +35,22 @@ const Testquestion = () => {
                 paso: "9"
             }
         }).then((response) => {
-            console.log(response);
+            if (response.data.mensaje === 'La evaluación ya ha sido respondida.'){
+                setActivityCompleted(true);
+            } else{
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:3001/api/loadActivity',
+                    data: {
+                        id_actividad: id_tstudet,
+                    }
+                }).then(function (response) {
+                    setResponsett(response.data);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
         }).catch((error) => {
-            console.log(error);
         });
 
 
@@ -82,12 +83,25 @@ const Testquestion = () => {
     }
 
     useEffect(() => {
+        if (playTime) {
         const intervalo = setInterval(() => {
             if (restTimet > 0) setRestTimet((prev) => prev - 1);
             if (restTimet === 0) setAreDisablet(true);
         }, 1000);
-        return () => clearInterval(intervalo);
-    }, [restTimet]);
+        return () => clearInterval(intervalo);}
+    }, [restTimet, playTime]);
+    //console.log(playTime);
+
+     if (activityCompleted) {
+        return (
+            <main className='test-container'>
+                <div className='up-cont'></div>
+                <h3 className="titulo-result">Actividad completada</h3>
+                <h1 className="titulo-end">Ya has finalizado esta actividad. Puedes continuar en "Mis Materias".</h1>
+                <button onClick={() => navigate("/mySubjects")} className='pick-btn'>Mis Materias</button>
+            </main>
+        );
+    }
 
     if (isFinisht) {
         const info_acivity = JSON.parse(localStorage.getItem("materia"));
@@ -134,7 +148,7 @@ const Testquestion = () => {
             </main>
         );
     }
-
+    console.log(activityCompleted);
     return (
         <>
             {actQuestion < responsett[0]?.questions.length ? (
@@ -179,7 +193,6 @@ const Testquestion = () => {
                 </div>
             ) : (
                 <div>
-                    <p>¡Has completado el cuestionario!</p>
                     {/* Puedes mostrar un mensaje o realizar una acción aquí */}
                 </div>
             )}
