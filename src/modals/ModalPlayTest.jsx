@@ -22,6 +22,7 @@ const ModalPlayTest = ({ open, onClose }) => {
                         <li>Selecciona una unica respuesta.</li>
                         <li>El resultado estara basado en si la respuesta es correcta y el tiempo que tomes en responder.</li>
                         <li>Al dar click en JUGAR el examen iniciara de inmediato y no podras repetirlo.</li>
+                        <li>Si por alguna razon recargas o sales de la pagina antes de terminar tu examen, la calificacion sera 1.0</li>
                     </ul>
                 </div>
                 <div className="btn-div">

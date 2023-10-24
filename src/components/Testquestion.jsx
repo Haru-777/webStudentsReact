@@ -93,6 +93,27 @@ const Testquestion = ({playTime}) => {
     //console.log(playTime);
 
      if (activityCompleted) {
+        const info_acivity = JSON.parse(localStorage.getItem("materia"));
+        const id_student = JSON.parse(localStorage.getItem("login"));
+        const id_acivity = info_acivity.id_actividad;
+        const id_students = id_student.student.id_estudiante;
+        const noteTest = ((puntuaciont * 5) / responsett[0]?.questions.length);
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/api/uploadEventoActual',
+            data: {
+                id_estudiante: id_students,
+                id_actividad: id_acivity,
+                paso: "6",
+                score_Ea: 1
+            }
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        });
+
         return (
             <main className='test-container'>
                 <div className='up-cont'></div>

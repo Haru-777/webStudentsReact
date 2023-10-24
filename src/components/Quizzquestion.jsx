@@ -4,7 +4,7 @@ import preguntas from '../pages/Preguntas';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Quizzquestion = () => {
+const Quizzquestion = ({playTimeq}) => {
     const [acQuestion, setacQuestion] = useState(1);
     const [puntuacion, setpuntuacion] = useState(0);
     const [isFinish, setisFinish] = useState(false);
@@ -20,6 +20,10 @@ const Quizzquestion = () => {
         const info_question = JSON.parse(localStorage.getItem("materia"));
         //if (!info_question.student) return
         const id_qstudet = info_question.id_actividad;
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = '¿Seguro que quieres recargar la página?';
+        };
         axios({
             method: 'post',
             url: 'http://localhost:3001/api/loadActivity',
@@ -55,6 +59,11 @@ const Quizzquestion = () => {
         }).catch((error) => {
             console.log(error);
         })
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        }
 
     }, [])
 
@@ -100,12 +109,13 @@ const Quizzquestion = () => {
     }
 
     useEffect(() => {
+        if(playTimeq){
         const intervalo = setInterval(() => {
             if (restTime > 0) setrestTime((prev) => prev - 1);
             if (restTime === 0) setareDisable(true);
         }, 1000);
-        return () => clearInterval(intervalo);
-    }, [restTime]);
+        return () => clearInterval(intervalo);}
+    }, [restTime, playTimeq]);
 
     if (isFinish) {
 

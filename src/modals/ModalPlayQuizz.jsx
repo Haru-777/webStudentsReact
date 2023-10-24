@@ -13,7 +13,7 @@ const ModalPlayQuizz = ({ open, onClose }) => {
         <div className="modal-container">
             <div className="mat-x">
                 <h2 className="letter-modal">Instrucciones:</h2>
-                <p onClick={onClose} className="close-btn">X</p>
+                <p onClick={() => navigate("/mySubjects")} className="close-btn">X</p>
             </div>
             <div className="lo-tex">
                 <img src={hi} alt="saludo" className='hi' ></img>
@@ -21,11 +21,11 @@ const ModalPlayQuizz = ({ open, onClose }) => {
                     <li>Podras realizar el quizz solo una vez.</li>
                     <li>Selecciona una unica respuesta.</li>
                     <li>El resultado estara basado en si la respuesta es correcta y el tiempo que tomes en responder.</li>
-                    <li>Al dar click en JUGAR el quizz iniciara de inmediato y no podras repetirlo.</li>
+                    <li>Al dar click en JUGAR el quizz iniciara de inmediato.</li>
                 </ul>
             </div>
             <div className="btn-div">
-                <button onClick={() => navigate("/Myactivity")} className='btn-modal'>Jugar</button>
+                <button onClick={onClose} className='btn-modal'>Jugar</button>
             </div>
         </div>
     </div>
