@@ -21,7 +21,7 @@ const Matterlist = () => {
 					<Information onClick={() => setOpenModal(true)}/>
 					<InfCou open={openModal} onClose={()=>setOpenModal(false)}/>
 				</div>
-				<h2 className='title-curses'>Aqui puedes ver los cursos de cada materia </h2>
+				<h2 className='title-curses'>Aquí puedes ver los cursos de cada materia </h2>
 				<ul className='matterList'>
 					<li>
 						<Matterinfo filter={filterAcc}/>

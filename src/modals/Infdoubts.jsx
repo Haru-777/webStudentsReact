@@ -15,8 +15,8 @@ const Infdoubts = ({ open, onClose }) => {
                 </div>
                 <div className="lo-tex">
                     <p className='txt-dud' >
-                    Aquí podrás encontrar la información relacionada con las preguntas que le has realizado a tu profesor.
-                    Si el profesor respondio tu pregunta, el estado sera actualizado a 1.
+                    Aquí podrás encontrar la información relacionada con las preguntas que le haz realizado a tu profesor.
+                    Si el profesor respondió tu pregunta, el estado sera actualizado a 1.
                     Para ver la respuesta de tu profesor da clic en alguna de las opciones que tienes en la lista.
                     </p>
                     <img src={see} alt="Informacion" className='solve' ></img>

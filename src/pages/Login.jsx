@@ -104,8 +104,8 @@ const Login = () => {
                     <div className="inp-email">
                         <input type="email" id="usename" name="usename" value={formLogin.usename} onChange={handleChange}
                             onBlur={handleBlur}
-                            placeholder="Correo Electronico" className="inp-emailtxt" />
-                        <label htmlFor="email" className="labele" >Correo Electronico</label>
+                            placeholder="Correo Electrónico" className="inp-emailtxt" />
+                        <label htmlFor="email" className="labele" >Correo Electrónico</label>
                         {formLogin.emailError && (
                             <div className="error-message">{formLogin.emailError}</div>
                         )}
@@ -135,7 +135,7 @@ const Login = () => {
                     </button>
                     <div className="error-message">{error}</div>
                 <div className="txtcuenta">
-                    ¿No tienes cuenta? <a name="linkRegister" className="txtreg" href="/register">Registrate</a>
+                    ¿No tienes cuenta? <a name="linkRegister" className="txtreg" href="/register">Regístrate</a>
                 </div>
                 <div className="endlogin">
                    {/*  <div className="txtservidor"><span data-toggle="modal" data-target="#mimodalejemplo">Servidor:</span>

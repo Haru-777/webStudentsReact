@@ -23,12 +23,12 @@ const InfSubj = ({ open, onClose }) => {
                         </ul>
                         Sigue de forma secuencial estos momentos:
                         <ul className='type-ul'>
-                            <li><a className='subj-a' >MB2:</a> Observa detenidamente el contenido REA(video),
+                            <li><a className='subj-a' >MB2:</a> Observa detenidamente el contenido REA(vídeo),
                                 las veces que quieras, si tienes dudas,
                                 pregúntale a tu profesor.
                             </li>
-                            <li><a className='subj-a'> MB3:</a> Aquí realizarás un quizz sobre el video que acabas de ver.<br />
-                                <a className='note'>Recuerda realizarlo unicamente cuando estes seguro de haber entendido el video.</a>
+                            <li><a className='subj-a'> MB3:</a> Aquí realizarás un quizz sobre el vídeo que acabas de ver.<br />
+                                <a className='note'>Recuerda realizarlo únicamente cuando estes seguro de haber entendido el vídeo.</a>
                             </li>
                             <li>
                                 <a className='subj-a'> En clase </a>, descarga el taller y presenta tu evaluación.

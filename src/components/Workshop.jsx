@@ -60,7 +60,7 @@ const Workshop = () => {
     return (
         <div className='pdfdi'>
             <div className='title-pdf'>
-                <h2 className='pdf-title'>Aqui podras encontrar el PDF de la actividad</h2>
+                <h2 className='pdf-title'>Aquí podrás encontrar el PDF de la actividad</h2>
                 <p className="close-btn" onClick={() => navigate("/myCourses")}>X</p>
             </div>
             <iframe title="Visor de PDF"

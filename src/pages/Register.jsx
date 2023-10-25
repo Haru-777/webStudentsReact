@@ -201,7 +201,7 @@ const Register = () => {
         if (!formReg.checkedreg) {
             setFormReg((prevState) => ({
                 ...prevState,
-                checkedRegError: 'Debe aceptar los terminos y condiciones'
+                checkedRegError: 'Debe aceptar los términos y condiciones'
             }));
         }
         else {
@@ -317,11 +317,11 @@ const Register = () => {
                         )}
                     </div>
                     <div className="inp-emailreg">
-                        <input type="email" placeholder="Correo Electronico" className="inp-emailtxtreg" name="emailReg"
+                        <input type="email" placeholder="Correo Electrónico" className="inp-emailtxtreg" name="emailReg"
                             value={formReg.emailReg}
                             onChange={handleChange}
                             onBlur={handleBlur} />
-                        <label htmlFor="email" className="labelreg" >Correo Electronico</label>
+                        <label htmlFor="email" className="labelreg" >Correo Electrónico</label>
                         {formReg.emailRError && (
                             <div className="error-message">{formReg.emailRError}</div>
                         )}
@@ -352,7 +352,7 @@ const Register = () => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             className="checkregister" />
-                        <label htmlFor="terminos" className="txtchregister">Acepto terminos y condiciones</label>
+                        <label htmlFor="terminos" className="txtchregister">Acepto términos y condiciones</label>
                         {formReg.checkedRegError && (
                             <div className="error-message">{formReg.checkedRegError}</div>
                         )}

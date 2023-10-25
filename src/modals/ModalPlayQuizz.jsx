@@ -18,10 +18,10 @@ const ModalPlayQuizz = ({ open, onClose }) => {
             <div className="lo-tex">
                 <img src={hi} alt="saludo" className='hi' ></img>
                 <ul className='listplay'>
-                    <li>Podras realizar el quizz solo una vez.</li>
-                    <li>Selecciona una unica respuesta.</li>
-                    <li>El resultado estara basado en si la respuesta es correcta y el tiempo que tomes en responder.</li>
-                    <li>Al dar click en JUGAR el quizz iniciara de inmediato.</li>
+                    <li>Podrás realizar el quiz sólo una vez.</li>
+                    <li>Selecciona una única respuesta.</li>
+                    <li>El resultado estará basado en si la respuesta es correcta y el tiempo que tomes en responder.</li>
+                    <li>Al dar click en JUGAR el quiz iniciará de inmediato.</li>
                 </ul>
             </div>
             <div className="btn-div">

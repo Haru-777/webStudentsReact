@@ -176,7 +176,7 @@ const Testquestion = ({playTime}) => {
                 <div className='test-container'>
                     <div className='up-cont'>
                         <div className='numero-pregunta'>
-                            <span>pregunta {actQuestion + 1}</span>
+                            <span>Pregunta {actQuestion + 1}</span>
                         </div>
                         <div className='titulo-pregunta'>
                             <h3>{responsett[0]?.questions[actQuestion].question}</h3>

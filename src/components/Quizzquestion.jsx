@@ -197,7 +197,7 @@ const Quizzquestion = ({playTimeq}) => {
                     <div className='test-container' key={indext}>
                         <div className='up-cont'>
                             <div className='numero-pregunta'>
-                                <span>pregunta {acQuestion}</span>
+                                <span>Pregunta {acQuestion}</span>
                             </div>
                             <div className='titulo-pregunta'>
                                 <h3>{question['Q' + acQuestion]}</h3>
@@ -218,7 +218,7 @@ const Quizzquestion = ({playTimeq}) => {
                                     <span className='rest-time'>Tiempo restante: {restTime} </span>
                                 ) : (
                                     <div className='dt'>
-                                        <p className='txt-t'>Se ha terminado tu tiempo, porfavor da click en continuar.</p>
+                                        <p className='txt-t'>Se ha terminado tu tiempo, por favor da click en continuar.</p>
                                         <button className='ctn-btn'
                                             onClick={(e) => {
                                                 setrestTime(10);

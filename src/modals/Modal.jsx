@@ -41,10 +41,10 @@ const Modal = ({ open, onClose }) => {
                     <img src={hi} alt="saludo" className='hi' ></img>
                 </div>
                 <div className="btn-div">
-                    <button onClick={() => navigate("/Myactivity")} className='btn-modal'>Practica en Casa</button>
+                    <button onClick={() => navigate("/Myactivity")} className='btn-modal'>Práctica en Casa</button>
                     <button onClick={() => navigate("/classActy")}
                         disabled={!btnHab}
-                        className='btn-modal'>Practica en Clase</button>
+                        className='btn-modal'>Práctica en Clase</button>
                     <button onClick={() => navigate("/test")}
                         disabled={!btnHabTest} className='btn-modal'>Realiza tu Examen</button>
                 </div>

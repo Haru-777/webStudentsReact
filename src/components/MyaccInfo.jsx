@@ -152,7 +152,7 @@ const MyaccInfo = () => {
     if (formAcc.emailAcc === '') {
         setFormAcc((prevState) => ({
             ...prevState,
-            emailAcError: 'El correo electronico es obligatorio'
+            emailAcError: 'El correo electrónico es obligatorio'
         }));
     }
     else if (!emailacc.test(formAcc.emailAcc)) {
@@ -312,11 +312,11 @@ return (
                         </div> */}
                     </div>
                     <div className="inp-emailact">
-                        <input type="email" placeholder="Correo Electronico" className="inp-emailtxtact" name="emailAcc"
+                        <input type="email" placeholder="Correo Electrónico" className="inp-emailtxtact" name="emailAcc"
                             value={formAcc.emailAcc}
                             onChange={handleChange}
                             onBlur={handleBlur} />
-                        <label htmlFor="email" className="labelact" >Correo Electronico</label>
+                        <label htmlFor="email" className="labelact" >Correo Electrónico</label>
                         {formAcc.emailAcError && (
                             <div className="error-message">{formAcc.emailAcError}</div>
                         )}

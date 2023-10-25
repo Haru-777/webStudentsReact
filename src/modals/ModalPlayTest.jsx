@@ -18,11 +18,11 @@ const ModalPlayTest = ({ open, onClose }) => {
                 <div className="lo-tex">
                     <img src={hi} alt="saludo" className='hi' ></img>
                     <ul className='listplay'>
-                        <li>Podras realizar la evaluacion solo una vez.</li>
-                        <li>Selecciona una unica respuesta.</li>
-                        <li>El resultado estara basado en si la respuesta es correcta y el tiempo que tomes en responder.</li>
-                        <li>Al dar click en JUGAR el examen iniciara de inmediato y no podras repetirlo.</li>
-                        <li>Si por alguna razon recargas o sales de la pagina antes de terminar tu examen, la calificacion sera 1.0</li>
+                        <li>Podrás realizar la evaluación sólo una vez.</li>
+                        <li>Selecciona una única respuesta.</li>
+                        <li>El resultado estará basado en si la respuesta es correcta y el tiempo que tomes en responder.</li>
+                        <li>Al dar click en JUGAR el examen iniciará de inmediato y no podrás repetirlo.</li>
+                        <li>Si por alguna razón recargas o sales de la página antes de terminar tu examen, la calificación será 1.0</li>
                     </ul>
                 </div>
                 <div className="btn-div">

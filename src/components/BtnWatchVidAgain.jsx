@@ -16,7 +16,7 @@ const BtnWatchVidAgain = ({playerRef, setvideoWatched}) => {
   return (
     <div>
        <div>
-            <button onClick={handleRestartClick} className='btn-modalqt'>Volver a ver video</button>
+            <button onClick={handleRestartClick} className='btn-modalqt'>Volver a ver vídeo</button>
         </div>
     </div>
   )
