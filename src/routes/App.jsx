@@ -41,7 +41,7 @@ const App = () => {
         <Layaout>
             {!isvalid && <Routes>
                 <Route path='/*' element ={ <Login/>} />
-                <Route path='/register' element ={ <Register/>} />
+                <Route exact path='/register' element ={ <Register/>} />
                 <Route exact path='/guest' element ={ <Guest/>} />
             </Routes> }
             {isvalid &&

@@ -33,7 +33,7 @@ const Makedoubt = ({ openM, onCloseM }) => {
         event.preventDefault();
         axios ({
             method: 'post',
-            url: 'http://localhost:3001/api//createDuda',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/createDuda`,
             data: {
                 id_estudiante: id_dstudent,
                 id_actividad: id_dmatter,

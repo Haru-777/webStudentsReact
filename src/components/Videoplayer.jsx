@@ -21,7 +21,7 @@ const Videoplayer = ({ onVideoEnd, playerRef, videoWatched }) => {
                  console.log(id_student);
                 axios({
                     method: 'post',
-                    url: 'http://localhost:3001/api/uploadEventoActual',
+                    url: `${process.env.REACT_APP_BACKEND_URL}/api/uploadEventoActual`,
                     data:{
                         id_estudiante: id_students,
                         id_actividad: id_acivity,
@@ -47,7 +47,7 @@ const Videoplayer = ({ onVideoEnd, playerRef, videoWatched }) => {
         const id_materia = info_matter.id_actividad
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/loadVideoActivity',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadVideoActivity`,
             data: {
 
                 id_actividad: id_materia

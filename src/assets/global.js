@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.get('http://localhost:3001/hello')
+axios.get(`${process.env.REACT_APP_BACKEND_URL}/hello`)
   .then(response => {
     console.log(response.data.message);
   })

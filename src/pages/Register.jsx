@@ -29,7 +29,7 @@ const Register = () => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://localhost:3001/api/loadAllSchools',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadAllSchools`,
 
         }).then(function (response) {
             setschoolReg(response.data)
@@ -42,7 +42,7 @@ const Register = () => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://localhost:3001/api/loadAllGrades',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadAllGrades`,
 
         }).then(function (response) {
             setgradesReg(response.data)
@@ -229,7 +229,7 @@ const Register = () => {
 
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/createEstudiante',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/createEstudiante`,
             data: {
                 nombre_estudiante: data.nameReg,
                 apellido_estudiante: data.lnameReg,

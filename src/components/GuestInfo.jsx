@@ -10,7 +10,7 @@ export const GuestInfo = ({filter}) => {
   useEffect(() => {
     axios({
       method: 'get',
-      url: 'http://localhost:3001/api/loadAllcontents',
+      url: `${process.env.REACT_APP_BACKEND_URL}/api/loadAllcontents`,
     }).then(response => {
       setresponser(response.data)
     }).catch((error) => {

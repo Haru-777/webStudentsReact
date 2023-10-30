@@ -10,7 +10,7 @@ const FilterOption = () => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://localhost:3001/api/loadAllcontents',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadAllcontents`,
         }).then(response => {
             setresponse(response.data)
             console.log(response.data);

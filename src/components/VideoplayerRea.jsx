@@ -12,7 +12,7 @@ const VideoplayerRea = ({ onVideoEnd, playerRef, videoWatched }) => {
         console.log(info_questiont);
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/searchContentREAbyMateria',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/searchContentREAbyMateria`,
             data: {
                 id_materia: info_questiont,
             }

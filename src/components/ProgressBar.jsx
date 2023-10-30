@@ -13,7 +13,7 @@ const ProgressBar = () => {
     const id_students = id_student.student.id_estudiante
     axios({
       method: 'post',
-      url: 'http://localhost:3001/api/progreso',
+      url: `${process.env.REACT_APP_BACKEND_URL}/api/progreso`,
       data: {
         id_estudiante: id_students,
       }

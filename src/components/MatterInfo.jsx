@@ -18,7 +18,7 @@ const Matterinfo = ({filter}) => {
         const id_materia = info_matter.id_materiaActiva
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/loadActivityMateriaId',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadActivityMateriaId`,
             data: {
                 id_materiaActiva: id_materia
             }
@@ -49,7 +49,7 @@ const Matterinfo = ({filter}) => {
          console.log(id_student);
        axios({
                 method: 'post',
-                url: 'http://localhost:3001/api/loadUltimoEvento',
+                url: `${process.env.REACT_APP_BACKEND_URL}/api/loadUltimoEvento`,
                 data:{
                     id_estudiante: id_students,
                     id_actividad: id_acivity,

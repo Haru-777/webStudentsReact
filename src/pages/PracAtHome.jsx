@@ -23,7 +23,7 @@ const PracAtHome = () => {
         
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/uploadEventoActual',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/uploadEventoActual`,
             data:{
                 id_estudiante: id_students,
                 id_actividad: id_acivity,
@@ -46,7 +46,7 @@ const PracAtHome = () => {
          console.log(id_student);
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/loadUltimoEvento',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadUltimoEvento`,
             data:{
                 id_estudiante: id_students,
                 id_actividad: id_acivity,

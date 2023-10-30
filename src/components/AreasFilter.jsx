@@ -13,7 +13,7 @@ const AreasFilter = ({setresponsef}) => {
   useEffect(() => {
     axios({
       method: 'get',
-      url: 'http://localhost:3001/api/loadAllcontents',
+      url: `${process.env.REACT_APP_BACKEND_URL}/api/loadAllcontents`,
     }).then(response => {
       setresponse(response.data)
       console.log(response.data);
@@ -36,7 +36,7 @@ const AreasFilter = ({setresponsef}) => {
 
     axios({
       method: 'post',
-      url: 'http://localhost:3001/api/searchContentREAbyMateria',
+      url: `${process.env.REACT_APP_BACKEND_URL}/api/searchContentREAbyMateria`,
       data: {
         id_materia: event.target.value
       }
@@ -58,7 +58,7 @@ const AreasFilter = ({setresponsef}) => {
    const id_subjetReas = id_subjetRea.id_materia;
    axios({
      method: 'post',
-     url: 'http://localhost:3001/api/searchContentREAbyMateria',
+     url: `${process.env.REACT_APP_BACKEND_URL}/api/searchContentREAbyMateria`,
      data: {
        id_materia: id_subjetReas,
      }

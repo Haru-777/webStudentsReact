@@ -18,7 +18,7 @@ const SubjectInfo = ({filter}) => {
     const sh_studet = info_studianteS.student.id_colegio;
     axios({
       method: 'post',
-      url: 'http://localhost:3001/api/loadAllSubjectActivesMovil',
+      url: `${process.env.REACT_APP_BACKEND_URL}/api/loadAllSubjectActivesMovil`,
       data: {
         id_grado: grade_studet,
         id_colegio: sh_studet

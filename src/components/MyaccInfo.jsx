@@ -36,7 +36,7 @@ const MyaccInfo = () => {
     /* useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://localhost:3001/api/loadAllSchools',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadAllSchools`,
 
         }).then(function (response) {
             setschoolAcc(response.data)
@@ -47,7 +47,7 @@ const MyaccInfo = () => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://localhost:3001/api/loadAllGrades',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadAllGrades`,
 
         }).then(function (response) {
             setgradeAcc(response.data)
@@ -219,7 +219,7 @@ const handleSubmit = (event) => {
 
     axios({
         method: 'post',
-        url: 'http://localhost:3001/api/uploadEstudiante',
+        url: `${process.env.REACT_APP_BACKEND_URL}/api/uploadEstudiante`,
         data: {
             id_estudiante: id_studet,
             nombre_estudiante: data.nameAcc,

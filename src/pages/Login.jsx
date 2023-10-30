@@ -78,7 +78,7 @@ const Login = () => {
         };
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/loginEstudiante',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loginEstudiante`,
             data: {
                 correo_electronico: data.usename, //Quitar esto para un get
                 contrasena: data.password

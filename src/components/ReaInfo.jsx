@@ -13,7 +13,7 @@ export const ReaInfo = ({responsef, filter}) => {
   useEffect(() => {
     axios({
       method: 'get',
-      url: 'http://localhost:3001/api/loadAllcontents',
+      url: `${process.env.REACT_APP_BACKEND_URL}/api/loadAllcontents`,
     }).then(response => {
       setresponser(response.data)
       localStorage.setItem("rea", JSON.stringify(response.data))

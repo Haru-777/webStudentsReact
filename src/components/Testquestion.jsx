@@ -28,7 +28,7 @@ const Testquestion = ({playTime}) => {
         const id_students = id_student.student.id_estudiante;
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/uploadEventoActual',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/uploadEventoActual`,
             data: {
                 id_estudiante: id_students,
                 id_actividad: id_acivity,
@@ -40,7 +40,7 @@ const Testquestion = ({playTime}) => {
             } else{
                 axios({
                     method: 'post',
-                    url: 'http://localhost:3001/api/loadActivity',
+                    url: `${process.env.REACT_APP_BACKEND_URL}/api/loadActivity`,
                     data: {
                         id_actividad: id_tstudet,
                     }
@@ -101,7 +101,7 @@ const Testquestion = ({playTime}) => {
 
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/uploadEventoActual',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/uploadEventoActual`,
             data: {
                 id_estudiante: id_students,
                 id_actividad: id_acivity,
@@ -133,7 +133,7 @@ const Testquestion = ({playTime}) => {
 
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/uploadEventoActual',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/uploadEventoActual`,
             data: {
                 id_estudiante: id_students,
                 id_actividad: id_acivity,
@@ -149,7 +149,7 @@ const Testquestion = ({playTime}) => {
 
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/loadUltimoEvento',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadUltimoEvento`,
             data: {
                 id_estudiante: id_students,
                 id_actividad: id_acivity,

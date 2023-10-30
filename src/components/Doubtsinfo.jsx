@@ -20,7 +20,7 @@ export const Doubtsinfo = ({filter}) => {
         if( idduda === 0) return
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/loadDuda',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadDuda`,
             data: {
                 id_duda: idduda
             }
@@ -37,7 +37,7 @@ export const Doubtsinfo = ({filter}) => {
         const id_studet = info_studiante.student.id_estudiante;
         axios({
             method: 'post',
-            url: 'http://localhost:3001/api/loadDudaStudents',
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadDudaStudents`,
             data: {
                 id_estudiante: id_studet
             }
