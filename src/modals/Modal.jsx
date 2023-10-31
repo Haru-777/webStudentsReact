@@ -45,8 +45,10 @@ const Modal = ({ open, onClose }) => {
                     <button onClick={() => navigate("/classActy")}
                         disabled={!btnHab}
                         className='btn-modal'>Práctica en Clase</button>
-                    <button onClick={() => navigate("/test")}
-                        disabled={!btnHabTest} className='btn-modal'>Realiza tu Examen</button>
+                    <button className='btn-test' onClick={() => navigate("/test")}
+                        disabled={!btnHabTest} >Realiza tu Examen</button>
+                         <div class="ad"> Al dar clic, el examen iniciará inmediatamente, entonces si por cualquier razón sales de la pantalla, el resultado de 
+                         tu actividad será 1. Da clic Solo si estás seguro de Realizar el Examen, NO lo podrás repetir.</div>
                 </div>
             </div>
         </div>

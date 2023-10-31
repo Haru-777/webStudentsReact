@@ -11,7 +11,7 @@ const Welcome = () => {
 			<div className="Bottom">
 				<WelcomeInfo/>
             </div>
-            <Footer/>
+            {/* <Footer/> */}
 		</section>
 	);
 }

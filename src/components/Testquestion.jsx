@@ -7,7 +7,7 @@ const Testquestion = ({playTime}) => {
     const [actQuestion, setActQuestion] = useState(0);
     const [puntuaciont, setPuntuaciont] = useState(0);
     const [isFinisht, setIsFinisht] = useState(false);
-    const [restTimet, setRestTimet] = useState(10);
+    const [restTimet, setRestTimet] = useState(60);
     const [areDisablet, setAreDisablet] = useState(false);
     const [responsett, setResponsett] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -76,7 +76,7 @@ const Testquestion = ({playTime}) => {
             if (actQuestion >= responsett[0]?.questions.length - 1) {
                 setIsFinisht(true);
             } else {
-                setRestTimet(10);
+                setRestTimet(60);
                 setAreDisablet(false);
             }
         }
@@ -201,7 +201,7 @@ const Testquestion = ({playTime}) => {
                                     <p className='txt-t'>Se ha terminado tu tiempo, por favor da click en continuar.</p>
                                     <button className='ctn-btn'
                                         onClick={(e) => {
-                                            setRestTimet(10);
+                                            setRestTimet(60);
                                             setAreDisablet(false);
                                             handleAnswSubmit(false, e);
                                         }}>

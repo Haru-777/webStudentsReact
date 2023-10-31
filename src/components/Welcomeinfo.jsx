@@ -27,6 +27,8 @@ const Welcomeinfo = () => {
                 </li>
             </ul>
             <p className='p-welcome'>Si deseas más información, haz click aquí: <a href="/pdf/usermanual.pdf" target='_blank' download>Manual Usuario</a></p>
+            <a href='https://docs.google.com/forms/d/e/1FAIpQLScG3Q43GzjNTrktTVZzP5ckFlL_C721T7eWsibjyQ-AWMm8-Q/viewform' target='_blank'>Encuesta Poblacional</a>
+            <a href='https://docs.google.com/forms/d/e/1FAIpQLSdxqhUdn4CzG_1MiG0Xgp9PZw2wOBEzoJx7EZMKQ-5riTCOiQ/viewform' target='_blank'> Encuesta Smart FC WEB</a>
         </div>
     );
 }

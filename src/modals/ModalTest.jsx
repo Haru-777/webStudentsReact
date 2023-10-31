@@ -16,9 +16,9 @@ const ModalTest = () => {
                         <li>Selecciona una unica respuesta.</li>
                         <li>El resultado estará basado en si la respuesta es correcta o no
                             y  en el tiempo que te tomes en responder.</li>
-                        <li>Una vez des click en "JUGAR" no podras parar o pausar la actividad 
-                            por lo cual si por cualquier razón sales de la pantalla, el resultado de 
-                            tu actividad sera dado por la cantidad de preguntas correctas que hayas respondido.
+                        <li>Una vez de clic en "JUGAR" no podrás parar o pausar la actividad 
+                            por lo cual si por cualquier razón sales de la pantalla, el resultado de t
+                            u actividad será 1.
                         </li>
                     </ul>
                 </div>

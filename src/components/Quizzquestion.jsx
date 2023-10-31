@@ -8,7 +8,7 @@ const Quizzquestion = ({playTimeq}) => {
     const [acQuestion, setacQuestion] = useState(1);
     const [puntuacion, setpuntuacion] = useState(0);
     const [isFinish, setisFinish] = useState(false);
-    const [restTime, setrestTime] = useState(10);
+    const [restTime, setrestTime] = useState(60);
     const [areDisable, setareDisable] = useState(false);
     const [responset, setresponset] = useState([]);
     const [preguntasLength, setPreguntasLength] = useState([])
@@ -88,7 +88,7 @@ const Quizzquestion = ({playTimeq}) => {
             //console.log(responset[0]['Q1'])
             setisFinish(true);
         }
-        setrestTime(10)
+        setrestTime(60)
         if (isCorrect) {
             setpuntuacion(puntuacion + 1)
         };
@@ -221,7 +221,7 @@ const Quizzquestion = ({playTimeq}) => {
                                         <p className='txt-t'>Se ha terminado tu tiempo, por favor da click en continuar.</p>
                                         <button className='ctn-btn'
                                             onClick={(e) => {
-                                                setrestTime(10);
+                                                setrestTime(60);
                                                 setareDisable(false);
                                                 handleAnswSubmit(false, e)
                                             }}>

@@ -24,7 +24,7 @@ const Workshop = () => {
             }
 
         }).then(function (response) {
-            console.log(response);
+            //console.log(response);
             setresponsew(response.data)
         }).catch(function (error) {
             console.log(error);

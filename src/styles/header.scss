@@ -73,7 +73,7 @@ nav {
 .x-short {
     text-decoration: none;
     padding: 8px;
-    width: 20px;
+    width: 30px;
     height: 20px;
     align-items:center;
     margin-right: 4px;
@@ -92,7 +92,7 @@ nav {
     border: 1px solid var(--white);
     padding: 8px;
     border-radius: 8px;
-    width: 50px;
+    width: 60px;
     height: 20px;
     text-align: center;
     margin-right: 4px;
@@ -109,7 +109,7 @@ nav {
     border: 1px solid var(--white);
     padding: 8px;
     border-radius: 8px;
-    width: 93px;
+    width: 103px;
     height: 20px;
     text-align: center;
     margin-right: 4px;
@@ -126,7 +126,7 @@ nav {
     border: 1px solid var(--white);
     padding: 8px;
     border-radius: 8px;
-    width: 107px;
+    width: 117px;
     height: 20px;
     text-align: center;
     margin-right: 4px;
@@ -143,7 +143,7 @@ nav {
     border: 1px solid var(--white);
     padding: 8px;
     border-radius: 8px;
-    width: 182px;
+    width: 202px;
     height: 20px;
     text-align: center;
     margin-right: 4px;
@@ -153,23 +153,7 @@ nav {
     border: 1px solid var(--baby-blue);
     color: var(--baby-blue);
 }
-.e-large {
-    display: flex;
-    text-decoration: none;
-    color: var(--very-light-pink);
-    border: 1px solid var(--white);
-    padding: 8px;
-    border-radius: 8px;
-    width: 182px;
-    height: 20px;
-    text-align: center;
-    margin-right: 4px;
-}
 
-.e-large:hover {
-    border: 1px solid var(--baby-blue);
-    color: var(--baby-blue);
-}
 .dplast{
     margin-left: auto;
 }
@@ -187,7 +171,7 @@ nav {
     padding: 8px;
     border-radius: 8px;
     height: 30px;
-    width: 60px;
+    width: 70px;
 }
 
 /* Style the dropdown content (hidden by default)
