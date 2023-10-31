@@ -23,7 +23,7 @@ const VideoplayerRea = ({ onVideoEnd, playerRef, videoWatched }) => {
             console.log(error);
         })
     }, [])
-    console.log(responsev);
+   // console.log(responsev);
 
     //return (
       //  <>
