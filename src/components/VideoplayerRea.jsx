@@ -17,31 +17,32 @@ const VideoplayerRea = ({ onVideoEnd, playerRef, videoWatched }) => {
                 id_CREA: info_questiont,
             }
         }).then(response => {
-            setresponsev(response.data)
-            console.log(response.data);
+            setresponsev(response.data.content)
+            //console.log(responsev);
         }).catch((error) => {
             console.log(error);
         })
     }, [])
+    console.log(responsev);
 
-  //  return (
-    //    <>
-      //      {responsev[0]?.map((res, ides) => {
+    //return (
+      //  <>
+        //   {responsev.map((res, ides) => {
                 return (
                     <>
                         <h2>Video REA</h2>
                         <ReactPlayer
-                            //key={ides}
-                            url={responsev[0]?.content.urlrepositorio}
+                           // key={ides}
+                            url={responsev.urlrepositorio}
                             controls
                             playing={true}
                             volume={0.8}
                             ref={playerRef}
                         />
                     </>
-               // )
-         //   })}
-       // </>
+          //      )
+        //   })}
+      //  </>
     );
 }
 
