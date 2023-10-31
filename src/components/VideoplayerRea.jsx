@@ -12,9 +12,9 @@ const VideoplayerRea = ({ onVideoEnd, playerRef, videoWatched }) => {
         console.log(info_questiont);
         axios({
             method: 'post',
-            url: `${process.env.REACT_APP_BACKEND_URL}/api/searchContentREAbyMateria`,
+            url: `${process.env.REACT_APP_BACKEND_URL}/api/loadContentREA`,
             data: {
-                id_materia: info_questiont,
+                id_CREA: info_questiont,
             }
         }).then(response => {
             setresponsev(response.data)
@@ -24,24 +24,24 @@ const VideoplayerRea = ({ onVideoEnd, playerRef, videoWatched }) => {
         })
     }, [])
 
-    return (
-        <>
-            {responsev.map((res, ides) => {
+  //  return (
+    //    <>
+      //      {responsev[0]?.map((res, ides) => {
                 return (
                     <>
-                        <h2>si fijddj</h2>
+                        <h2>Video REA</h2>
                         <ReactPlayer
-                            key={ides}
-                            url={res.urlrepositorio}
+                            //key={ides}
+                            url={responsev[0]?.content.urlrepositorio}
                             controls
                             playing={true}
                             volume={0.8}
                             ref={playerRef}
                         />
                     </>
-                )
-            })}
-        </>
+               // )
+         //   })}
+       // </>
     );
 }
 

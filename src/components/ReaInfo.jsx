@@ -17,13 +17,13 @@ export const ReaInfo = ({responsef, filter}) => {
     }).then(response => {
       setresponser(response.data)
       localStorage.setItem("rea", JSON.stringify(response.data))
-      console.log(response.data);
+     // console.log(response.data);
     }).catch((error) => {
       console.log(error);
     })
   }, [])
 
-  console.log(responsef.length)
+ // console.log(responsef.length)
 
 
   const datafilterREA = () => {
@@ -43,14 +43,14 @@ export const ReaInfo = ({responsef, filter}) => {
     localStorage.setItem("video", JSON.stringify(video))
 
   }
-  console.log(datafilterREA())
+  //console.log(datafilterREA())
 
   return (
     <>
       {datafilterREA().map((rea, indexr) => {
         return (
           <>
-            <div className='matterInfo' key={indexr} onClick={() => HandleContent(rea.id_materia)}>
+            <div className='matterInfo' key={indexr} onClick={() => HandleContent(rea.id_CREA)}>
               <h2>{rea.nombre_CREA}</h2>
               <p>{rea.id_grado} </p>
 
