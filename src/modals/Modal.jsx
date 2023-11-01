@@ -7,23 +7,23 @@ import axios from 'axios';
 
 const Modal = ({ open, onClose }) => {
     const navigate = useNavigate();
-    const [btnHab, setBtnHab] = useState(false);
-    const [btnHabTest, setBtnHabTest] = useState(false);
+    const [btnHab, setBtnHab] = useState('');
+    const [btnHabTest, setBtnHabTest] = useState('');
     useEffect(() => {
         
         const info_lduda = JSON.parse(localStorage.getItem("materia"));
         if (!info_lduda) return
         const validateAnswer = info_lduda.evaluacion;
         const validateDocument = info_lduda.taller;
-        //console.log(validateAnswer);
+        //console.log(info_lduda);
 
 
         if (validateDocument == 1) {
-            setBtnHabTest(true);
+            setBtnHab(true);
         }
 
         if (validateAnswer == 1) {
-            setBtnHab(true);
+            setBtnHabTest(true);
         }
     }, []);
 

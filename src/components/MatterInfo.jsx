@@ -46,7 +46,7 @@ const Matterinfo = ({filter}) => {
         //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
          const id_acivity = info_acivity.id_actividad;
          const  id_students = id_student.student.id_estudiante
-         console.log(id_student);
+         //console.log(id_student);
        axios({
                 method: 'post',
                 url: `${process.env.REACT_APP_BACKEND_URL}/api/loadUltimoEvento`,
