@@ -243,7 +243,7 @@ const Register = () => {
             /*localStorage.setItem("register", JSON.stringify(response.data))//guarda en el local storege
             window.location.reload()*/
             setSuccessR("Registro exitoso, ahora puedes iniciar sesion");
-            console.log('Registro exitoso');
+            //console.log('Registro exitoso');
         }).catch(function (error) {
             setError(error.response.data.error);
             console.log(error)
