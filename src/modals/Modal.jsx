@@ -7,8 +7,8 @@ import axios from 'axios';
 
 const Modal = ({ open, onClose }) => {
     const navigate = useNavigate();
-    const [btnHab, setBtnHab] = useState('');
-    const [btnHabTest, setBtnHabTest] = useState('');
+    const [btnHab, setBtnHab] = useState(false);
+    const [btnHabTest, setBtnHabTest] = useState(false);
     useEffect(() => {
         
         const info_lduda = JSON.parse(localStorage.getItem("materia"));
